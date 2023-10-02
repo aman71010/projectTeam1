@@ -17,7 +17,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet]
-        [Route("get")]
+        [Route("get/{userEmailId}")]
         public IActionResult GetByUserEmailId(string userEmailId)
         {
             try
@@ -115,7 +115,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet]
-        [Route("get/image")]
+        [Route("get/image/{userEmailId}")]
         public IActionResult GetUserImage(string userEmailId)
         {
             try
@@ -133,7 +133,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet]
-        [Route("get/address")]
+        [Route("get/address/{userEmailId}")]
         public IActionResult GetAddress(string userEmailId)
         {
             try
