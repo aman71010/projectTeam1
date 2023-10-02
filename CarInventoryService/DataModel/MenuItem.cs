@@ -10,6 +10,6 @@ namespace MenuService.DataModel
         public string Name { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
-        public byte[] Image { get; set; }
+        public byte[]? Image { get; set; }
     }
 }
