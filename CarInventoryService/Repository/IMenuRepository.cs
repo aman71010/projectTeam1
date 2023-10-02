@@ -12,6 +12,7 @@ namespace MenuService.Repository
         void DeleteMenu(string id);
         MenuItem GetMenuByCategory(string category);
         MenuItem GetMenuByMenuItemId(string MenuItemId );
+        void UpdateMenuImage (string menuItemId, Byte[] menuImage);
 
     }
 }

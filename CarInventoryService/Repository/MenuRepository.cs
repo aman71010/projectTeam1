@@ -49,5 +49,12 @@ namespace MenuService.Repository
                 .Set(m => m.Image, menu.Image);
             context.menuItems.UpdateOne(filter, update);
         }
+
+        public void UpdateMenuImage(string menuItemId, byte[] menuImage)
+        {
+            MenuItem menu = GetMenuByMenuItemId(menuItemId);
+            menu.Image = menuImage;
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MenuService.DataModel;
 using MenuService.Exceptions;
 using MenuService.Repository;
+using System.Data;
 
 namespace MenuService.Services
 {
@@ -68,6 +69,28 @@ namespace MenuService.Services
             }
         }
 
+        public string GetMenuImage(string menuItemId)
+        {
+            MenuItem menu = GetMenuByMenuItemId(menuItemId);
+            if(menu != null)
+            {
+                if(menu.Image != null)
+                {
+                    string image64= Convert.ToBase64String(menu.Image);
+                    string imageurl = string.Format("data:image/jpg:base64,{0}", image64);
+                    return imageurl;    
+                }
+                else
+                {
+                    throw new Exception("Menu is not found ");
+                }
+            }
+            else
+            {
+                throw new MenuDoesNotExistException("Menu with given id does not exist");
+            }
+        }
+
         public void UpdateMenuById(string id, MenuItem menu)
         {
             var res = repo.GetMenuByMenuItemId(id);
@@ -80,5 +103,20 @@ namespace MenuService.Services
                 throw new MenuDoesNotExistException($"menu with id {id} does not exist");
             }
         }
+
+        public void UpdateMenuImage(string menuitemid, byte[] menuimage)
+        {
+            MenuItem menu = GetMenuByMenuItemId(menuitemid);
+            if (menu != null)
+            {
+                repo.UpdateMenuImage(menuitemid,menuimage);
+            }
+            else
+            {
+                throw new MenuDoesNotExistException($"menu with id {menuitemid} does not exist");
+            }
+        }
+
+      
     }
 }
