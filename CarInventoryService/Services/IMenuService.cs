@@ -11,5 +11,7 @@ namespace MenuService.Services
         void DeleteMenu(string id);
         MenuItem GetMenuByCategory(string category);
         MenuItem GetMenuByMenuItemId(string MenuItemId);
+        void UpdateMenuImage(string menuitemid, byte[] menuimage);
+        string GetMenuImage(string menuItemId);
     }
 }
