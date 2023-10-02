@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserService.Models;
 
@@ -11,9 +12,10 @@ using UserService.Models;
 namespace UserService.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230930185940_UpdateUserModelProp2")]
+    partial class UpdateUserModelProp2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,12 @@ namespace UserService.Migrations
 
                     b.Property<string>("UserEmailId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("AddressId");
+
+                    b.HasIndex("UserEmailId")
+                        .IsUnique();
 
                     b.ToTable("UserAddresses");
                 });
@@ -66,9 +71,6 @@ namespace UserService.Migrations
                 {
                     b.Property<string>("UserEmailId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<long?>("AddressId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("MobileNo")
                         .HasColumnType("bigint");
@@ -89,17 +91,22 @@ namespace UserService.Migrations
 
                     b.HasKey("UserEmailId");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("UserService.Models.Address", b =>
+                {
+                    b.HasOne("UserService.Models.User", "User")
+                        .WithOne("Address")
+                        .HasForeignKey("UserService.Models.Address", "UserEmailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UserService.Models.User", b =>
                 {
-                    b.HasOne("UserService.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
                     b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
