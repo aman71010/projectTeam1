@@ -14,7 +14,7 @@ namespace UserService.Models
 
         [ForeignKey("User")]
         public string UserEmailId { get; set; }
-        public User User { get; set; }
+        //public User User { get; set; }
 
     }
 }
