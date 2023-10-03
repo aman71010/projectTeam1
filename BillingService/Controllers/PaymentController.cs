@@ -10,7 +10,7 @@ namespace PaymentService.Controllers
     public class PaymentController : ControllerBase
     {
         [HttpPost("CreateOrder")]
-        public IActionResult CreateOrder([FromBody] OrderDetails order)
+        public IActionResult CreateOrder([FromBody] OrderEntity order)
         {
             if (order == null)
             {
@@ -25,8 +25,8 @@ namespace PaymentService.Controllers
                 {"receipt", "12121"}
             };
 
-            string key = "rzp_test_iARZQBAeCv7SSG";
-            string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
+            string key = "rzp_test_pmZ9sPkab2DGdZ";
+            string secret = "X3Pg0Jusi6Oo7bGABdZU69wE";
 
             RazorpayClient client = new RazorpayClient(key, secret);
 
@@ -45,8 +45,8 @@ namespace PaymentService.Controllers
                 return BadRequest("Invalid payment data.");
             }
 
-            string key = "rzp_test_iARZQBAeCv7SSG";
-            string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
+            string key = "rzp_test_pmZ9sPkab2DGdZ";
+            string secret = "X3Pg0Jusi6Oo7bGABdZU69wE";
 
             RazorpayClient client = new RazorpayClient(key, secret);
 
@@ -55,32 +55,51 @@ namespace PaymentService.Controllers
         }
 
         [HttpPost("payment")]
-        public IActionResult Payment([FromBody] OrderResponse orderResponse)
+        public IActionResult Payment([FromBody] OrderResponse paymentData)
         {
-            if (orderResponse == null)
+            if (paymentData == null)
             {
-                return BadRequest("Invalid payment request.");
+                return BadRequest("Invalid payment data.");
             }
-            
-            string key = "rzp_test_iARZQBAeCv7SSG";
-            string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
-            RazorpayClient client = new RazorpayClient(key, secret);
 
             Dictionary<string, string> attributes = new Dictionary<string, string>();
 
-            attributes.Add("razorpay_payment_id", orderResponse.razorpay_payment_Id);
-            attributes.Add("razorpay_order_id", orderResponse.razorpay_orderId);
-            attributes.Add("razorpay_signature", orderResponse.razorpay_signature);
+            attributes.Add("razorpay_payment_id", paymentData.razorpay_payment_Id);
+            attributes.Add("razorpay_order_id", paymentData.razorpay_orderId);
+            attributes.Add("razorpay_signature", paymentData.razorpay_signature);
 
             Utils.verifyPaymentSignature(attributes);
 
-            OrderDetails orderDetails = new OrderDetails
+            string key = "rzp_test_pmZ9sPkab2DGdZ";
+            string secret = "X3Pg0Jusi6Oo7bGABdZU69wE";
+            RazorpayClient client = new RazorpayClient(key, secret);
+
+            OrderEntity orderDetails = new OrderEntity
             {
 
-                OrderId = orderResponse.razorpay_orderId
+                OrderId = paymentData.razorpay_orderId
             };
 
-            return Ok(new { Message = "Payment successfully Completed.", OrderDetails = orderDetails });
+            return Ok(new { Message = "Payment successful.", OrderDetails = orderDetails });
+        }
+
+        private bool VerifyPaymentSignature(OrderResponse paymentData)
+        {
+            string secretKey = "X3Pg0Jusi6Oo7bGABdZU69wE";
+
+            string dataToSign = paymentData.razorpay_payment_Id + "|" + paymentData.razorpay_orderId;
+
+            using (var hmac = new System.Security.Cryptography.HMACSHA256(System.Text.Encoding.UTF8.GetBytes(secretKey)))
+            {
+                byte[] hashBytes = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(dataToSign));
+
+
+                string calculatedSignature = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+
+
+                return calculatedSignature == paymentData.razorpay_signature;
+
+            }
         }
     }
 }
