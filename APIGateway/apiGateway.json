@@ -1,6 +1,5 @@
 {
     "Routes": [
-        //USER
         {
             "UpstreamPathTemplate": "/Register",
             "UpstreamHttpMethod": [ "Post" ],
@@ -169,7 +168,6 @@
                 "AllowedScopes": []
             }
         },
-        //MENU
         {
             "UpstreamPathTemplate": "/UpdateMenuImage",
             "UpstreamHttpMethod": [ "Put" ],
@@ -282,7 +280,6 @@
                 "AllowedScopes": []
             }
         },
-        //Subscription
         {
             "UpstreamPathTemplate": "/CreateSubscription",
             "UpstreamHttpMethod": [ "Post" ],
@@ -363,7 +360,6 @@
                 "AllowedScopes": []
             }
         },
-        //Order
         {
             "UpstreamPathTemplate": "/CreateOrder",
             "UpstreamHttpMethod": [ "Put" ],
@@ -443,15 +439,8 @@
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
             }
-        }
-<<<<<<< HEAD
-      ],
-      "DownstreamPathTemplate": "/api/User/get/all",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "token",
-        "AllowedScopes": []
-      }
-    },
+        },
+
     {
       "UpstreamPathTemplate": "/UpdateMenuImage",
       "UpstreamHttpMethod": [ "Put" ],
@@ -725,7 +714,4 @@
       }
     }
   ]
-=======
-    ]
->>>>>>> 86289edc1d5cef86f2911c823ca92b8138930cf2
 }
