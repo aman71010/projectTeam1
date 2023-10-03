@@ -15,7 +15,7 @@ namespace OrderService.Controllers
         {
             this.svc = svc;
         }
-        [HttpPost]
+        [HttpPost("CreateOrder")]
         public IActionResult create(Order orderobj)
         {
             try
@@ -32,13 +32,13 @@ namespace OrderService.Controllers
                 return StatusCode(500, e.Message);
             }
         }
-        [HttpGet]
+        [HttpGet("getOrderList")]
         public IActionResult list()
         {
             return Ok(svc.GetAllOrders());
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteOrder/{id}")]
         public IActionResult delete(string id)
         {
             try
@@ -51,7 +51,7 @@ namespace OrderService.Controllers
                 return NotFound(e.Message);
             }
         }
-        [HttpGet("email/{email}")]
+        [HttpGet("getOrderByEmail/{email}")]
         public IActionResult GetByEmail(string email)
         {
             try
@@ -77,7 +77,7 @@ namespace OrderService.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("updateOrder/{id}")]
         public IActionResult update(string id, Order oobj)
         {
             try
