@@ -1,6 +1,5 @@
 {
     "Routes": [
-        //USER
         {
             "UpstreamPathTemplate": "/Register",
             "UpstreamHttpMethod": [ "Post" ],
@@ -169,7 +168,6 @@
                 "AllowedScopes": []
             }
         },
-        //MENU
         {
             "UpstreamPathTemplate": "/UpdateMenuImage",
             "UpstreamHttpMethod": [ "Put" ],
@@ -282,7 +280,6 @@
                 "AllowedScopes": []
             }
         },
-        //Subscription
         {
             "UpstreamPathTemplate": "/CreateSubscription",
             "UpstreamHttpMethod": [ "Post" ],
@@ -363,9 +360,8 @@
                 "AllowedScopes": []
             }
         },
-        //Order
         {
-            "UpstreamPathTemplate": "/CreateOrder",
+            "UpstreamPathTemplate": "/Order",
             "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
@@ -439,6 +435,70 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Order/updateOrder/{id}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/CreateOrder",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7030
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Payement/CreateOrder",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/checkout",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7030
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Payment/checkout",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/Payment",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7030
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Payment/payment",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/SendEmail",
+            "UpstreamHttpMethod": [ "Post" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7030
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Email/SendEmail",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
