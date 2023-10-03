@@ -28,13 +28,13 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseOcelot();
 
-app.MapControllers();
+app.MapGet("/", () => "Hello World!");
 
 app.Run();
