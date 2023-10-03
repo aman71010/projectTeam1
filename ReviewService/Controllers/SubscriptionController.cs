@@ -16,7 +16,11 @@ namespace SubscriptionService.Controllers
         }
 
         [HttpPost]
+<<<<<<< HEAD
         [Route("CreateSubscription")]
+=======
+        [Route("create")]
+>>>>>>> ca69044928775b5f88cfeb5fe74c23aec834d58b
         public IActionResult Create(Subscription subscriptionobj)
         {
             try
@@ -35,14 +39,22 @@ namespace SubscriptionService.Controllers
         }
 
         [HttpGet]
+<<<<<<< HEAD
         [Route("getSubscriptionList")]
+=======
+        [Route("subscription/list")]
+>>>>>>> ca69044928775b5f88cfeb5fe74c23aec834d58b
         public IActionResult List()
         {
             return Ok(svc.GetSubscription());
         }
 
         [HttpGet]
+<<<<<<< HEAD
         [Route("getSubscriptionById/{id}")]
+=======
+        [Route("get/{id}")]
+>>>>>>> ca69044928775b5f88cfeb5fe74c23aec834d58b
         public IActionResult Get(int id)
         {
             try
@@ -56,7 +68,11 @@ namespace SubscriptionService.Controllers
         }
 
         [HttpPut]
+<<<<<<< HEAD
         [Route("updateSubscription/{id}")]
+=======
+        [Route("update/{id}")]
+>>>>>>> ca69044928775b5f88cfeb5fe74c23aec834d58b
         public IActionResult Update(int id, Subscription sobj)
         {
             try
@@ -71,7 +87,11 @@ namespace SubscriptionService.Controllers
         }
 
         [HttpDelete]
+<<<<<<< HEAD
         [Route("deleteSubscription/{id}")]
+=======
+        [Route("delete/{id}")]
+>>>>>>> ca69044928775b5f88cfeb5fe74c23aec834d58b
         public IActionResult Delete(int id)
         {
             try
