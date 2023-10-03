@@ -55,32 +55,33 @@ namespace PaymentService.Controllers
         }
 
         [HttpPost("payment")]
-        public IActionResult Payment([FromBody] OrderResponse paymentData)
+        public IActionResult Payment([FromBody] OrderResponse orderResponse)
         {
-            if (paymentData == null)
+            if (orderResponse == null)
             {
-                return BadRequest("Invalid payment data.");
+                return BadRequest("Invalid payment request.");
             }
-            Dictionary<string, string> attributes = new Dictionary<string, string>();
-
-            attributes.Add("razorpay_payment_id", paymentData.razorpay_payment_Id);
-            attributes.Add("razorpay_order_id", paymentData.razorpay_orderId);
-            attributes.Add("razorpay_signature", paymentData.razorpay_signature);
-
-            Utils.verifyPaymentSignature(attributes);
-
+            
             string key = "rzp_test_iARZQBAeCv7SSG";
             string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
             RazorpayClient client = new RazorpayClient(key, secret);
 
+            Dictionary<string, string> attributes = new Dictionary<string, string>();
+
+            attributes.Add("razorpay_payment_id", orderResponse.razorpay_payment_Id);
+            attributes.Add("razorpay_order_id", orderResponse.razorpay_orderId);
+            attributes.Add("razorpay_signature", orderResponse.razorpay_signature);
+
+            Utils.verifyPaymentSignature(attributes);
 
             OrderDetails orderDetails = new OrderDetails
             {
 
-                OrderId = paymentData.razorpay_orderId
+                OrderId = orderResponse.razorpay_orderId
             };
 
-            return Ok(new { Message = "Payment successful.", OrderDetails = orderDetails });
+            return Ok(new { Message = "Payment successfully Completed.", OrderDetails = orderDetails });
         }
     }
 }
+    
