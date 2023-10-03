@@ -17,10 +17,10 @@ namespace PaymentService.Controllers
                 return BadRequest("Invalid order data.");
             }
 
-            
+
             Dictionary<string, object> input = new Dictionary<string, object>
             {
-                { "amount", Convert.ToDecimal(order.Amount) * 100 }, 
+                { "amount", Convert.ToDecimal(order.Amount) * 100 },
                 { "currency", "INR" },
                 {"receipt", "12121"}
             };
@@ -49,11 +49,8 @@ namespace PaymentService.Controllers
             string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
 
             RazorpayClient client = new RazorpayClient(key, secret);
-            
+
             return Ok(checkout);
-
-
-
 
         }
 
@@ -85,24 +82,5 @@ namespace PaymentService.Controllers
 
             return Ok(new { Message = "Payment successful.", OrderDetails = orderDetails });
         }
-        private bool VerifyPaymentSignature(OrderResponse paymentData)
-        {
-            string secretKey = "MzX9NkPCtK9Iwy9GqvEegEkG";
-
-            string dataToSign = paymentData.razorpay_payment_Id + "|" + paymentData.razorpay_orderId;
-
-            using (var hmac = new System.Security.Cryptography.HMACSHA256(System.Text.Encoding.UTF8.GetBytes(secretKey)))
-            {
-                byte[] hashBytes = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(dataToSign));
-
-
-                string calculatedSignature = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-
-
-                return calculatedSignature == paymentData.razorpay_signature;
-
-            }
-        }
-
     }
 }
