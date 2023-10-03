@@ -503,6 +503,344 @@
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
             }
+          },
+
+    {
+      "UpstreamPathTemplate": "/UpdateMenuImage",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
         }
-    ]
+      ],
+      "DownstreamPathTemplate": "/api/Menu/update/image",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetMenuImages",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Menu/get/images",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetMenuList",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Menu/get/menulist",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetMenuById/{MenuItemId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Menu/get/menubyid/{MenuItemId}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetMenuByCate/{Category}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Menu/get/MenuByCate/{Category}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateMenu",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Menu/updateMenu",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/DeleteMenu/{menuid}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7107
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Menu/DeleteMenu/{menuid}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/CreateSubscription",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7042
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Subscription/CreateSubscription",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/SubscriptionList",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7042
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Subscription/getSubscriptionList",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/SubscriptionById/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7042
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Subscription/getSubscriptionById/{id}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateSubscription/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7042
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Subscription/updateSubscription/{id}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/DeleteSubscription/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7042
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Subscription/deleteSubscription/{id}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/Order",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7264
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order/CreateOrder",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/OrderList",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7264
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order/getOrderList",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/DeleteOrder/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7264
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order/deleteOrder/{id}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/OrderByEmail/{email}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7264
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order/getOrderByEmail/{email}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateOrder/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7264
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Order/updateOrder/{id}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+
+        {
+            "UpstreamPathTemplate": "/SendEmail",
+            "UpstreamHttpMethod": [ "Put" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7264
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Email/SendEmail",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/CreateOrder",
+            "UpstreamHttpMethod": [ "Put" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7264
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Payment/CreateOrder",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/Checkout",
+            "UpstreamHttpMethod": [ "Put" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7264
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Payment/checkout",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "UpstreamPathTemplate": "/Payment",
+            "UpstreamHttpMethod": [ "Put" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7264
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Payment/payment",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            }
+        }
+  ]
 }
