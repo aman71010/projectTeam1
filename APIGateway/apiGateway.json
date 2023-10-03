@@ -1,0 +1,172 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/Register",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/register"
+    },
+    {
+      "UpstreamPathTemplate": "/Login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/login"
+    },
+    {
+      "UpstreamPathTemplate": "/GetUser/{userEmailId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/get/{userEmailId}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateName",
+      "UpstreamHttpMethod": [ "Patch" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/update/name",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdatePassword",
+      "UpstreamHttpMethod": [ "Patch" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/update/password",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateNumber",
+      "UpstreamHttpMethod": [ "Patch" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/update/number",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateImage",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/update/image",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetImage/{userEmailId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/get/image/{userEmailId}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetAddress/{userEmailId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/get/address/{userEmailId}",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/UpdateAddress",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/update/address",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/AllUsers",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/get/all",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "token",
+        "AllowedScopes": []
+      }
+    }
+  ]
+}
