@@ -10,6 +10,6 @@ namespace PaymentService.Models
         public string UserName { get; set; }
         public double Amount { get; set; }
         public string Currency { get; set; }
-        //public string razorkey { get; set; 
+        //public string razorkey { get; set; } 
     }
 }
