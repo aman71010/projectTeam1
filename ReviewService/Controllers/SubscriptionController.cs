@@ -4,80 +4,95 @@ using SubscriptionService.Service;
 using SubscriptionService.Model;
 using SubscriptionService.Exceptions;
 
-
 namespace SubscriptionService.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/subscription")] // Base route for all actions in the controller
     public class SubscriptionController : ControllerBase
     {
         private readonly ISubscriptionServices svc;
         public SubscriptionController(ISubscriptionServices svc)
         {
             this.svc = svc;
-            
         }
 
+
+
         [HttpPost]
-        public IActionResult create(Subscription subscriptionobj)
+        [Route("Create")]
+        public IActionResult Create(Subscription subscriptionobj)
         {
             try
             {
                 svc.AddSubscription(subscriptionobj);
                 return StatusCode(201, "Subscription Added");
             }
-            catch(SubscriptionAlreadyExistException e) 
+            catch (SubscriptionAlreadyExistException e)
             {
                 return Conflict(e.Message);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
-
         }
+
+
+
         [HttpGet]
-        public IActionResult list() 
+        [Route("List")]
+        public IActionResult List()
         {
             return Ok(svc.GetSubscription());
         }
 
-        [HttpGet("{id}")]
-        public IActionResult get(int id) 
+
+
+        [HttpGet]
+        [Route("get/{id}")]
+        public IActionResult Get(int id)
         {
             try
             {
                 return Ok(svc.GetSubscription(id));
             }
-            catch(SubscriptionDoesNotExistException e)
+            catch (SubscriptionDoesNotExistException e)
             {
                 return NotFound(e.Message);
             }
         }
+
+
+
         [HttpPut]
-        public IActionResult update(int id, Subscription sobj)
+        [Route("update/{id}")]
+        public IActionResult Update(int id, Subscription sobj)
         {
             try
             {
                 svc.UpdateSubscription(id, sobj);
                 return Ok("Subscription Updated");
             }
-            catch(SubscriptionDoesNotExistException e)
+            catch (SubscriptionDoesNotExistException e)
             {
-                return NotFound(e.Message); 
+                return NotFound(e.Message);
             }
         }
+
+
+
         [HttpDelete]
-        public IActionResult delete(int id) 
+        [Route("delete/{id}")]
+        public IActionResult Delete(int id)
         {
             try
             {
                 svc.DeleteSubscription(id);
                 return Ok("Subscription Deleted");
             }
-            catch(SubscriptionDoesNotExistException e)
+            catch (SubscriptionDoesNotExistException e)
             {
-                return NotFound(e.Message); 
+                return NotFound(e.Message);
             }
         }
     }
