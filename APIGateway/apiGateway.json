@@ -10,7 +10,7 @@
                     "Port": 7030
                 }
             ],
-            "DownstreamPathTemplate": "/api/Auth/register"
+            "DownstreamPathTemplate": "/api/User/register"
         },
         {
             "UpstreamPathTemplate": "/Login",
