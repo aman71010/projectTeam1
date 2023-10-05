@@ -34,7 +34,15 @@ namespace PaymentService.Controllers
 
             string orderId = razorpayOrder["id"].ToString();
 
-            return Ok(new { OrderId = orderId });
+            OrderEntity responseOrder = new OrderEntity
+            {
+                OrderId = orderId,
+                Amount = order.Amount,
+                Email = order.Email,
+                PhoneNumber = order.PhoneNumber,
+            };
+
+            return Ok(responseOrder);
         }
         [HttpPost("checkout")]
 
