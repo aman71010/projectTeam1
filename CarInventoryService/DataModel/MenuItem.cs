@@ -9,7 +9,8 @@ namespace MenuService.DataModel
         [BsonId]
         public string MenuItemId { get; set; }
 
-        [StringLength(20,ErrorMessage = "Name is required.")]
+        [Required(ErrorMessage ="Name is required")]
+        [StringLength(20,ErrorMessage = "Name cannot exceed 20 characters")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Price is required.")]
