@@ -16,7 +16,7 @@ namespace NotifyService.Controllers
             _emailService = emailService;
         }
 
-        [HttpPost]
+        [HttpPost("SendEmail")]
         public IActionResult SendEmail(Email request)
         {
             _emailService.SendEmail(request);

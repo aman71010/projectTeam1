@@ -10,23 +10,23 @@ namespace PaymentService.Controllers
     public class PaymentController : ControllerBase
     {
         [HttpPost("CreateOrder")]
-        public IActionResult CreateOrder([FromBody] OrderDetails order)
+        public IActionResult CreateOrder([FromBody] OrderEntity order)
         {
             if (order == null)
             {
                 return BadRequest("Invalid order data.");
             }
 
-            
+
             Dictionary<string, object> input = new Dictionary<string, object>
             {
-                { "amount", Convert.ToDecimal(order.Amount) * 100 }, 
+                { "amount", Convert.ToDecimal(order.Amount) * 100 },
                 { "currency", "INR" },
                 {"receipt", "12121"}
             };
 
-            string key = "rzp_test_iARZQBAeCv7SSG";
-            string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
+            string key = "rzp_test_pmZ9sPkab2DGdZ";
+            string secret = "X3Pg0Jusi6Oo7bGABdZU69wE";
 
             RazorpayClient client = new RazorpayClient(key, secret);
 
@@ -45,15 +45,12 @@ namespace PaymentService.Controllers
                 return BadRequest("Invalid payment data.");
             }
 
-            string key = "rzp_test_iARZQBAeCv7SSG";
-            string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
+            string key = "rzp_test_pmZ9sPkab2DGdZ";
+            string secret = "X3Pg0Jusi6Oo7bGABdZU69wE";
 
             RazorpayClient client = new RazorpayClient(key, secret);
-            
+
             return Ok(checkout);
-
-
-
 
         }
 
@@ -64,6 +61,7 @@ namespace PaymentService.Controllers
             {
                 return BadRequest("Invalid payment data.");
             }
+
             Dictionary<string, string> attributes = new Dictionary<string, string>();
 
             attributes.Add("razorpay_payment_id", paymentData.razorpay_payment_Id);
@@ -72,12 +70,11 @@ namespace PaymentService.Controllers
 
             Utils.verifyPaymentSignature(attributes);
 
-            string key = "rzp_test_iARZQBAeCv7SSG";
-            string secret = "MzX9NkPCtK9Iwy9GqvEegEkG";
+            string key = "rzp_test_pmZ9sPkab2DGdZ";
+            string secret = "X3Pg0Jusi6Oo7bGABdZU69wE";
             RazorpayClient client = new RazorpayClient(key, secret);
 
-
-            OrderDetails orderDetails = new OrderDetails
+            OrderEntity orderDetails = new OrderEntity
             {
 
                 OrderId = paymentData.razorpay_orderId
@@ -85,9 +82,10 @@ namespace PaymentService.Controllers
 
             return Ok(new { Message = "Payment successful.", OrderDetails = orderDetails });
         }
+
         private bool VerifyPaymentSignature(OrderResponse paymentData)
         {
-            string secretKey = "MzX9NkPCtK9Iwy9GqvEegEkG";
+            string secretKey = "X3Pg0Jusi6Oo7bGABdZU69wE";
 
             string dataToSign = paymentData.razorpay_payment_Id + "|" + paymentData.razorpay_orderId;
 
@@ -103,6 +101,6 @@ namespace PaymentService.Controllers
 
             }
         }
-
     }
 }
+    

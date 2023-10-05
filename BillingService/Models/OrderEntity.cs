@@ -2,7 +2,7 @@
 
 namespace PaymentService.Models
 {
-    public class OrderDetails
+    public class OrderEntity
     {
         public string Email { get; set; }
 

@@ -7,6 +7,7 @@ using SubscriptionService.Exceptions;
 namespace SubscriptionService.Controllers
 {
     [ApiController]
+    [Route("api/subscription")] // Base route for all actions in the controller
     public class SubscriptionController : ControllerBase
     {
         private readonly ISubscriptionServices svc;
@@ -15,8 +16,10 @@ namespace SubscriptionService.Controllers
             this.svc = svc;
         }
 
+
+
         [HttpPost]
-        [Route("CreateSubscription")]
+        [Route("Create")]
         public IActionResult Create(Subscription subscriptionobj)
         {
             try
@@ -34,15 +37,19 @@ namespace SubscriptionService.Controllers
             }
         }
 
+
+
         [HttpGet]
-        [Route("getSubscriptionList")]
+        [Route("List")]
         public IActionResult List()
         {
             return Ok(svc.GetSubscription());
         }
 
+
+
         [HttpGet]
-        [Route("getSubscriptionById/{id}")]
+        [Route("get/{id}")]
         public IActionResult Get(int id)
         {
             try
@@ -55,8 +62,10 @@ namespace SubscriptionService.Controllers
             }
         }
 
+
+
         [HttpPut]
-        [Route("updateSubscription/{id}")]
+        [Route("update/{id}")]
         public IActionResult Update(int id, Subscription sobj)
         {
             try
@@ -70,8 +79,10 @@ namespace SubscriptionService.Controllers
             }
         }
 
+
+
         [HttpDelete]
-        [Route("deleteSubscription/{id}")]
+        [Route("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

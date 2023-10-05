@@ -16,7 +16,7 @@ namespace MenuService.Controllers
         {
             this.svc = svc;
         }
-        [HttpPost]
+        [HttpPost("createMenu")]
         public IActionResult CreateMenu(MenuItem menuobj)
         {
             try
