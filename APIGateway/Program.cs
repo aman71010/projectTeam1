@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
+using Ocelot.Infrastructure;
 using Ocelot.Middleware;
 using System.Text;
 
@@ -28,13 +29,13 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseOcelot();
 
-app.MapControllers();
+app.MapGet("/", () => "Hello World!");
 
 app.Run();

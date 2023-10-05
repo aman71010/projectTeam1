@@ -16,7 +16,7 @@ namespace MenuService.Controllers
         {
             this.svc = svc;
         }
-        [HttpPost]
+        [HttpPost("createMenu")]
         public IActionResult CreateMenu(MenuItem menuobj)
         {
             try
@@ -73,7 +73,7 @@ namespace MenuService.Controllers
         }
 
         [HttpGet]
-        [Route("get/menubyid")]
+        [Route("get/menubyid/{id}")]
 
         public IActionResult MenuListById(string id)
         {
@@ -88,7 +88,7 @@ namespace MenuService.Controllers
 
         }
         [HttpGet]
-        [Route("get/MenuByCate")]
+        [Route("get/MenuByCate/{category}")]
 
         public IActionResult MenuListByCategory(string category)
         {
@@ -116,7 +116,7 @@ namespace MenuService.Controllers
             }
         }
         [HttpDelete]
-        [Route("DeleteMenu")]
+        [Route("DeleteMenu/{menuid}")]
         public IActionResult DeleteMenu(string menuid)
         {
             try
