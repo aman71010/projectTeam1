@@ -5,6 +5,5 @@ namespace UserService.Services
     public interface IAuthService
     {
         string Login(UserLogin user);
-        void Register(UserRegister user);
     }
 }
