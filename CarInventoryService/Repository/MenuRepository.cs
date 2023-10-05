@@ -44,6 +44,7 @@ namespace MenuService.Repository
         {
             var filter = Builders<MenuItem>.Filter.Where(m=>m.MenuItemId==id);
             var update = Builders<MenuItem>.Update.Set(m => m.Name, menu.Name)
+                .Set(m=>m.Price,menu.Price)
                 .Set(m => m.Description, menu.Description)
                 .Set(m => m.Category, menu.Category)
                 .Set(m => m.Image, menu.Image);

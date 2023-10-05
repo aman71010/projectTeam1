@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmailService, EmailService>();
+//builder.Services.AddSingleton<IHostedService, KafkaConsumer>();
 
 
 var app = builder.Build();

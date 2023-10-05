@@ -16,24 +16,6 @@ namespace UserService.Controllers
             this.authService = authService;
         }
 
-        [HttpPost("register")]
-        public IActionResult Register(UserRegister user)
-        {
-            try
-            {
-                authService.Register(user);
-                return StatusCode(201, "User registered successfully");
-            }
-            catch(UserAlreadyExistException ex)
-            {
-                return Conflict(ex.Message);
-            }
-            catch(Exception ex) 
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpPost("login")]
         public IActionResult Login(UserLogin user)
         {

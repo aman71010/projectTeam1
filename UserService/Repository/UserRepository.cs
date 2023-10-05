@@ -23,11 +23,6 @@ namespace UserService.Repository
             return context.Users.Where(u => u.UserEmailId.Equals(emailId)).FirstOrDefault();
         }
 
-        public List<User> GetAllUsers()
-        {
-            return context.Users.ToList();
-        }
-
         public void UpdateName(string userEmailId, string name)
         {
             User user = GetUserByUserEmailId(userEmailId);
@@ -60,13 +55,6 @@ namespace UserService.Repository
         {
             User user = GetUserByUserEmailId(userEmailId);
             user.Address = address;
-            //user.Address.AddressId = address.AddressId;
-            //user.Address.HouseNo = address.HouseNo;
-            //user.Address.Landmark = address.Landmark;
-            //user.Address.City = address.City;
-            //user.Address.State = address.State;
-            //user.Address.Country = address.Country;
-            //user.Address.Pincode = address.Pincode;
             context.SaveChanges();
         }
         Address IUserRepository.GetAddress(string userEmailId)
