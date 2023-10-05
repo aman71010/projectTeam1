@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OrderService.Models
 {
@@ -9,8 +10,10 @@ namespace OrderService.Models
     {
 
         [BsonId] 
-        public string Order_Id { get; set; } 
+        public string Order_Id { get; set; }
 
+        [Required(ErrorMessage = "UserEmailId is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string UserEmailId { get; set; }
         public List<OrderItem> Items { get; set; }
         public OrderStatus Status { get; set; }

@@ -32,11 +32,8 @@ namespace OrderService.Controllers
                 return StatusCode(500, e.Message);
             }
         }
-        [HttpGet]
-        public IActionResult list()
-        {
-            return Ok(svc.GetAllOrders());
-        }
+       
+       
 
         [HttpDelete("{id}")]
         public IActionResult delete(string id)
