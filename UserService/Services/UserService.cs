@@ -1,4 +1,6 @@
-﻿using System.Xml.Linq;
+﻿using Confluent.Kafka;
+using Newtonsoft.Json;
+using System.Xml.Linq;
 using UserService.Exceptions;
 using UserService.Models;
 using UserService.Repository;
@@ -8,40 +10,56 @@ namespace UserService.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository userRepository;
+        private readonly IConfiguration configuration;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IConfiguration configuration)
         {
             this.userRepository = userRepository;
+            this.configuration = configuration;
         }
-        public void CreateUser(User user)
+        public void CreateUser(UserRegister user)
         {
-            User u = userRepository.GetUserByUserEmailId(user.UserEmailId);
-            if (u == null) 
+
+            User u = userRepository.GetUserByUserEmailId(user.Email);
+            if (u != null)
             {
-                userRepository.CreateUser(user);
+                throw new UserAlreadyExistException("User already exists");
             }
             else
             {
-                throw new UserAlreadyExistException($"User with Email {user.UserEmailId} already exist");
+                User newUser = new User()
+                {
+                    UserEmailId = user.Email,
+                    Name = user.Name,
+                    Password = user.Password,
+                    MobileNo = user.MobileNo
+                };
+
+                //ProduceMessage(newUser);
+
+                userRepository.CreateUser(newUser);
             }
+                
         }
 
-        public Address GetAddress(string userEmailId)
+        public async Task ProduceMessage(User user)
         {
-            User user = userRepository.GetUserByUserEmailId(userEmailId);
-            if (user != null)
-            {
-                return userRepository.GetAddress(userEmailId);
-            }
-            else
-            {
-                throw new UserNotFoundException($"User with Email {userEmailId} not found");
-            }
-        }
+            string message = JsonConvert.SerializeObject(user);
 
-        public List<User> GetAllUsers()
-        {
-            return userRepository.GetAllUsers();
+            ProducerConfig pconfig = new ProducerConfig
+            {
+                BootstrapServers = configuration["Kafka:Server"]
+            };
+
+            using (var producer = new ProducerBuilder<Null, string>(pconfig).Build())
+            {
+                var result = await producer.ProduceAsync("UserTopic", new Message<Null, string>
+                {
+                    Value = message
+                });
+            }
+
+            return;
         }
 
         public User GetUserByUserEmailId(string userEmailId)
@@ -57,7 +75,7 @@ namespace UserService.Services
             }
         }
 
-        public void UpdateAddress(string userEmailId, Address address) // check again
+        public void UpdateAddress(string userEmailId, Address address)
         {
             User user = userRepository.GetUserByUserEmailId(userEmailId);
             if (user != null)
@@ -122,27 +140,18 @@ namespace UserService.Services
             }
         }
 
-        public string GetUserImage(string userEmailId)
+        public Address GetAddress(string userEmailId)
         {
             User user = userRepository.GetUserByUserEmailId(userEmailId);
             if (user != null)
             {
-                if(user.UserImage != null)
-                {
-                    string imageBase64Data = Convert.ToBase64String(user.UserImage);
-                    string imageDataUrl = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
-                    return imageDataUrl;
-                }
-                else
-                {
-                    throw new Exception("User image not found. Add user image.");
-                }
+                return userRepository.GetAddress(userEmailId);
             }
             else
             {
-                throw new UserNotFoundException("User not Found!");
+                throw new UserNotFoundException($"User with Email {userEmailId} not found");
             }
-            
         }
+
     }
 }

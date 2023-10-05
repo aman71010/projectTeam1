@@ -11,12 +11,14 @@ namespace UserService.Models
         public string Email { get; set; }
 
         [Required]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Please enter a 10-digit mobile number.")]
         public long MobileNo { get; set; }
 
-        [Required, StringLength(100, MinimumLength = 6)]
+        [Required, MinLength(6, ErrorMessage = "Password required atleast 6 characters.")]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        [Required]
+        [Compare("Password", ErrorMessage = "Password and Confirm password does not match.")]
         public string ConfirmPassword { get; set; }
     }
 }

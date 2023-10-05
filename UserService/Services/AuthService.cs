@@ -20,26 +20,6 @@ namespace UserService.Services
             this.configuration = configuration;
         }
 
-        public void Register(UserRegister user)
-        {
-            User u = userRepository.GetUserByUserEmailId(user.Email);
-            if (u != null)
-            {
-                throw new UserAlreadyExistException("User already exists");
-            }
-            else
-            {
-                User newUser = new User()
-                {
-                    UserEmailId = user.Email,
-                    Name = user.Name,
-                    Password = user.Password,
-                    MobileNo = user.MobileNo
-                };
-                userRepository.CreateUser(newUser);
-            }
-        }
-
         public string Login(UserLogin user)
         {
             User currUser = userRepository.GetUserByUserEmailId(user.Email);

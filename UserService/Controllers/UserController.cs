@@ -16,6 +16,24 @@ namespace UserService.Controllers
             this.userService = userService;
         }
 
+        [HttpPost("register")]
+        public IActionResult Register(UserRegister user)
+        {
+            try
+            {
+                userService.CreateUser(user);
+                return StatusCode(201, "User registered successfully");
+            }
+            catch (UserAlreadyExistException ex)
+            {
+                return Conflict(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         [Route("get/{userEmailId}")]
         public IActionResult GetByUserEmailId(string userEmailId)
@@ -114,13 +132,14 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("get/image/{userEmailId}")]
-        public IActionResult GetUserImage(string userEmailId)
+        [HttpPut]
+        [Route("update/Address")]
+        public IActionResult UpdateAddress(Address req)
         {
             try
             {
-                return Ok(userService.GetUserImage(userEmailId));
+                userService.UpdateAddress(req.UserEmailId, req);
+                return Ok("Address updated successfully");
             }
             catch (UserNotFoundException ex)
             {
@@ -149,32 +168,6 @@ namespace UserService.Controllers
                 return BadRequest(ex.Message);
             }
 
-        }
-
-        [HttpPut]
-        [Route("update/Address")]
-        public IActionResult UpdateAddress(Address req)
-        {
-            try
-            {
-                userService.UpdateAddress(req.UserEmailId, req);
-                return Ok("Address updated successfully");
-            }
-            catch (UserNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpGet]
-        [Route("get/all")]
-        public IActionResult GetAllUsers()
-        {
-            return Ok(userService.GetAllUsers());
         }
     }
 }
