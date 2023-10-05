@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Excecption;
 using OrderService.Models;
@@ -32,11 +32,7 @@ namespace OrderService.Controllers
                 return StatusCode(500, e.Message);
             }
         }
-        [HttpGet("getOrderList")]
-        public IActionResult list()
-        {
-            return Ok(svc.GetAllOrders());
-        }
+        
 
         [HttpDelete("deleteOrder/{id}")]
         public IActionResult delete(string id)
