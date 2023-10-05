@@ -1,12 +1,11 @@
-
+using Microsoft.EntityFrameworkCore;
+using PaymentService.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+//// Add services to the container.
+builder.Services.AddDbContext<PayDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Myconnection")));
 builder.Services.AddControllers();
-
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
