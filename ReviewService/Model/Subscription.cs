@@ -23,13 +23,13 @@ namespace SubscriptionService.Model
         [BsonId]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "UserId is required.")]
-        [EmailAddress(ErrorMessage = "Invalid UserId")]
+        [Required, EmailAddress]
         public string? UserId { get; set; }
 
         [Required(ErrorMessage = "Type is required.")]
         [Range(0,2,ErrorMessage= "The field Type must be between 0 and 2")]
         public SubscriptionType Type { get; set; }
+        
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public PaymentStatus Status { get; set; }

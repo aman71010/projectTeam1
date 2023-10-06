@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserService.Models
 {
@@ -10,6 +11,8 @@ namespace UserService.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
+
+        [RegularExpression(@"^\d{6}$", ErrorMessage = "Pincode is not valid.")]
         public int Pincode { get; set; }
 
         [ForeignKey("User")]
