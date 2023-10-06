@@ -105,22 +105,6 @@
             }
         },
         {
-            "UpstreamPathTemplate": "/GetImage/{userEmailId}",
-            "UpstreamHttpMethod": [ "Get" ],
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 7030
-                }
-            ],
-            "DownstreamPathTemplate": "/api/User/get/image/{userEmailId}",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "token",
-                "AllowedScopes": []
-            }
-        },
-        {
             "UpstreamPathTemplate": "/GetAddress/{userEmailId}",
             "UpstreamHttpMethod": [ "Get" ],
             "DownstreamScheme": "https",
@@ -147,22 +131,6 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/User/update/address",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "token",
-                "AllowedScopes": []
-            }
-        },
-        {
-            "UpstreamPathTemplate": "/AllUsers",
-            "UpstreamHttpMethod": [ "Get" ],
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 7030
-                }
-            ],
-            "DownstreamPathTemplate": "/api/User/get/all",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
