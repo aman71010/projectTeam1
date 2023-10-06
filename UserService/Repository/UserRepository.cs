@@ -59,7 +59,7 @@ namespace UserService.Repository
         }
         Address IUserRepository.GetAddress(string userEmailId)
         {
-            return context.UserAddresses.Where(a => a.UserEmailId.Equals(userEmailId)).FirstOrDefault();
+            return context.UserAddresses.Where(a => a.UserEmailId.Equals(userEmailId)).OrderByDescending(a => a.AddressId).FirstOrDefault();
         }
     }
 }

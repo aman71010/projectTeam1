@@ -52,7 +52,7 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpPatch]
+        [HttpPut]
         [Route("update/name")]
         public IActionResult UpdateName(NameUpdateData req)
         {
@@ -71,7 +71,7 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpPatch]
+        [HttpPut]
         [Route("update/password")]
         public IActionResult UpdatePassword(PasswordUpdateData req)
         {
@@ -90,7 +90,7 @@ namespace UserService.Controllers
             }
         }
 
-        [HttpPatch]
+        [HttpPut]
         [Route("update/number")]
         public IActionResult UpdateMobileNo(MobileNoUpdateData req)
         {
