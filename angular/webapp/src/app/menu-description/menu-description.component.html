@@ -1,0 +1,32 @@
+<img src="./assets/xyz.jpeg" alt="Description of the image" style="height: 40%" width="100%">
+<h2>Menu Item Details</h2>
+<div class="small-card">
+  <mat-card>
+    <img mat-card-image src="./assets/pexels-spencer-davis-4393021.jpg" alt="Image Alt Text">
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <div class="ratings-container">
+        <p class="ratings-label">Ratings: </p>
+        <div class="rating-box">
+          <span class="rating-number">4.5</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="content">
+  <h3>Butter Chicken Thali</h3>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, sapiente. Voluptatum architecto quasi iusto?
+    Numquam, repellendus aspernatur? Facilis voluptas est repellat. Molestias, vel quidem magni mollitia quod iusto
+    perferendis omnis.</p><br>
+  <p>Non Veg</p>
+  <p style="color: red;">&#8377; 199</p>
+  <div class="quantity-control">
+    <button (click)="decrementQuantity()">-</button>
+    <input type="number" [(ngModel)]="quantity" min="1" />
+    <button (click)="incrementQuantity()">+</button>
+    <button (click)="addToCart()">Add to Cart</button>
+
+  </div>
+ 
+</div>

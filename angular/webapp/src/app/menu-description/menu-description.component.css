@@ -1,0 +1,51 @@
+/* Add this CSS in your component's CSS file or styles.css */
+
+.small-card {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    float: left; /* Float the card to the left side of the page */
+    margin-right: 20px; /* Add some spacing to the right (adjust as needed) */
+    background-color: #f0f0f0; /* Background color of the card */
+    border: 1px solid #ddd; /* Border for the card */
+    border-radius: 5px; /* Rounded corners for the card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+  }
+  
+  .small-card mat-card {
+    margin: 10px; /* Add some spacing inside the card (adjust as needed) */
+  }
+  
+  .small-card img {
+    width: 100%; /* Make the image inside the card take up the full width */
+    height: auto; /* Maintain the image's aspect ratio */
+    border-top-left-radius: 5px; /* Rounded corners for the top-left of the image */
+    border-top-right-radius: 5px; /* Rounded corners for the top-right of the image */
+  }
+  
+
+  /* Add this CSS in your component's CSS file or styles.css */
+
+.ratings-container {
+    display: flex;
+    align-items: center; /* Vertically align items */
+  }
+  
+  .ratings-label {
+    margin-right: 10px; /* Add some spacing between the label and the rating box */
+  }
+  
+  .rating-box {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .rating-number {
+    font-weight: bold;
+  }
+.content{
+    position: relative;
+    left: 150px;
+    margin-right: 230px;
+}  
