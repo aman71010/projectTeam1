@@ -1,37 +1,35 @@
-/* Add this CSS in your component's CSS file or styles.css */
+
 
 .small-card {
-    width: 200px; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
-    float: left; /* Float the card to the left side of the page */
-    margin-right: 20px; /* Add some spacing to the right (adjust as needed) */
-    background-color: #f0f0f0; /* Background color of the card */
-    border: 1px solid #ddd; /* Border for the card */
-    border-radius: 5px; /* Rounded corners for the card */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+    width: 200px; 
+    height: 200px; 
+    float: left; 
+    margin-right: 20px;
+    background-color: #f0f0f0; 
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   }
   
   .small-card mat-card {
-    margin: 10px; /* Add some spacing inside the card (adjust as needed) */
+    margin: 10px; 
   }
   
   .small-card img {
-    width: 100%; /* Make the image inside the card take up the full width */
-    height: auto; /* Maintain the image's aspect ratio */
-    border-top-left-radius: 5px; /* Rounded corners for the top-left of the image */
-    border-top-right-radius: 5px; /* Rounded corners for the top-right of the image */
+    width: 100%; 
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
   }
   
-
-  /* Add this CSS in your component's CSS file or styles.css */
 
 .ratings-container {
     display: flex;
-    align-items: center; /* Vertically align items */
+    align-items: center; 
   }
   
   .ratings-label {
-    margin-right: 10px; /* Add some spacing between the label and the rating box */
+    margin-right: 10px; 
   }
   
   .rating-box {
@@ -50,7 +48,7 @@
     margin-right: 230px;
 }  
 
-/* product.component.css */
+
 
 .add-to-cart-button {
   margin-left: 5px;
@@ -63,5 +61,5 @@
 }
 
 .add-to-cart-button:hover {
-  background-color: darkred; /* Change the color when hovered */
+  background-color: darkred; 
 }
