@@ -10,17 +10,40 @@ import { MatDividerModule } from '@angular/material/divider'; // Import MatDivid
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { CommonModule } from '@angular/common';
 
+import { CheckoutComponent } from './checkout/checkout.component';
+
+import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OrderComponent } from './order/order.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import{HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    MenuDescriptionComponent
+    MenuDescriptionComponent,
+    CheckoutComponent,
+    MenuComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    OrderComponent,
+    SubscriptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,MatCardModule,MatDividerModule, // Add MatDividerModule to your imports
     MatIconModule,CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
