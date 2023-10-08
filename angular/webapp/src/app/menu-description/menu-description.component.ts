@@ -23,7 +23,6 @@ export class MenuDescriptionComponent {
     // Add the product to the cart
     this.cartItems += this.quantity;
     alert(`Added ${this.quantity} item(s) to the cart.`);
-    // You can implement more cart functionality here.
   }
 
 }
