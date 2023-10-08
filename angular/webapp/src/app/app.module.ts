@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,9 +13,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 
+import{HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
+    CheckoutComponent,
     MenuComponent,
     LoginComponent,
     RegisterComponent,
@@ -24,7 +29,12 @@ import { SubscriptionComponent } from './subscription/subscription.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
