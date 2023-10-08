@@ -43,7 +43,7 @@ namespace MenuService.Services
             return repo.GetAllMenuItem();
         }
 
-        public MenuItem GetMenuByCategory(string category)
+        public List<MenuItem> GetMenuByCategory(string category)
         {
             var res = repo.GetMenuByCategory(category);
             if (res != null)
