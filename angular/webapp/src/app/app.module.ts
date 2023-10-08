@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OrderComponent } from './order/order.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    OrderComponent
+    OrderComponent,
+    SubscriptionComponent
   ],
   imports: [
     BrowserModule,
