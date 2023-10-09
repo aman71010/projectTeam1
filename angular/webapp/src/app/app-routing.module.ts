@@ -19,7 +19,7 @@ const routes: Routes = [
   {path :'menu-item-details/:id',component: MenuItemDetailsComponent},
   {path :'order',component:OrderComponent},
   {path:'subscribe',component:SubscriptionComponent},
-  {path: 'menudiscriprion',component:MenuDescriptionComponent},
+  {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout',component: CheckoutComponent},
 ];
 

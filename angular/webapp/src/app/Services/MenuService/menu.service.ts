@@ -15,4 +15,8 @@ export class MenuService {
   getMenuItemsByCategory(category: string){
     return this.httpClient.get(`https://localhost:7107/api/Menu/get/MenuByCate/${category}`);
   }
+
+  getMenuItemById(id: string){
+    return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`);
+  }
 }

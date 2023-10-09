@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit {
   }
 
   onViewMenuDetails(id: any){
-    this.router.navigate([`/menu-item-details/${id}`]);
+    this.router.navigate([`/menudiscription/${id}`]);
   }
 
   onAdd(){
