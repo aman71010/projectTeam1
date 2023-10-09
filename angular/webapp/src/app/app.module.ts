@@ -12,7 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import{HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    OrderComponent
+    OrderComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

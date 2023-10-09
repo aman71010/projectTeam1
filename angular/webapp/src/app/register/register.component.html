@@ -1,1 +1,57 @@
-<p>register works!</p>
+
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                 <div class="panel border ">
+                  <div class="panel-heading ">
+                    <h3 class="text-center font-weight-bold ">Register User</h3>
+                  </div>
+                  <div class="panel-body p-3">
+                    <form [formGroup]="registerForm">
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <span class="fa fa-user p-2"> </span>
+                                <input  id="name" name="name" matInput placeholder="Enter Name" formControlName="name" >
+                            </div>
+                        </div>
+                        <p class="text-danger" *ngIf="name?.dirty && name?.invalid"> Name is required</p>
+                        <div class="form-group pt-3">                            
+                            <div class="input-field">                               
+                                <span class="fa fa-solid fa-envelope p-2"></span>
+                                <input id="email" name="email" matInput placeholder="Enter Email" formControlName="email" >
+                                
+                            </div>
+                        </div>
+                        <p class="text-danger" *ngIf="email?.dirty && email?.invalid">Email is required</p>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <span class="fa fa-solid fa-mobile p-2"> </span>
+                                <input  id="mob" name="mob" matInput placeholder="Enter mobile no" formControlName="mobileNo" >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <span class="fa fa-lock p-2"> </span>
+                                <input  id="password" name="password" matInput placeholder="Enter password" formControlName="password" >
+                            </div>
+                        </div>
+                       
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <span class="fa fa-lock p-2"> </span>
+                                <input  id="cpass" name="cpass" matInput placeholder="confirm you password" formControlName="confirmpassword" >
+                            </div>
+                        </div>
+                       
+                        <button (click)="onRegister()" type="submit" class="btn-btn-primary mt-4 w-100" >register</button>
+                        <div class="text-center pt-4">Already have account? <a id="" routerLink="/login">login</a></div>
+
+                    </form>
+                  </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

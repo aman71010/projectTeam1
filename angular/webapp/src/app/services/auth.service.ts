@@ -12,7 +12,7 @@ export class AuthService {
   Register(userObj:any){
     return this.http.post(this.RegisterURL,userObj)
   }
-  Login(logiObj:any){
-    return this.http.post(this.LoginURL,logiObj)
+  Login(loginObj:any){
+    return this.http.post(this.LoginURL,loginObj)
   }
 }
