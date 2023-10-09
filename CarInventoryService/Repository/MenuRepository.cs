@@ -30,32 +30,32 @@ namespace MenuService.Repository
            
         }
 
-        public MenuItem GetMenuByCategory(string category)
+        public List<MenuItem> GetMenuByCategory(string category)
         {
-            return context.menuItems.Find(m => m.Category == category).FirstOrDefault();
+            return context.menuItems.Find(m => m.Category.Equals(category)).ToList();
         }
 
         public MenuItem GetMenuByMenuItemId(string id)
         {
-            return context.menuItems.Find(m=>m.MenuItemId== id).FirstOrDefault();
+            return context.menuItems.Find(m => m.MenuItemId.Equals(id)).FirstOrDefault();
         }
 
         public void UpdateMenuById(string id, MenuItem menu)
         {
-            var filter = Builders<MenuItem>.Filter.Where(m=>m.MenuItemId==id);
-            var update = Builders<MenuItem>.Update.Set(m => m.Name, menu.Name)
-                .Set(m=>m.Price,menu.Price)
+            var filter = Builders<MenuItem>.Filter.Where(m=>m.MenuItemId.Equals(id));
+            var update = Builders<MenuItem>.Update
+                .Set(m => m.Name, menu.Name)
+                .Set(m => m.Price, menu.Price)
                 .Set(m => m.Description, menu.Description)
-                .Set(m => m.Category, menu.Category)
-                .Set(m => m.Image, menu.Image);
+                .Set(m => m.Category, menu.Category);
             context.menuItems.UpdateOne(filter, update);
         }
 
         public void UpdateMenuImage(string menuItemId, byte[] menuImage)
         {
-            MenuItem menu = GetMenuByMenuItemId(menuItemId);
-            menu.Image = menuImage;
-
+            var filter = Builders<MenuItem>.Filter.Where(m => m.MenuItemId.Equals(menuItemId));
+            var update = Builders<MenuItem>.Update.Set(m => m.Image, menuImage);
+            context.menuItems.UpdateOne(filter, update);
         }
     }
 }
