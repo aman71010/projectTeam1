@@ -1,0 +1,35 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                 <div class="panel border ">
+                  <div class="panel-heading ">
+                    <h3 class="text-center font-weight-bold ">Login</h3>
+                  </div>
+                  <div class="panel-body p-3">
+                    <form >
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <span class="fa fa-user p-2"> </span>
+                                <input [formControl]="EmailId" type="text" placeholder="Enter your EmailId">
+                            </div>
+                        </div>
+                        <small *ngIf="EmailId.dirty && EmailId.invalid" class="text-danger">*EmailId is required</small>
+                        <div class="form-group pt-3">                            
+                            <div class="input-field">                               
+                                <span class="fa fa-lock p-2"></span>
+                                <input [formControl]="Password" type="password" placeholder="Enter your Password">
+                                
+                            </div>
+                        </div>
+                        <small *ngIf="Password.dirty && Password.invalid" class="text-danger">*Password is required</small>
+                        <button (click)="onLogin()" type="submit" class="btn-btn-primary mt-4 w-100" >Login</button>
+                        <div class="text-center pt-4">Don't have account? <a id="" routerLink="/register">Register</a></div>
+                        <div class="text-center pt-4">Forgot password ?<a id="" routerLink="/forgotPassword">Reset password</a></div>
+                    </form>
+                  </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

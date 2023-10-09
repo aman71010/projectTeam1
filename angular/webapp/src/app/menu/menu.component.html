@@ -1,0 +1,50 @@
+<div class="container">
+  <div id="banner" class="my d-flex">
+    
+  </div>
+  <div id="category" class="row my">
+    <div class="col">
+      <h1 class="cat">Categories</h1>
+    </div>
+    <div class="row my">
+      <div class="col">
+        <mat-chip-listbox>
+          <mat-chip 
+            *ngFor="let cat of categories"
+            [ngClass]="{'mat-chip-active': cat.id === activeCategory}"
+            (click)="getMenuItemsByCategory(cat.id, cat.name)">
+            {{ cat.name }}
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </div>
+    <div id="menu-item-list" class="row my">
+      <div class="col" *ngFor="let item of menuList">
+        <mat-card class="example-card">
+          <img mat-card-image src="https://i.ibb.co/Rv91df4/chana-kulcha-625x350-41429707001.webp" [alt]="item.name">
+          <mat-card-header>
+            <p class="title">{{item.name}}</p>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{truncateDescription(item.description)}}</p>
+            <p class="price">Rs. {{item.price}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button style="background-color: #e63946; color: white; margin-right: 15px;" (click)="onViewMenuDetails(item.menuItemId)">View Details</button>
+            <button mat-raised-button style="background-color: #e63946; color: white" (click)="onAdd()">Add</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <div id="page-nav" class="row my">
+      <div class="col d-flex justify-content-center">
+          <div>
+            <button class="btn btn-primary button-style">prev</button>
+            <button class="btn btn-primary button-style">1</button>
+            <button class="btn btn-primary button-style">2</button>
+            <button class="btn btn-primary button-style">next</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
