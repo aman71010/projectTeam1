@@ -49,7 +49,7 @@ namespace MenuService.Controllers
             }
         }
         [HttpGet]
-        [Route("get/images")]
+        [Route("get/image/{menuitemid}")]
 
         public IActionResult GetMenuImage(string menuitemid)
         {
