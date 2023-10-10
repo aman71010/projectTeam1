@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { MenuItem } from '../Models/MenuItem';
 import { MenuService } from '../services/MenuService/menu.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -26,7 +27,16 @@ export class MenuComponent implements OnInit {
   menuItem: MenuItem = new MenuItem();
   menuList?: MenuItem[];
 
-  constructor(private menuService: MenuService, private router: Router) { }
+  constructor(
+    private menuService: MenuService, 
+    private router: Router, 
+    private sanitizer: DomSanitizer
+  ) { }
+
+  getImage(imageData: any){
+    const imageUrl = 'data:image/jpeg;base64,' + imageData;
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
 
   ngOnInit(): void {
     this.getAllMenuItems();
@@ -53,10 +63,6 @@ export class MenuComponent implements OnInit {
 
   onViewMenuDetails(id: any){
     this.router.navigate([`/menudiscription/${id}`]);
-  }
-
-  onAdd(){
-
   }
 
   truncateDescription(desc: any){

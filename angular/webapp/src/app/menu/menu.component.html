@@ -21,7 +21,7 @@
     <div id="menu-item-list" class="row my">
       <div class="col" *ngFor="let item of menuList">
         <mat-card class="example-card">
-          <img mat-card-image src="https://i.ibb.co/Rv91df4/chana-kulcha-625x350-41429707001.webp" [alt]="item.name">
+          <img class="menuImg" mat-card-image [src]="getImage(item.image)" [alt]="item.name">
           <mat-card-header>
             <p class="title">{{item.name}}</p>
           </mat-card-header>
@@ -31,7 +31,6 @@
           </mat-card-content>
           <mat-card-actions>
             <button mat-raised-button style="background-color: #e63946; color: white; margin-right: 15px;" (click)="onViewMenuDetails(item.menuItemId)">View Details</button>
-            <button mat-raised-button style="background-color: #e63946; color: white" (click)="onAdd()">Add</button>
           </mat-card-actions>
         </mat-card>
       </div>

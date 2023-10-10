@@ -69,3 +69,56 @@
 .add-to-cart-button:hover {
   background-color: darkred; 
 }
+
+/* Add this CSS in your component's CSS file or styles.css */
+
+.reviews {
+  margin-top: 20px;
+  background-color: rgb(167, 161, 154);
+}
+
+.reviews-content {
+  background-color: #ddd;
+  max-height: 100px; 
+  width: 500px;
+  overflow-y: auto; 
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.custom-font {
+  font-family: 'Times New Roman', serif;
+}
+
+.bg {
+  background-color: rgb(207, 198, 187);
+}
+
+
+/* Add this CSS in your component's CSS file or styles.css */
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+}
+
+.checkout-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #f30e0e; 
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #e93a51; 
+  transform: scale(1.05); 
+}

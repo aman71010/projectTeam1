@@ -14,25 +14,26 @@ export class MenuDescriptionComponent implements OnInit {
   quantity: number = 1; // Initial quantity
   cartItems: number = 0; // Initialize cart items count
 
-  menuItem: MenuItem = new MenuItem();
+  // menuItem: MenuItem = new MenuItem();
 
+  // constructor(private menuService: MenuService, private route: ActivatedRoute) {}
   constructor(private menuService: MenuService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-      this.getIdFromUrl();
+      // this.getIdFromUrl();
   }
 
-  getIdFromUrl(){
-    this.route.params.subscribe((params: Params) => {
-      this.getMenuItemById(params['id']);
-    })
-  }
+  // getIdFromUrl(){
+  //   this.route.params.subscribe((params: Params) => {
+  //     this.getMenuItemById(params['id']);
+  //   })
+  // }
 
-  getMenuItemById(id: string){
-    this.menuService.getMenuItemById(id).subscribe((data: any) => {
-      this.menuItem = data;
-    });
-  }
+  // getMenuItemById(id: string){
+  //   this.menuService.getMenuItemById(id).subscribe((data: any) => {
+  //     this.menuItem = data;
+  //   });
+  // }
 
   incrementQuantity() {
     this.quantity++;
