@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { MenuService } from '../Services/MenuService/menu.service';
+import { MenuService } from '../services/MenuService/menu.service';
 import { MenuItem } from '../Models/MenuItem';
 
 
@@ -14,25 +14,25 @@ export class MenuDescriptionComponent implements OnInit {
   quantity: number = 1; // Initial quantity
   cartItems: number = 0; // Initialize cart items count
 
-  menuItem: MenuItem = new MenuItem();
+  // menuItem: MenuItem = new MenuItem();
 
-  constructor(private menuService: MenuService, private route: ActivatedRoute) {}
+  // constructor(private menuService: MenuService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-      this.getIdFromUrl();
+      // this.getIdFromUrl();
   }
 
-  getIdFromUrl(){
-    this.route.params.subscribe((params: Params) => {
-      this.getMenuItemById(params['id']);
-    })
-  }
+  // getIdFromUrl(){
+  //   this.route.params.subscribe((params: Params) => {
+  //     this.getMenuItemById(params['id']);
+  //   })
+  // }
 
-  getMenuItemById(id: string){
-    this.menuService.getMenuItemById(id).subscribe((data: any) => {
-      this.menuItem = data;
-    });
-  }
+  // getMenuItemById(id: string){
+  //   this.menuService.getMenuItemById(id).subscribe((data: any) => {
+  //     this.menuItem = data;
+  //   });
+  // }
 
   incrementQuantity() {
     this.quantity++;
