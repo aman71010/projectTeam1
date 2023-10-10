@@ -26,7 +26,8 @@
       <button (click)="decrementQuantity()">-</button>
       <input type="number" [(ngModel)]="quantity" min="1" />
       <button (click)="incrementQuantity()">+</button>
-      <button (click)="addToCart()" class="add-to-cart-button">Add to Cart</button>
+      <button (click)="addToCart(); onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
+      
   
     </div>
    

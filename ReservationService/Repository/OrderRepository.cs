@@ -27,12 +27,13 @@ namespace OrderService.Repository
             return context.orders.Find(t => t.Order_Id == id).FirstOrDefault();
         }
 
-        
 
-        public Order GetOrderByEmail(string email)
+
+        public List<Order> GetOrdersByEmail(string email)
         {
-            return context.orders.Find(t => t.UserEmailId == email).FirstOrDefault();
+            return context.orders.Find(t => t.UserEmailId == email).ToList();
         }
+
 
         public void PlaceOrder(Order order)
         {

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MenuItem } from '../Models/MenuItem';
-import { MenuService } from '../Services/MenuService/menu.service';
+import { MenuService } from '../services/MenuService/menu.service';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-menu',
