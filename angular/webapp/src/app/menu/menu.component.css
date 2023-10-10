@@ -1,5 +1,5 @@
 .example-card {
-  max-width: 250px;
+  width: 250px;
   margin: 15px 0;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 }
@@ -28,6 +28,11 @@
 .mat-chip-active {
   background-color: #e63946 !important;
   color: #fff !important;
+}
+
+.menuImg{
+  width: 250px;
+  height: 150px;
 }
 
 .title{

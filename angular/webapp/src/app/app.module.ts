@@ -12,6 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { AppComponent } from './app.component';
 import { MenuDescriptionComponent } from './menu-description/menu-description.component';
@@ -23,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     ProfileComponent,
     OrderComponent,
     MenuItemDetailsComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    AddMenuItemComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,10 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
