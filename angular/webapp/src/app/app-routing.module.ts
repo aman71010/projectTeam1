@@ -20,7 +20,7 @@ const routes: Routes = [
   {path :'order',component:OrderComponent},
   {path:'subscribe',component:SubscriptionComponent},
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
-  {path: 'checkout',component: CheckoutComponent},
+  {path: 'checkout/:id',component: CheckoutComponent},
 ];
 
 @NgModule({
