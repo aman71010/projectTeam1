@@ -13,6 +13,7 @@ import { OrderComponent } from './order/order.component';
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './menu/menu.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path:"register",component:RegisterComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'subscribe',component:SubscriptionComponent},
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout',component: CheckoutComponent},
+  {path:'forgotpassword',component:ForgotPasswordComponent}
 ];
 
 @NgModule({
