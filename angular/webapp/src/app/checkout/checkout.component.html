@@ -1,17 +1,8 @@
 <h1 style="margin-left: 60px;">Order Information</h1>
 <div class="container">
-  <!-- 
-
-onViewMenuDetails(id: any){
-  this.router.navigate([`/menudiscription/${id}`]);
-  this.router.navigate([`/checkout/${id}`]);
-}
-
-  -->
-
   <div class="card mb-3">
     <div class="row g-0">
-      <div class="col-md-1">
+      <div class="col-md-3">
         <img [src]= " getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
       </div>
       <div class="col-md-4">
@@ -29,13 +20,13 @@ onViewMenuDetails(id: any){
     </div>
   </div>
    
-    
-    
-
-
-
-
-
+  
+    <div class="totals">
+       {{getTotal(menuItem.price)}}
+      <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
+      <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
+      <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
+    </div>
  
 
   <div class="payment-button text-center">
