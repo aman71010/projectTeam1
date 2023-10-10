@@ -6,7 +6,7 @@ namespace OrderService.Services
     {
         Order GetOrder(string id);
 
-        Order GetOrderByEmail(string email);
+        public List<Order> GetOrdersByEmail(string email);
         List<Order> GetAllOrders();
         void PlaceOrder(Order order);
         void CancelOrder(string id);

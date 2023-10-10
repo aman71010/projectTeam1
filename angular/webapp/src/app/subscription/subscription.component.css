@@ -27,18 +27,17 @@
     margin:auto;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    grid-gap: 75px;
+    grid-gap: 37px;
 }
 
 .subscribe-col {
     background-color: white;
-    padding: 15% 3%;
     border-radius: 0px;
     color: black;
     text-align: center;
     border: 2px solid #000;
     position: relative;
-    padding-bottom: 50%;
+    padding-bottom: 10%;
     width: 100%;
 }
 

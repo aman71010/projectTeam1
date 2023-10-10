@@ -5,8 +5,11 @@ import { MenuDescriptionComponent } from './menu-description/menu-description.co
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { OrderComponent } from './order/order.component'; 
+import { ProfileComponent } from './profile/profile.component'; 
+
+
+import { OrderComponent } from './order/order.component';
+
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './menu/menu.component';
