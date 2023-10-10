@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component'; 
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './menu/menu.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 import payments from 'razorpay/dist/types/payments';
 import { PaymentsComponent } from './payments/payments.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'subscribe',component:SubscriptionComponent},
   {path: 'menudiscription',component:MenuDescriptionComponent},
   {path: 'checkout',component: CheckoutComponent},
+  {path:'forgotpassword',component:ForgotPasswordComponent},
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout/:id',component: CheckoutComponent},
   {path: 'payment',component:PaymentsComponent}

@@ -14,7 +14,7 @@ export class LoginComponent {
  *
  */
   
-constructor(private auth:AuthService,private fb:FormBuilder,private router:Router) {}
+constructor(private auth:AuthService,private router:Router) {}
 EmailId= new FormControl("",Validators.required);
 Password = new FormControl("", Validators.required)
 
@@ -25,7 +25,7 @@ onLogin(){
     this.auth.Login({email:this.EmailId.value,password:this.Password.value}).subscribe((data:any)=>
     {
       
-      console.log(data);
+    this.router.navigate(['/menu'])
     }
 
     );

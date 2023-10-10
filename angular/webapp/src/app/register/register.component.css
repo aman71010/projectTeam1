@@ -6,39 +6,65 @@
     color: white;
     margin-bottom: 10px;
     border-color: black;
+    }
+    .panel{
+        margin-top:40px ;
+        border-radius: 12px;
     
-
-}
-.panel{
-    margin-top:50px ;
-    border-radius: 12px;
-
-}
-.panel-body{
-    background-color: white;
-}
-
-a{
-    color:#e63946;
-   text-decoration: none;
-  }
-button{
-margin-top: 15px; 
-border-radius: 15px;   
-background-color: #e63946;
-color: white;
-}  
-.input-field{
-    border-radius: 5px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid #ddd;
-}
-input[type='text'],
-input[type='password']{
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
+    }
+    .panel-body{
+        background-color: white;
+    }
+    a{
+        color:#e63946;
+       text-decoration: none;
+      }
+      button{
+    
+        top:50%;
+        background-color:#e63946;
+        color: #fff;
+        border:none; 
+        border-radius:10px; 
+        padding:15px;
+        margin: 3px;
+        min-height:30px; 
+        min-width: 120px;
+    } 
+    button:hover {
+        opacity: 0.8;
+      }
+      .input-field{
+        margin: 3px;
+        border-radius: 5px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid #ddd;
+    }
+    input[type=text], input[type=password] ,input[type=email]{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      form {
+        border: 3px solid #e63946;
+      }
+      img.avatar {
+        width: 40%;
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+       
+      }
+     .outer{
+        background-color: rgb(218 218 218);
+     }
+     label{
+        margin: 3px;
+     }

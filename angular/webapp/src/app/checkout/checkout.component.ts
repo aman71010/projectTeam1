@@ -14,33 +14,50 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
-  constructor(private menuService: MenuService, private route: ActivatedRoute,
-              private router: Router,private sanitizer: DomSanitizer) {}
+  
+  constructor(private menuService: MenuService,
+   private route: ActivatedRoute,
+   private router: Router,
+   private sanitizer: DomSanitizer) {}
 
 
-     getImage(imageData: any){                                           // imageData --> byte[]
-      const imageUrl = 'data:image/jpeg;base64,' + imageData;
-      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-   }
+
+getImage(imageData: any)
+{                                           
+  const imageUrl = 'data:image/jpeg;base64,' + imageData;
+  return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+}
    
-  ngOnInit(): void {
-    this.getIdFromUrl();
+  ngOnInit(): void
+{
+  this.getIdFromUrl();
 }
 
-
-getIdFromUrl(){
+getIdFromUrl()
+{
   this.route.params.subscribe((params: Params) => {
     this.getMenuItemById(params['id']);
   })
 }
 
-getMenuItemById(id: string){
+getMenuItemById(id: string)
+{
   this.menuService.getMenuItemById(id).subscribe((data: any) => {
     this.menuItem = data;
   });
 }
 
-taxRate: number = 0.10;
+taxRate: number = 0.18;
+taxAmount?:number;
+subtotal?:number;
+
+
+getTotal(price:any){
+
+  this.taxAmount=this.taxRate*price;
+  this.subtotal=price+this.taxAmount;
+
+}
 
 proceedTopay()
   {
@@ -77,6 +94,7 @@ proceedTopay()
     rzp.on('payment.success', successCallback); // Set the success callback
     rzp.on('payment.failed', failureCallback); // Set the failure callback
     rzp.open();
+
   }
 }
 

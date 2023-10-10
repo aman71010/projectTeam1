@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {MatToolbarModule} from '@angular/material/toolbar'
-import{MatListModule} from '@angular/material/list'
+
+
+
+import {HttpClientModule} from'@angular/common/http';
+
+import {MatToolbarModule} from '@angular/material/toolbar';
+import{MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatCardModule} from'@angular/material/card';
+
+
+
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatCardModule } from '@angular/material/card';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
+
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,6 +36,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
+
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
@@ -53,28 +63,19 @@ import { PaymentsComponent } from './payments/payments.component';
   imports: [
     BrowserModule,HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatListModule,
-    MatChipsModule,
-    MatCardModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatChipsModule,
-    MatCardModule,
+    BrowserAnimationsModule,MatToolbarModule,
+     MatListModule,
+     MatChipsModule, MatCardModule,
+     ReactiveFormsModule,FormsModule,
+  
     MatButtonModule,
-    HttpClientModule,
     MatDividerModule,
-    MatIconModule,CommonModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+    MatInputModule,
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
