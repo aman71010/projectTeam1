@@ -14,6 +14,7 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
 import payments from 'razorpay/dist/types/payments';
 import { PaymentsComponent } from './payments/payments.component';
 
+
 const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"login",component:LoginComponent},
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotPasswordComponent},
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout/:id',component: CheckoutComponent},
-  {path: 'payment',component:PaymentsComponent}
+  {path: 'payment',component:PaymentsComponent},
 ];
 
 @NgModule({

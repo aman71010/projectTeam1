@@ -69,9 +69,9 @@ proceedTopay()
       key:'rzp_test_pmZ9sPkab2DGdZ',
       image:'https://th.bing.com/th?id=OIP.t6kmiUn7cQ4NJGjHEPAOXwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2',
       prefill:{
-        name:'Allen Martin',
-        email:'Allen@gmail.com',
-        phone: '99795679456'
+        name:'bilwaraj',
+        email:'bilwa@gmail.com',
+        phone: '11234567809'
       },
       theme: {
         color :'#f37254'
