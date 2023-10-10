@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
 import {HttpClientModule} from'@angular/common/http';
+=======
+>>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 
 import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatIconModule} from '@angular/material/icon'
 import{MatListModule} from '@angular/material/list'
+<<<<<<< HEAD
 import {MatChipsModule} from '@angular/material/chips'
 import {MatCardModule} from'@angular/material/card'
 
 
+=======
+>>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +24,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+import { MatFormFieldModule } from "@angular/material/form-field";
+
 import { AppComponent } from './app.component';
 import { MenuDescriptionComponent } from './menu-description/menu-description.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -27,11 +37,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -45,11 +59,13 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     OrderComponent,
     ForgotPasswordComponent,
     MenuItemDetailsComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    AddMenuItemComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,
     AppRoutingModule,
+<<<<<<< HEAD
     BrowserAnimationsModule,
     MatToolbarModule, 
     MatIconModule, MatListModule,
@@ -60,6 +76,30 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     
    
    
+=======
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatChipsModule,
+    MatCardModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
+    MatCardModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatDividerModule,
+    MatIconModule,CommonModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule
+>>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
   ],
   providers: [],
   bootstrap: [AppComponent]

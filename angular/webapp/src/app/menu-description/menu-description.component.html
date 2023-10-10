@@ -1,18 +1,20 @@
 <div class="container">
-  <div id="banner" class="my d-flex">
-    
-  </div>
-  <h2>Menu Item Details</h2>
-  <div class="small-card">
-    <mat-card>
-      <img mat-card-image src="./assets/pexels-spencer-davis-4393021.jpg" alt="Image Alt Text">
-      <mat-card-content>
-        <mat-divider></mat-divider>
-        <div class="ratings-container">
-          <p class="ratings-label">Ratings: </p>
-          <div class="rating-box">
-            <span class="rating-number">4.5</span>
+  <div id="banner" class="my d-flex"> </div><br>
+  <div class="bg">
+    <h2>Menu Item Details</h2>
+    <div class="small-card">
+      <mat-card>
+        <img mat-card-image src="./assets/pexels-spencer-davis-4393021.jpg" alt="Image Alt Text">
+        <mat-card-content>
+          <mat-divider></mat-divider>
+          <div class="ratings-container">
+            <p class="ratings-label">Ratings: </p>
+            <div class="rating-box">
+              <span class="rating-number">4.5</span>
+            </div>
           </div>
+        </mat-card-content>
+      </mat-card>
         </div>
       </mat-card-content>
     </mat-card>
@@ -26,9 +28,48 @@
       <button (click)="decrementQuantity()">-</button>
       <input type="number" [(ngModel)]="quantity" min="1" />
       <button (click)="incrementQuantity()">+</button>
-      <button (click)="addToCart()" class="add-to-cart-button">Add to Cart</button>
+      <button (click)="addToCart(); onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
+      
   
     </div>
+    <div class="content">
+      <!-- <h3>{{menuItem.name}}</h3>
+      <p>{{menuItem.description}}</p><br>
+      <p>{{menuItem.category}}</p> -->
+      <h4><strong>xyz</strong></h4>
+      <p>sertghgfdsaqwert</p><br>
+      <p class="custom-font">sdrfghjbvc</p>
+      <p style="color: red;">&#8377; 69</p>
+      <div class="quantity-control">
+        <button (click)="decrementQuantity()">-</button>
+        <input type="number" [(ngModel)]="quantity" min="1" />
+        <button (click)="incrementQuantity()">+</button>
+        <button (click)="addToCart()" class="add-to-cart-button">Add to Cart</button>
+      </div>
    
+    </div>
+    <div class="reviews">
+      <h3 style="color: red;">Reviews:</h3>
+      <div class="reviews-content">
+        
+        <p>The curtains had stains on them but were beautiful. 
+          If you are looking for any light blocking ability though, you will be disappointed. 
+          The silver and golden thread take the light from outside and shine inside your room. 
+          This looks beautiful but your room will be very bright.</p>
+        <p>Quality gand looks are good.
+          Last week price was 999 and today it's 1228 rs.
+          MRp is way high and then showing discount.
+        </p>
+        
+      </div>
+    </div>
+
   </div>
+
+  <div class="center-button">
+    <button class="checkout-button">Checkout</button>
+  </div>
+
+
 </div>
+

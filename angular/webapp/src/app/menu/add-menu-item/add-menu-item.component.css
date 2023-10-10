@@ -1,0 +1,26 @@
+.heading{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.form-group-style {
+  min-width: 150px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.form-field-style {
+  width: 100%;
+}
+
+.mat-button-style{
+  width: 50%;
+}
+
+.select-field, .amount-field {
+  width: 40%;
+}
+
+.file{
+  margin-bottom: 20px;
+}

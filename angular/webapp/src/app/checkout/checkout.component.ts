@@ -1,40 +1,64 @@
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
+import { MenuItem } from '../Models/MenuItem';
+import { CheckoutService } from '../services/checkoutService/checkout.service';
+import { MenuService } from '../services/MenuService/menu.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit{
 
-  items = [
-   {
-    imageUrl: 'https://www.cookwithnabeela.com/wp-content/uploads/2023/03/MuttonBiryani.webp',
-    name:'Hyderabadi Chicken Biryani',
-    description: 'Biryani decription',
-    price: 220.00
-   },
-   {
-    imageUrl: 'https://www.thespruceeats.com/thmb/D0b9aOCHPF49I-kdbi4QzB3NnVI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/thali-5392e8c7f8a24b73a68d1cc825217e79.jpg',
-    name:'Thali',
-    description: 'Thali decription',
-    price: 320.00
+  menuItem: MenuItem = new MenuItem();
+  constructor(private menuService: MenuService, private route: ActivatedRoute,
+              private router: Router,private sanitizer: DomSanitizer) {}
+
+
+     getImage(imageData: any){                                           // imageData --> byte[]
+      const imageUrl = 'data:image/jpeg;base64,' + imageData;
+      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
    }
+   
+  ngOnInit(): void {
+    this.getIdFromUrl();
+}
+
+getIdFromUrl(){
+  this.route.params.subscribe((params: Params) => {
+    this.getMenuItemById(params['id']);
+  })
+}
+
+getMenuItemById(id: string){
+  this.menuService.getMenuItemById(id).subscribe((data: any) => {
+    this.menuItem = data;
+  });
+}
+
+taxRate: number = 0.10;
+
+proceedTopay()
+  {
+
+  }
+
+ 
   
-  ];
+  
 
-  getTotalPrice(): number {
-    return this.items.reduce((total, item) => total + item.price, 0);
-  }
+  
 
-  getTax(): number {
-    const taxRate = 0.18; 
-    return this.getTotalPrice() * taxRate;
-  }
 
-  getSubtotal(): number {
-    return this.getTotalPrice() + this.getTax();
-  }
+
+  
+
+  
+
+
   
 
 }
