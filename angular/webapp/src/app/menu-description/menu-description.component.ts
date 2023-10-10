@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { MenuService } from '../services/MenuService/menu.service';
 import { MenuItem } from '../Models/MenuItem';
@@ -17,6 +17,7 @@ export class MenuDescriptionComponent implements OnInit {
   // menuItem: MenuItem = new MenuItem();
 
   // constructor(private menuService: MenuService, private route: ActivatedRoute) {}
+  constructor(private menuService: MenuService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
       // this.getIdFromUrl();
@@ -42,6 +43,11 @@ export class MenuDescriptionComponent implements OnInit {
     if (this.quantity > 1) {
       this.quantity--;
     }
+  }
+
+  onViewMenuDetails(id: any){
+    this.router.navigate([`/checkout/${id}`]);
+
   }
 
   addToCart() {
