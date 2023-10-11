@@ -5,6 +5,8 @@ import { MenuService } from '../Services/MenuService/menu.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { OrderItem } from '../Models/OrderItem';
+import { Order } from '../Models/Order';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
@@ -14,12 +16,14 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
-  
+  orderItem: any = new OrderItem();
+  order: any = new Order();
+
   constructor(private menuService: MenuService,
    private route: ActivatedRoute,
    private router: Router,
-   private sanitizer: DomSanitizer) {}
-
+   private sanitizer: DomSanitizer,
+   private checkoutService: CheckoutService) {}
 
 
 getImage(imageData: any)
@@ -59,6 +63,23 @@ getTotal(price:any){
 
 }
 
+createOrder(){
+  this.orderItem.MenuItemId = this.menuItem.menuItemId;
+  this.orderItem.Quantity = this.checkoutService.quantity;
+  this.orderItem.Name = this.menuItem.name;
+
+  this.order.Order_Id = "";
+  this.order.UserEmailId = localStorage.getItem("userData.UserEmailId");
+  this.order.Items.push(this.orderItem);
+  this.order.price = this.subtotal;
+  this.order.Status = 0;
+  this.order.CreatedAt = new Date();
+  this.order.UpdatedAt = new Date();
+
+  // this.orderService.CreateOrder(this.order).subscribe((res) => {
+  //   console.log()
+  // })
+}
 
 
 proceedTopay()
@@ -100,4 +121,4 @@ proceedTopay()
   }
 }
 
- 
+
