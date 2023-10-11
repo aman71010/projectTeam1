@@ -47,21 +47,17 @@ namespace OrderService.Controllers
                 return NotFound(e.Message);
             }
         }
-        [HttpGet("getOrderByEmail/{email}")]
+        [HttpGet("getOrdersByEmail/{email}")]
         public IActionResult GetByEmail(string email)
         {
             try
             {
-                var order = svc.GetOrderByEmail(email);
+                var order = svc.GetOrdersByEmail(email);
 
-                if (order != null)
-                {
+               
                     return Ok(order); // Return the retrieved order
-                }
-                else
-                {
-                    return NotFound($"No order found for email: {email}");
-                }
+                
+                
             }
             catch (OrderDoesNotExistExcecption e)
             {

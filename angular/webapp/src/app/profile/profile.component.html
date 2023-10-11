@@ -8,34 +8,34 @@
                 <div id="UserImgInput">
                     <img [src]="profileImg" *ngIf="isImageSelected" alt="image">
                     <img [src]="getImage(user.userImage)" *ngIf="user.userImage && !isImageSelected">
+                    <label for="userImage" *ngIf="isImageEditVisible">
+                        <i class="bi bi-pencil-square"></i>
+                    </label>
 
-                    <input #userEmailId="ngModel" type="email" value={{user.userEmailId}} name="userEmailId" id="email"
+                    <input #userEmailId="ngModel" type="email"  name="userEmailId" id="email"
                         matInput [(ngModel)]="user.userEmailId" hidden>
-
                     <input #userImage="ngModel" type="file" name="userImage" id="userImage" 
                     [(ngModel)]="updateImageObj.userImage" [readonly]="isImageEditVisible" (change)="onFileSelected($event)">
-                    <label for="userImage" *ngIf="isImageEditVisible">Change</label>
+
                     <button *ngIf="!isImageEditVisible">Save</button>
-
-                    <!-- <div id="imageEditBtn">
-                        <input #userImage="ngModel" type="file" name="userImage" id="userImage" 
-                        [(ngModel)]="updateImageObj.userImage" [readonly]="isImageEditVisible" (change)="onFileSelected($event)">
-                        <label for="userImage" *ngIf="isImageEditVisible">Change</label>
-                        <button *ngIf="!isImageEditVisible">Save</button>
-                    </div> -->
+                    
                 </div>
-            </form>
+                </form>
+            </div>
 
+            <div id="extrainfo">
+                <h4>My Orders</h4>
+                <h4>My Subscription</h4>
+                <h4>Change Password</h4>
             </div>
         </div>
         <div id="profile-info">
             <ul>
                 <form #nameform="ngForm" id="col" (ngSubmit)="SaveName(nameform)">
                     <div id="row">
-                        <input #userEmailId="ngModel" type="email" value={{user.userEmailId}} name="userEmailId"
+                        <input #userEmailId="ngModel" type="email" name="userEmailId"
                             id="email" [(ngModel)]="user.userEmailId" hidden>
-                        <h4>Name</h4>
-                        <input #name="ngModel" type="text" value={{user.name}} name="name" id="name" matInput
+                        <input #name="ngModel" type="text" name="name" id="name" matInput
                             placeholder="Enter the name" [(ngModel)]="updateNameObj.name || user.name"
                             [readonly]="isNameEditVisible" required>
                         <i class="bi bi-pencil-square" id="EditName" *ngIf="isNameEditVisible" (click)="EditName()"></i>
@@ -49,21 +49,22 @@
 
                 <form id="col">
                     <div id="row">
-                        <h4>Email</h4>
-                        <input type="email" value={{user.userEmailId}} name="userEmailId"
+                        <i class="fa-solid fa-envelope fa-2xl" style="color: #e63946;"></i>
+                        <input type="email" name="userEmailId"
                             id="email" [(ngModel)]="user.userEmailId" [readonly]="true">
                     </div>
                 </form>
 
                 <form #MobileNoform="ngForm" id="col" (ngSubmit)="SaveMobileNo(MobileNoform)">
                     <div id="row">
-                        <input #userEmailId="ngModel" type="email" value={{user.userEmailId}} name="userEmailId"
+                        <input #userEmailId="ngModel" type="email" name="userEmailId"
                             id="email" [(ngModel)]="user.userEmailId" hidden>
-                        <h4>MobileNo</h4>
-                        <input #mobileNo="ngModel" type="number" value={{user.mobileNo}} name="mobileNo" id="MobileNo"
+                        <i class="fa-solid fa-phone fa-2xl" style="color: #e63946;"></i>
+                        <input #mobileNo="ngModel" type="number" name="mobileNo" id="mobileNo"
                             matInput placeholder="Enter the MobileNo"
                             [(ngModel)]="updateMobileNoObj.mobileNo || user.mobileNo" [readonly]="isMobileNoEditVisible"
-                            required pattern=".{10}">
+                            required>
+                            
                         <i class="bi bi-pencil-square" id="EditMobileNo" *ngIf="isMobileNoEditVisible"
                             (click)="EditMobileNo()"></i>
 
@@ -72,18 +73,20 @@
 
                     <p *ngIf="mobileNo.dirty && mobileNo.errors?.['required']" class="text-danger">MobileNo should not
                         be empty</p>
-                    <!-- <p *ngIf="mobileNo.length !=10" class="text-danger">MobileNo should be of 10 digits</p> -->
+                    <p *ngIf="mobileNo.dirty && mobileNo.value.toString() && mobileNo.value.toString().length !== 10" class="text-danger">
+                        MobileNo should be 10 digits long
+                    </p>
 
                 </form>
 
-                <form #addressform="ngForm" id="col" (ngSubmit)="SaveAddress(addressform)">
+                <form #addressform="ngForm" id="col" (ngSubmit)="SaveAddress(addressform)"  *ngIf="address.userEmailId && user.userEmailId">
                     <div id="row">
                         <div id="col">
-                            <h4>Address</h4>
+                            <h4 id="address">Address : </h4>
                             <div id="AddressForm" *ngIf="!isAddAddressVisible">
 
                                 <div id="col">
-                                    <input #userEmailId="ngModel" type="email" value={{user.userEmailId}}
+                                    <input #userEmailId="ngModel" type="email"
                                         name="userEmailId" id="email" matInput [(ngModel)]="user.userEmailId" hidden>
                                 </div>
 
@@ -160,6 +163,10 @@
                     </div>
 
                 </form>
+
+                <!-- <button id="chagePassBtn" *ngIf="user.userEmailId">My Orders</button>
+
+                <button id="chagePassBtn" *ngIf="user.userEmailId">Change Password</button> -->
             </ul>
         </div>
     </div>

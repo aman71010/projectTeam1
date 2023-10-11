@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import {NgForm} from '@angular/forms'
 import { Renderer2 } from '@angular/core';
 import { NameUpdate } from '../Models/User/NameUpdate';
@@ -16,9 +16,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  constructor(private renderer: Renderer2,private svc:UserService,private sanitizer: DomSanitizer){}
+  constructor(private el: ElementRef,private renderer: Renderer2,private svc:UserService,private sanitizer: DomSanitizer){}
 
-  setBorder='2px solid black';
   isNameEditVisible: boolean = true;
   isMobileNoEditVisible: boolean = true;
   isAddressEditVisible: boolean = true;
@@ -33,8 +32,7 @@ export class ProfileComponent {
 
   user:User=new User();
   address:Address=new Address();
-
-  // userImage: File | null = null;
+  selectedFile: any;
   profileImg: any;
 
   newAdd={
@@ -49,9 +47,7 @@ export class ProfileComponent {
   ngOnInit(){
     this.svc.FetchUser().subscribe((data:any)=> {
       console.log(data);
-      // this.getImage(data.userImage);
       this.user=data;
-      console.log(this.profileImg);
     })
     this.svc.FetchAddress().subscribe((data:any)=> {
       console.log(data);
@@ -64,18 +60,25 @@ export class ProfileComponent {
 
   EditName(){
     this.isNameEditVisible=!this.isNameEditVisible;
+
+    const element = this.el.nativeElement.querySelector('#name');
+    this.renderer.setStyle(element, 'border-bottom', '2px solid #c4adad');
   }
    SaveName(form:NgForm){
     if(form.valid)
     {
       if(!this.isNameEditVisible)this.svc.updateName(form.value).subscribe();
     }
+    const element = this.el.nativeElement.querySelector('#name');
+    this.renderer.setStyle(element, 'border-bottom', 'none');
     this.isNameEditVisible=!this.isNameEditVisible;
     console.log(form.value);
    }
 
   EditMobileNo(){
     this.isMobileNoEditVisible=!this.isMobileNoEditVisible;
+    const element = this.el.nativeElement.querySelector('#mobileNo');
+    this.renderer.setStyle(element, 'border-bottom', '2px solid #c4adad');
   }
   SaveMobileNo(form:NgForm){
     if(form.valid)
@@ -83,16 +86,26 @@ export class ProfileComponent {
       if(!this.isMobileNoEditVisible)this.svc.updateMobileNo(form.value).subscribe();
     }
     console.log(form.value);
+    const element = this.el.nativeElement.querySelector('#mobileNo');
+    this.renderer.setStyle(element, 'border-bottom', 'none');
     this.isMobileNoEditVisible=!this.isMobileNoEditVisible;
   }
 
   AddAddress(){
     console.log(this.newAdd);
     this.isAddAddressVisible=!this.isAddAddressVisible;
+    const elements = this.el.nativeElement.querySelector('#AddressForm input');
+    elements.forEach((input: { id: any; }) => {
+      const inputElement = document.querySelector(`#AddressForm #${input.id}`);
+      // console.log(inputElement.id)
+      // inputElement.style.borderBottom = '2px solid #c4adad';
+    });
   }
 
   EditAddress(){
     this.isAddressEditVisible=!this.isAddressEditVisible;
+    const element = this.el.nativeElement.querySelector('#AddressForm input');
+    this.renderer.setStyle(element, 'border-bottom', '2px solid #c4adad');
   }
 
   SaveAddress(form:NgForm){
@@ -101,6 +114,8 @@ export class ProfileComponent {
       this.isAddressEditVisible=!this.isAddressEditVisible;
       this.svc.updateAddrress(form.value).subscribe();
     }
+    const element = this.el.nativeElement.querySelector('#AddressForm input');
+    this.renderer.setStyle(element, 'border-bottom', 'none');
     console.log(form.value);
   }
 
@@ -114,44 +129,37 @@ export class ProfileComponent {
   }
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
-    console.log(this.profileImg);
-    console.log(file);
-    if (file) {
+    this.selectedFile = event.target.files[0];
+    // console.log(this.selectedFile);
+    if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.profileImg = reader.result as string;
-        console.log(this.profileImg);
       };
-      reader.readAsDataURL(file);
-      
-      console.log(this.profileImg);
-      console.log(file);
+      reader.readAsDataURL(this.selectedFile);
     }
     this.isImageSelected=!this.isImageSelected;
     this.isImageEditVisible=!this.isImageEditVisible;
   }
 
   SaveImage(form:NgForm){
-    if(form.valid)
-    {
-      this.svc.updateImage(form.value).subscribe();
-    }
-    
-    const file = form.value.userImage;
-    console.log(this.profileImg);
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        form.value.userImage = reader.result as string;
-        console.log(form.value.userImage);
-      };
-      reader.readAsDataURL(file);
-      console.log(form.value.userImage);
+    // if(form.valid)
+    // {
+    //   this.svc.updateImage(form.value).subscribe();
+    //   this.isImageSelected=!this.isImageSelected;
+    //   this.isImageEditVisible=!this.isImageEditVisible;
+    // }
 
-      this.isImageSelected=!this.isImageSelected;
-      this.isImageEditVisible=!this.isImageEditVisible;
-    }
+    form.value.userImage=this.selectedFile;
+
+    console.log(form.value);
+
+    this.svc.updateImage(form.value).subscribe();
+
+    this.isImageSelected=!this.isImageSelected;
+    this.isImageEditVisible=!this.isImageEditVisible;
+
+    
   }
 
 }

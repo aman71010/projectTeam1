@@ -6,13 +6,12 @@ namespace MenuService.Repository
     {
        
         List<MenuItem> GetAllMenuItem();
-
         void AddMenu(MenuItem menu);
         void UpdateMenuById(string id,MenuItem menu);
         void DeleteMenu(string id);
-        MenuItem GetMenuByCategory(string category);
+        List<MenuItem> GetMenuByCategory(string category);
         MenuItem GetMenuByMenuItemId(string MenuItemId );
-        void UpdateMenuImage (string menuItemId, Byte[] menuImage);
+        void UpdateMenuImage (string menuItemId, byte[] menuImage);
 
     }
 }

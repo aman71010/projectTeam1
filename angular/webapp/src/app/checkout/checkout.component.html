@@ -1,0 +1,48 @@
+<h1 style="margin-left: 60px;">Order Information</h1>
+<div class="container">
+  <!-- 
+
+onViewMenuDetails(id: any){
+  this.router.navigate([`/menudiscription/${id}`]);
+  this.router.navigate([`/checkout/${id}`]);
+}
+
+  -->
+
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-1">
+        <img [src]= " getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h5 class="card-title">{{menuItem.name}}</h5>
+          <p class="card-text">{{menuItem.category}}</p>
+         
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="card-body">
+          <h5 class="card-text">Price: ${{menuItem.price}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+    
+    
+
+
+
+
+
+ 
+
+  <div class="payment-button text-center">
+    <button (click)="proceedTopay()" class="btn btn-pink">Proceed to Pay</button>
+  </div>
+   
+</div>
+   
+   
+<button id="rzp-button1">Pay with Razorpay</button>

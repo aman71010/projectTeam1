@@ -1,0 +1,60 @@
+.example-card {
+  width: 250px;
+  margin: 15px 0;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#banner{
+  width: 100%;
+  height: 160px;
+  background-image: url(https://i.ibb.co/nw1NgmQ/image-3.png);
+  background-size: 100% 160px;
+  background-repeat: no-repeat;
+}
+
+.my{
+  margin: 20px 0;
+}
+
+.bannerimg{
+  width: 100%;
+  height: 120px;
+}
+
+.cat{
+  margin-left: 8px;
+}
+
+.mat-chip-active {
+  background-color: #e63946 !important;
+  color: #fff !important;
+}
+
+.menuImg{
+  width: 250px;
+  height: 150px;
+}
+
+.title{
+  font-size: 16px;
+  font-weight:900
+}
+
+.price{
+  color: #e63946;
+  margin-bottom: 45px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.button-style{
+  background-color: #f0ecec;
+  color: black;
+  margin: 0 10px;
+  border: none;
+}
+
+.button-style:hover, .button-style:after{
+  background-color: #e63946;
+  color: white;
+}

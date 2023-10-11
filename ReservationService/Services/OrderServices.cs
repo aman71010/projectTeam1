@@ -43,19 +43,20 @@ namespace OrderService.Services
             }
         }
 
-        public Order GetOrderByEmail(string email)
+        public List<Order> GetOrdersByEmail(string email)
         {
-            var res = Repo.GetOrderByEmail(email);
+            var res= Repo.GetOrdersByEmail(email);
             if (res != null)
             {
-                return Repo.GetOrderByEmail(email);
+                return Repo.GetOrdersByEmail(email);
             }
             else
             {
-                throw new OrderDoesNotExistExcecption($"{email} does not exists");
+                throw new OrderDoesNotExistExcecption($"order with {email} does not exists");
 
             }
         }
+
 
         public void PlaceOrder(Order order)
         {

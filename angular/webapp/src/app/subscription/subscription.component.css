@@ -1,0 +1,89 @@
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    height: 100vh; 
+  }
+
+.container h2{
+    color:#E63946;
+    font-size:40px;
+    padding:50px 0;
+    text-align: center;
+    font-weight:bold;
+}
+
+ .body {
+    text-align: center;
+    margin-bottom: 60px; 
+    font-family: Arial, sans-serif;
+    font-size: 28px; 
+  }
+
+.subscribe-row{
+    width:90%;
+    max-width: width 1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-gap: 37px;
+}
+
+.subscribe-col {
+    background-color: white;
+    border-radius: 0px;
+    color: black;
+    text-align: center;
+    border: 2px solid #000;
+    position: relative;
+    padding-bottom: 10%;
+    width: 100%;
+}
+
+.subscribe-col h3{
+    font-size: 40px;
+    margin:20px 0 40px;
+    font-weight: bold;
+}
+
+.subscribe-col p{
+    font-size: 28px;
+    color: #E63946;
+}
+
+.subscribe-col ul{
+    text-align: left;
+    margin: 35px 0;
+    color:black; 
+}
+
+.subscribe-col ul li {
+    font-size: 22px;
+    line-height: 50px; /* Adjust this value to control line spacing */
+}
+
+.subscribe-col button {
+    width: 50%;
+    padding: 14px 0;
+    background: #E63946;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border:  2px solid #000;
+    border-radius: 6px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.subscribe-col button:hover{
+    background:white;
+}

@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<DataContext>();
 builder.Services.AddScoped<IMenuRepository, MenuRepository>();
 builder.Services.AddScoped<IMenuService,MenuServices>();
+
+builder.Services.AddCors(option => option.AddPolicy("menuService", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("menuService");
 
 app.UseHttpsRedirection();
 

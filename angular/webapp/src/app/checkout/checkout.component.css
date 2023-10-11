@@ -1,0 +1,33 @@
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0; 
+  padding: 10px 20px; 
+}
+
+
+.header-text {
+  color: #000; 
+  font-weight: bold;
+  
+}
+
+
+
+
+.btn-pink {
+  background-color: #e63946;
+  border-color: #e63946; 
+  color: #FFFFFF; 
+}
+
+ 
+
+  
+  
+  
+
+
+
