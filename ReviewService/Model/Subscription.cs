@@ -1,14 +1,14 @@
 ﻿using System;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace SubscriptionService.Model
 {
     public enum SubscriptionType
     {
-        Basic,
-        Silver,
-        Gold
+        Monthly,
+        ThreeMonths
     }
 
     public enum PaymentStatus
@@ -22,20 +22,16 @@ namespace SubscriptionService.Model
     {
         [BsonId]
         public int Id { get; set; }
-
-        [Required, EmailAddress]
         public string? UserId { get; set; }
 
-        [Required(ErrorMessage = "Type is required.")]
-        [Range(0,2,ErrorMessage= "The field Type must be between 0 and 2")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public SubscriptionType Type { get; set; }
-        
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public PaymentStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
-
     }
 }
