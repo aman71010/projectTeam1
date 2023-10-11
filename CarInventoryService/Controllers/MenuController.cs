@@ -17,12 +17,23 @@ namespace MenuService.Controllers
             this.svc = svc;
         }
         [HttpPost("createMenu")]
-        public IActionResult CreateMenu(MenuItem menuobj)
+        public IActionResult CreateMenu([FromForm] MenuData menuobj)
         {
             try
             {
-                svc.AddMenu(menuobj);
-                return StatusCode(201, "Menu Added");
+                MenuItem menu = new MenuItem();
+                menu.Name = menuobj.Name;
+                menu.Description = menuobj.Description;
+                menu.Price = menuobj.Price;
+                menu.Category = menuobj.Category;
+
+                using(MemoryStream ms = new MemoryStream())
+                {
+                    menuobj.Image.CopyTo(ms);
+                    menu.Image = ms.ToArray();
+                }
+                svc.AddMenu(menu);
+                return Created("", menu);
             }
             catch (MenuAlreadyExistException e)
             {

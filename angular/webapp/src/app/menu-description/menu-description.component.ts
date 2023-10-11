@@ -52,8 +52,8 @@ export class MenuDescriptionComponent implements OnInit {
 
   addToCart() {
     // Add the product to the cart
-    this.cartItems += this.quantity;
-    alert(`Added ${this.quantity} item(s) to the cart.`);
+    // this.cartItems += this.quantity;
+    // alert(`Added ${this.quantity} item(s) to the cart.`);
   }
 
 }

@@ -6,6 +6,7 @@ import{HttpClient} from '@angular/common/http';
 })
 export class CheckoutService {
 
+  quantity: any;
   constructor(private httpClient:HttpClient){}
 
     getMenuItembyId(id:string)

@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col">
-      <p class="heading">Create menu</p>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div >
+      <p class="heading">Create menu </p>
       <form class="form-group-style" [formGroup]="menuItemForm" (ngSubmit)="MenuItemSubmit()">
         <div>
           <mat-form-field class="form-field-style" appearance="fill" hideRequiredMarker>
@@ -43,10 +39,11 @@
           </tr>
         </table>
         <div class="file">
-          <input type="file" >
+          <label for="file">Upload Image</label><br>
+          <input type="file" id="file" (change)="onFileUpload($event)">
         </div>
         <div>
-            <button mat-raised-button class="mat-button-style" style="background-color: #e63946; color: white;">Add Menu</button>
+            <button mat-raised-button class="mat-button-style" type="submit" style="background-color: #e63946; color: white;">Add Menu</button>
         </div>
       </form>
     </div>

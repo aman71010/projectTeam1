@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { AppComponent } from './app.component';
 import { MenuDescriptionComponent } from './menu-description/menu-description.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -49,7 +52,8 @@ import { PaymentsComponent } from './payments/payments.component';
     PaymentsComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -83,7 +87,9 @@ import { PaymentsComponent } from './payments/payments.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

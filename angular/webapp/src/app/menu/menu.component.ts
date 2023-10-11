@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { MenuItem } from '../Models/MenuItem';
 import { MenuService } from '../Services/MenuService/menu.service';
-import { DomSanitizer } from '@angular/platform-browser';
-
 
 @Component({
   selector: 'app-menu',
@@ -25,7 +24,8 @@ export class MenuComponent implements OnInit {
   ]
 
   menuItem: MenuItem = new MenuItem();
-  menuList?: MenuItem[];
+  menuList: MenuItem[] = [];
+  p: number = 1;
 
   constructor(
     private menuService: MenuService, 
@@ -59,6 +59,25 @@ export class MenuComponent implements OnInit {
         this.menuList = data;
       })
     }
+  }
+
+  userType: string = 'Admin';
+
+  changeUserType(){
+    this.userType = 'Customer';
+  }
+
+  onDeleteMenuItem(id: any, category: any){
+    let tempMenuList: MenuItem[] = [];
+    for(let i=0;i<this.menuList.length;i++){
+      if(this.menuList[i].menuItemId !== id){
+        tempMenuList.push(this.menuList[i]);
+      }
+    }
+    this.menuList = tempMenuList;
+    this.menuService.deleteMenuItem(id).subscribe((res) => {
+      
+    });
   }
 
   onViewMenuDetails(id: any){
