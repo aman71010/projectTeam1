@@ -144,7 +144,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 7204
+                    "Port": 7024
                 }
             ],
             "DownstreamPathTemplate": "/api/Email/SendEmail",
@@ -220,7 +220,7 @@
                     "Port": 7107
                 }
             ],
-            "DownstreamPathTemplate": "/api/Menu/get/menubyid/{MenuItemId}"
+            "DownstreamPathTemplate": "/api/Menu/get/menubyid/{id}"
         },
         {
             "UpstreamPathTemplate": "/GetMenuByCate/{Category}",
@@ -232,7 +232,7 @@
                     "Port": 7107
                 }
             ],
-            "DownstreamPathTemplate": "/api/Menu/get/MenuByCate/{Category}"
+            "DownstreamPathTemplate": "/api/Menu/get/MenuByCate/{category}"
         },
         {
             "UpstreamPathTemplate": "/UpdateMenu",
@@ -342,7 +342,7 @@
 
         {
             "UpstreamPathTemplate": "/Order",
-            "UpstreamHttpMethod": [ "Put" ],
+            "UpstreamHttpMethod": [ "Post" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -357,24 +357,8 @@
             }
         },
         {
-            "UpstreamPathTemplate": "/OrderList",
-            "UpstreamHttpMethod": [ "Put" ],
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 7264
-                }
-            ],
-            "DownstreamPathTemplate": "/api/Order/getOrderList",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "token",
-                "AllowedScopes": []
-            }
-        },
-        {
             "UpstreamPathTemplate": "/DeleteOrder/{id}",
-            "UpstreamHttpMethod": [ "Put" ],
+            "UpstreamHttpMethod": [ "Delete" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -423,7 +407,7 @@
 
         {
             "UpstreamPathTemplate": "/CreateOrder",
-            "UpstreamHttpMethod": [ "Put" ],
+            "UpstreamHttpMethod": [ "Post" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -439,7 +423,7 @@
         },
         {
             "UpstreamPathTemplate": "/Checkout",
-            "UpstreamHttpMethod": [ "Put" ],
+            "UpstreamHttpMethod": [ "Post" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -455,7 +439,7 @@
         },
         {
             "UpstreamPathTemplate": "/Payment",
-            "UpstreamHttpMethod": [ "Put" ],
+            "UpstreamHttpMethod": [ "Post" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {

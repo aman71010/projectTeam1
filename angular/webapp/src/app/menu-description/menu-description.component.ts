@@ -7,7 +7,7 @@ import { MenuItem } from '../Models/MenuItem';
 
 @Component({
   selector: 'app-menu-description',
-  templateUrl: './menu-description.component.html',
+  templateUrl:'./menu-description.component.html',
   styleUrls: ['./menu-description.component.css']
 })
 export class MenuDescriptionComponent implements OnInit {
@@ -52,8 +52,8 @@ export class MenuDescriptionComponent implements OnInit {
 
   addToCart() {
     // Add the product to the cart
-    this.cartItems += this.quantity;
-    alert(`Added ${this.quantity} item(s) to the cart.`);
+    // this.cartItems += this.quantity;
+    // alert(`Added ${this.quantity} item(s) to the cart.`);
   }
 
 }

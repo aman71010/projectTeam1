@@ -7,6 +7,7 @@ import { MenuItem } from 'src/app/Models/MenuItem';
 })
 export class CheckoutService {
 
+  quantity: any;
   constructor(private httpClient:HttpClient){}
 
     getMenuItembyId(id:string)

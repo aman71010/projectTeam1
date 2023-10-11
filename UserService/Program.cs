@@ -10,6 +10,8 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseSqlServer(bui
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService.Services.UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddCors(option => option.AddPolicy("userService", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("userService");
 
 app.UseHttpsRedirection();
 app.UseCors("mypolicy");

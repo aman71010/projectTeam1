@@ -21,6 +21,8 @@
   </div>
    
   {{getTotal(menuItem.price)}}
+
+  
     <div class="totals">
       
       <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
@@ -31,6 +33,7 @@
 
   <div class="payment-button text-center">
     <button (click)="proceedTopay(100)" class="btn btn-pink">Proceed to Pay</button>
+    <button (click)="proceedTopay(100); createOrder()" class="btn btn-pink">Proceed to Pay</button>
   </div>
    
 </div>
