@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient} from '@angular/common/http'
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,9 @@ export class AuthService {
   Login(loginObj:any){
     return this.http.post(this.LoginURL,loginObj)
   }
-  ForgatePassword(user:any){
-    return this.http.put(this.forgotPasswordUrl,user)
+  ForgotPassword(userEmailId: string, newPassword: string): Observable<any> {
+    const body = { userEmailId, newPassword };
+    return this.http.put(this.forgotPasswordUrl, body);
   }
+ 
 }

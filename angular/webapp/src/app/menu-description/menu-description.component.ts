@@ -7,7 +7,7 @@ import { MenuItem } from '../Models/MenuItem';
 
 @Component({
   selector: 'app-menu-description',
-  templateUrl: './menu-description.component.html',
+  templateUrl:'./menu-description.component.html',
   styleUrls: ['./menu-description.component.css']
 })
 export class MenuDescriptionComponent implements OnInit {
@@ -20,20 +20,20 @@ export class MenuDescriptionComponent implements OnInit {
   constructor(private menuService: MenuService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-      // this.getIdFromUrl();
+      this.getIdFromUrl();
   }
 
-  // getIdFromUrl(){
-  //   this.route.params.subscribe((params: Params) => {
-  //     this.getMenuItemById(params['id']);
-  //   })
-  // }
+  getIdFromUrl(){
+    this.route.params.subscribe((params: Params) => {
+      this.getMenuItemById(params['id']);
+    })
+  }
 
-  // getMenuItemById(id: string){
-  //   this.menuService.getMenuItemById(id).subscribe((data: any) => {
-  //     this.menuItem = data;
-  //   });
-  // }
+  getMenuItemById(id: string){
+    this.menuService.getMenuItemById(id).subscribe((data: any) => {
+      this.menuItem = data;
+    });
+  }
 
   incrementQuantity() {
     this.quantity++;

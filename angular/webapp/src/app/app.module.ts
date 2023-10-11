@@ -24,10 +24,13 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     ForgotPasswordComponent,
     MenuItemDetailsComponent,
     SubscriptionComponent,
-    AddMenuItemComponent
+    AddMenuItemComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,HttpClientModule,
@@ -51,6 +55,10 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     MatToolbarModule,
     MatListModule,
     MatChipsModule,
+    MatToolbarModule, 
+     MatListModule,
+     MatChipsModule, MatCardModule,
+     ReactiveFormsModule,FormsModule,
     MatCardModule,
     BrowserModule,
     FormsModule,
@@ -61,10 +69,13 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     BrowserAnimationsModule,
     MatChipsModule,
     MatCardModule,
+    BrowserAnimationsModule,MatToolbarModule,
+     MatListModule,
+     MatChipsModule, MatCardModule,
+     ReactiveFormsModule,FormsModule,
     MatButtonModule,
-    HttpClientModule,
     MatDividerModule,
-    MatIconModule,CommonModule,
+    CommonModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
