@@ -59,6 +59,8 @@ getTotal(price:any){
 
 }
 
+
+
 proceedTopay()
   {
 
