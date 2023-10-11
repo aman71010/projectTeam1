@@ -42,6 +42,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     ForgotPasswordComponent,
     MenuItemDetailsComponent,
     SubscriptionComponent,
-    AddMenuItemComponent
+    AddMenuItemComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,HttpClientModule,

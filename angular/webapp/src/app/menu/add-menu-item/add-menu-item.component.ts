@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { MenuService } from 'src/app/Services/MenuService/menu.service';
+import { MenuService } from 'src/app/services/MenuService/menu.service';
 
 @Component({
   selector: 'app-add-menu-item',
