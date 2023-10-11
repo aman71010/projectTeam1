@@ -1,1 +1,173 @@
-<p>profile works!</p>
+<div id="body">
+    <div id="profile-body">
+        <div id="profile-img">
+            <div id="profile-img-box">
+                <img src="../../assets/profile.jpg" *ngIf="!user.userImage && !isImageSelected">
+
+                <form #imageform="ngForm" (ngSubmit)="SaveImage(imageform)">
+                <div id="UserImgInput">
+                    <img [src]="profileImg" *ngIf="isImageSelected" alt="image">
+                    <img [src]="getImage(user.userImage)" *ngIf="user.userImage && !isImageSelected">
+                    <label for="userImage" *ngIf="isImageEditVisible">
+                        <i class="bi bi-pencil-square"></i>
+                    </label>
+
+                    <input #userEmailId="ngModel" type="email"  name="userEmailId" id="email"
+                        matInput [(ngModel)]="user.userEmailId" hidden>
+                    <input #userImage="ngModel" type="file" name="userImage" id="userImage" 
+                    [(ngModel)]="updateImageObj.userImage" [readonly]="isImageEditVisible" (change)="onFileSelected($event)">
+
+                    <button *ngIf="!isImageEditVisible">Save</button>
+                    
+                </div>
+                </form>
+            </div>
+
+            <div id="extrainfo">
+                <h4>My Orders</h4>
+                <h4>My Subscription</h4>
+                <h4>Change Password</h4>
+            </div>
+        </div>
+        <div id="profile-info">
+            <ul>
+                <form #nameform="ngForm" id="col" (ngSubmit)="SaveName(nameform)">
+                    <div id="row">
+                        <input #userEmailId="ngModel" type="email" name="userEmailId"
+                            id="email" [(ngModel)]="user.userEmailId" hidden>
+                        <input #name="ngModel" type="text" name="name" id="name" matInput
+                            placeholder="Enter the name" [(ngModel)]="updateNameObj.name || user.name"
+                            [readonly]="isNameEditVisible" required>
+                        <i class="bi bi-pencil-square" id="EditName" *ngIf="isNameEditVisible" (click)="EditName()"></i>
+
+                        <button *ngIf="!isNameEditVisible">Save</button>
+                    </div>
+
+                    <p *ngIf="name.dirty && name.errors?.['required']" class="text-danger">Name should not be empty</p>
+
+                </form>
+
+                <form id="col">
+                    <div id="row">
+                        <i class="fa-solid fa-envelope fa-2xl" style="color: #e63946;"></i>
+                        <input type="email" name="userEmailId"
+                            id="email" [(ngModel)]="user.userEmailId" [readonly]="true">
+                    </div>
+                </form>
+
+                <form #MobileNoform="ngForm" id="col" (ngSubmit)="SaveMobileNo(MobileNoform)">
+                    <div id="row">
+                        <input #userEmailId="ngModel" type="email" name="userEmailId"
+                            id="email" [(ngModel)]="user.userEmailId" hidden>
+                        <i class="fa-solid fa-phone fa-2xl" style="color: #e63946;"></i>
+                        <input #mobileNo="ngModel" type="number" name="mobileNo" id="mobileNo"
+                            matInput placeholder="Enter the MobileNo"
+                            [(ngModel)]="updateMobileNoObj.mobileNo || user.mobileNo" [readonly]="isMobileNoEditVisible"
+                            required>
+                            
+                        <i class="bi bi-pencil-square" id="EditMobileNo" *ngIf="isMobileNoEditVisible"
+                            (click)="EditMobileNo()"></i>
+
+                        <button *ngIf="!isMobileNoEditVisible">Save</button>
+                    </div>
+
+                    <p *ngIf="mobileNo.dirty && mobileNo.errors?.['required']" class="text-danger">MobileNo should not
+                        be empty</p>
+                    <p *ngIf="mobileNo.dirty && mobileNo.value.toString() && mobileNo.value.toString().length !== 10" class="text-danger">
+                        MobileNo should be 10 digits long
+                    </p>
+
+                </form>
+
+                <form #addressform="ngForm" id="col" (ngSubmit)="SaveAddress(addressform)"  *ngIf="address.userEmailId && user.userEmailId">
+                    <div id="row">
+                        <div id="col">
+                            <h4 id="address">Address : </h4>
+                            <div id="AddressForm" *ngIf="!isAddAddressVisible">
+
+                                <div id="col">
+                                    <input #userEmailId="ngModel" type="email"
+                                        name="userEmailId" id="email" matInput [(ngModel)]="user.userEmailId" hidden>
+                                </div>
+
+                                <div id="col">
+                                    <input #houseNo="ngModel" type="text" name="houseNo"
+                                        id="houseNo" placeholder="Enter the houseNo"
+                                        [(ngModel)]="updateAddressObj.houseNo || (address && address.houseNo) || newAdd.houseNo"
+                                        [readonly]="isAddressEditVisible" required>
+                                    <p *ngIf="houseNo.dirty && houseNo.errors?.['required']" class="text-danger">HouseNo
+                                        should not
+                                        be empty</p>
+                                </div>
+                                
+                                <div id="col">
+                                    <input #landmark="ngModel" type="text" name="landmark"
+                                        id="landmark" placeholder="Enter the landmark"
+                                        [(ngModel)]="updateAddressObj.landmark || (address && address.landmark) || newAdd.landmark"
+                                        [readonly]="isAddressEditVisible" required>
+                                    <p *ngIf="landmark.dirty && landmark.errors?.['required']" class="text-danger">
+                                        Landmark should not
+                                        be empty</p>
+                                </div>
+
+                                <div id="col">
+                                    <input #city="ngModel" type="text" name="city" id="city"
+                                        placeholder="Enter the city"
+                                        [(ngModel)]="updateAddressObj.city || (address && address.city) || newAdd.city"
+                                        [readonly]="isAddressEditVisible" required>
+                                    <p *ngIf="city.dirty && city.errors?.['required']" class="text-danger">City should
+                                        not
+                                        be empty</p>
+                                </div>
+
+                                <div id="col">
+                                    <input #pincode="ngModel" type="number" name="pincode"
+                                        id="pincode" matInput placeholder="Enter the pincode"
+                                        [(ngModel)]="updateAddressObj.pincode || (address && address.pincode) || newAdd.pincode"
+                                        [readonly]="isAddressEditVisible" required>
+                                    <p *ngIf="pincode.dirty && pincode.errors?.['required']" class="text-danger">Pincode
+                                        should not
+                                        be empty</p>
+                                </div>
+
+
+                                <div id="col">
+                                    <input #state="ngModel" type="text" name="state" id="state"
+                                        matInput placeholder="Enter the state"
+                                        [(ngModel)]="updateAddressObj.state || (address && address.state) || newAdd.state"
+                                        [readonly]="isAddressEditVisible" required>
+                                    <p *ngIf="state.dirty && state.errors?.['required']" class="text-danger">State
+                                        should not
+                                        be empty</p>
+                                </div>
+
+                                <div id="col">
+                                    <input #country="ngModel" type="text" name="country"
+                                        id="country" matInput placeholder="Enter the country"
+                                        [(ngModel)]="updateAddressObj.country || (address && address.country) || newAdd.country"
+                                        [readonly]="isAddressEditVisible" required>
+                                    <p *ngIf="country.dirty && country.errors?.['required']" class="text-danger">Country
+                                        should not
+                                        be empty</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <i class="bi bi-pencil-square" id="EditAddress" *ngIf="isAddressEditVisible && address"
+                            (click)="EditAddress()"></i>
+                        <button id="EditAddress"
+                            *ngIf="!isAddressEditVisible && (address || !isAddAddressVisible)">Save</button>
+                        <button id="SaveAddress" *ngIf="isAddAddressVisible" (click)="AddAddress()">Add Address</button>
+
+                    </div>
+
+                </form>
+
+                <!-- <button id="chagePassBtn" *ngIf="user.userEmailId">My Orders</button>
+
+                <button id="chagePassBtn" *ngIf="user.userEmailId">Change Password</button> -->
+            </ul>
+        </div>
+    </div>
+</div>

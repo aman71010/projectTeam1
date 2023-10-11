@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import{MatListModule} from '@angular/material/list'
-import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips'
+import {MatCardModule} from'@angular/material/card'
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from "@angular/material/form-field";
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -28,11 +26,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     ForgotPasswordComponent,
     MenuItemDetailsComponent,
     SubscriptionComponent,
-    AddMenuItemComponent
+    AddMenuItemComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,16 +59,27 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     MatToolbarModule,
     MatListModule,
     MatChipsModule,
+    MatToolbarModule, 
+     MatListModule,
+     MatChipsModule, MatCardModule,
+     ReactiveFormsModule,FormsModule,
     MatCardModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatChipsModule,
     MatCardModule,
+    BrowserAnimationsModule,MatToolbarModule,
+     MatListModule,
+     MatChipsModule, MatCardModule,
+     ReactiveFormsModule,FormsModule,
     MatButtonModule,
-    HttpClientModule,
     MatDividerModule,
-    MatIconModule,CommonModule,
+    CommonModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,

@@ -7,7 +7,7 @@ import { MenuItem } from '../Models/MenuItem';
 
 @Component({
   selector: 'app-menu-description',
-  templateUrl: './menu-description.component.html',
+  templateUrl:'./menu-description.component.html',
   styleUrls: ['./menu-description.component.css']
 })
 export class MenuDescriptionComponent implements OnInit {
@@ -16,6 +16,7 @@ export class MenuDescriptionComponent implements OnInit {
 
   menuItem: MenuItem = new MenuItem();
 
+  // constructor(private menuService: MenuService, private route: ActivatedRoute) {}
   constructor(private menuService: MenuService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {

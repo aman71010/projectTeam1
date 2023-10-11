@@ -2,7 +2,7 @@
 <div class="container">
   <div class="card mb-3">
     <div class="row g-0">
-      <div class="col-md-1">
+      <div class="col-md-3">
         <img [src]= " getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
       </div>
       <div class="col-md-4">
@@ -19,19 +19,14 @@
       </div>
     </div>
   </div>
-   
-    <div>
-      {{getSubtotal(menuItem.price)}}
-      <h1>{{taxRate}}</h1>
-      <h1>{{taxAmount}}</h1>
-      <h1>{{subtotal}}</h1>
+
+  
+    <div class="totals">
+       {{getTotal(menuItem.price)}}
+      <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
+      <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
+      <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
     </div>
-    
-
-
-
-
-
  
 
   <div class="payment-button text-center">
@@ -41,4 +36,4 @@
 </div>
    
    
-
+<!-- <button id="rzp-button1">Pay with Razorpay</button> -->
