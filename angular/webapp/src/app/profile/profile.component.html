@@ -35,7 +35,7 @@
                     <div id="row">
                         <input #userEmailId="ngModel" type="email" name="userEmailId"
                             id="email" [(ngModel)]="user.userEmailId" hidden>
-                        <input #name="ngModel" type="text" name="name" id="name" matInput
+                        <input #name="ngModel" type="text" name="name" id="name"
                             placeholder="Enter the name" [(ngModel)]="updateNameObj.name || user.name"
                             [readonly]="isNameEditVisible" required>
                         <i class="bi bi-pencil-square" id="EditName" *ngIf="isNameEditVisible" (click)="EditName()"></i>

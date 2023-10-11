@@ -73,6 +73,7 @@ export class ProfileComponent {
     this.renderer.setStyle(element, 'border-bottom', 'none');
     this.isNameEditVisible=!this.isNameEditVisible;
     console.log(form.value);
+    this.ngOnInit();
    }
 
   EditMobileNo(){
@@ -83,7 +84,15 @@ export class ProfileComponent {
   SaveMobileNo(form:NgForm){
     if(form.valid)
     {
-      if(!this.isMobileNoEditVisible)this.svc.updateMobileNo(form.value).subscribe();
+      if(!this.isMobileNoEditVisible)this.svc.updateMobileNo(form.value).subscribe((response) => {
+        if (response) {
+          // Do something when the update is successful
+          console.log('Mobile number updated successfully.');
+        } else {
+          // Handle the case when the update fails
+          console.error('Mobile number update failed.');
+        }
+      },);
     }
     console.log(form.value);
     const element = this.el.nativeElement.querySelector('#mobileNo');
