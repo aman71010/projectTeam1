@@ -9,11 +9,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component'; 
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './menu/menu.component';
-<<<<<<< HEAD
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-=======
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
->>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 
 const routes: Routes = [
   {path:"register",component:RegisterComponent},
@@ -25,12 +22,9 @@ const routes: Routes = [
   {path:'subscribe',component:SubscriptionComponent},
   {path: 'menudiscription',component:MenuDescriptionComponent},
   {path: 'checkout',component: CheckoutComponent},
-<<<<<<< HEAD
-  {path:'forgotpassword',component:ForgotPasswordComponent}
-=======
+  {path:'forgotpassword',component:ForgotPasswordComponent},
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout/:id',component: CheckoutComponent},
->>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 ];
 
 @NgModule({

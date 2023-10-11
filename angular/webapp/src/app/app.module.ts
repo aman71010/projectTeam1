@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< HEAD
 import {HttpClientModule} from'@angular/common/http';
-=======
->>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 
 import {MatToolbarModule} from '@angular/material/toolbar'
 import{MatListModule} from '@angular/material/list'
-<<<<<<< HEAD
 import {MatChipsModule} from '@angular/material/chips'
 import {MatCardModule} from'@angular/material/card'
 
 
-=======
->>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,10 +31,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
-<<<<<<< HEAD
 
-=======
->>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
@@ -65,10 +56,9 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
   imports: [
     BrowserModule,HttpClientModule,
     AppRoutingModule,
-<<<<<<< HEAD
     BrowserAnimationsModule,
     MatToolbarModule, 
-    MatIconModule, MatListModule,
+     MatListModule,
      MatChipsModule, MatCardModule,
      ReactiveFormsModule,FormsModule
    
@@ -76,11 +66,10 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     
    
    
-=======
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatListModule,
-    MatChipsModule,
+   
+   
+    
+    ,
     MatCardModule,
     BrowserModule,
     AppRoutingModule,
@@ -90,7 +79,7 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     MatButtonModule,
     HttpClientModule,
     MatDividerModule,
-    MatIconModule,CommonModule,
+    CommonModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -99,7 +88,6 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule
->>>>>>> 7a7dfd84233d68870f4b98b2a5c97f70634fd303
   ],
   providers: [],
   bootstrap: [AppComponent]

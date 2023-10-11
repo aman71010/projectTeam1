@@ -18,17 +18,25 @@ constructor(private auth:AuthService,private router:Router) {}
 EmailId= new FormControl("",Validators.required);
 Password = new FormControl("", Validators.required)
 
+
 onLogin(){
   if(this.EmailId.valid && this.Password.valid )
   {
-    // console.log(this.username.value,this.password.value);
-    this.auth.Login({email:this.EmailId.value,password:this.Password.value}).subscribe((data:any)=>
-    {
-      
-    this.router.navigate(['/menu'])
-    }
-
-    );
+    
+    this.auth.Login({email:this.EmailId.value,password:this.Password.value})
+    .subscribe({
+      next:(res)=>{
+        this.router.navigate(['/menu']);
+      },
+      error:(err)=>{
+        let errorMessage = 'invalid credentials';
+        if (err.error && err.error.message) {
+          errorMessage = err.error.message; 
+        }
+        alert(errorMessage);
+      }
+    })
+   
   }
 
 }
