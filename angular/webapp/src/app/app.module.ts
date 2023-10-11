@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+
+
+
+
+
 import {HttpClientModule} from'@angular/common/http';
 
-import {MatToolbarModule} from '@angular/material/toolbar'
-import{MatListModule} from '@angular/material/list'
-import {MatChipsModule} from '@angular/material/chips'
-import {MatCardModule} from'@angular/material/card'
+import {MatToolbarModule} from '@angular/material/toolbar';
+import{MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatCardModule} from'@angular/material/card';
+
 
 
 import { FormsModule } from '@angular/forms';
@@ -37,6 +44,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +59,8 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     ForgotPasswordComponent,
     MenuItemDetailsComponent,
     SubscriptionComponent,
-    AddMenuItemComponent
+    AddMenuItemComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,HttpClientModule,
@@ -76,8 +85,12 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     BrowserAnimationsModule,
     MatChipsModule,
     MatCardModule,
+    BrowserAnimationsModule,MatToolbarModule,
+     MatListModule,
+     MatChipsModule, MatCardModule,
+     ReactiveFormsModule,FormsModule,
+  
     MatButtonModule,
-    HttpClientModule,
     MatDividerModule,
     CommonModule,
     FormsModule,
@@ -88,6 +101,12 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule
+    
+    
+    
+   
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
