@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SubService } from './sub-.service';
 
 declare var Razorpay: any;
 @Component({
@@ -7,6 +8,15 @@ declare var Razorpay: any;
   styleUrls: ['./subscription.component.css']
 })
 export class SubscriptionComponent {
+  constructor(private Obj : SubService){}
+  order: any = {
+    "email": "string",
+    "phoneNumber": "string",
+    "amount": 200000,
+  }
+  OrderRequest() {
+    this.Obj.OrderRequest(this.order).subscribe(res => console.log(res))
+  }
   
   proceedTopay(amount:number)
   {
@@ -14,9 +24,9 @@ export class SubscriptionComponent {
       description:'Razorpay Payment',
       currency:'INR',
       amount: amount*100,
-      name: 'bilwaraj',
+      name: 'Luncksy',
       key:'rzp_test_pmZ9sPkab2DGdZ',
-      image:'https://th.bing.com/th?id=OIP.t6kmiUn7cQ4NJGjHEPAOXwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2',
+      image:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Ffood-delivery&psig=AOvVaw2sReYVrBuZs7ulUKL8mlqF&ust=1697090590125000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIitjKap7YEDFQAAAAAdAAAAABAE',
       prefill:{
         name:'bilwaraj',
         email:'bilwa@gmail.com',
