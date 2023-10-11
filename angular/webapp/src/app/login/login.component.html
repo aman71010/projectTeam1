@@ -1,19 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <body>
     <div class="container">
         <div class="wrapper">
-          <div class="title"><span>Login Form</span></div>
+          <div class="title"><span>Lunchsy</span></div>
           <form action="#">
             <div class="row">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-user" style="color: black;"></i>
               <input type="text" placeholder="Enter you Email Id" required [formControl]="EmailId">
             </div>
             <small *ngIf="EmailId.dirty && EmailId.invalid" class="text-danger">*EmailId is required</small>
             <div class="row">
-              <i class="fa fa-lock"></i>
-              <input type="password" placeholder="Enter yourPassword"  [formControl]="Password">
+              <i class="fa fa-lock" style="color: black;"></i>
+              <input type="password" placeholder="Enter your Password"  [formControl]="Password">
             </div>
             <small *ngIf="Password.dirty && Password.invalid" class="text-danger">*Password is required</small>
-            <div class="pass"><a id="" routerLink="/forgotPassword">Forgot password?</a></div>
+            <div class="pass"><a id="" routerLink="/forgotpassword">Forgot password?</a></div>
             <div class="row button">
                 <button (click)="onLogin()" type="submit" class="btn-btn-primary mt-4 w-100" >Login</button>
             </div>

@@ -30,7 +30,7 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotPasswordComponent},
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout/:id',component: CheckoutComponent},
-  {path: 'payment',component:PaymentsComponent},
+  // {path: 'payment',component:PaymentsComponent},
 ];
 
 @NgModule({

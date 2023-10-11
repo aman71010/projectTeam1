@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { MenuService } from '../services/MenuService/menu.service';
+import { MenuService } from '../Services/MenuService/menu.service';
 import { MenuItem } from '../Models/MenuItem';
 
 
 @Component({
   selector: 'app-menu-description',
-  templateUrl: './menu-description.component.html',
+  templateUrl:'./menu-description.component.html',
   styleUrls: ['./menu-description.component.css']
 })
 export class MenuDescriptionComponent implements OnInit {
@@ -52,8 +52,8 @@ export class MenuDescriptionComponent implements OnInit {
 
   addToCart() {
     // Add the product to the cart
-    this.cartItems += this.quantity;
-    alert(`Added ${this.quantity} item(s) to the cart.`);
+    // this.cartItems += this.quantity;
+    // alert(`Added ${this.quantity} item(s) to the cart.`);
   }
 
 }

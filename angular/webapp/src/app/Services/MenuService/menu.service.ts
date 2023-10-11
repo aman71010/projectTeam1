@@ -20,7 +20,11 @@ export class MenuService {
     return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`);
   }
 
-  createMenuItem(menu: any){
-    return this.httpClient.post("https://localhost:7107/api/Menu/createMenu", menu);
+  createMenuItem(formData: any){
+    return this.httpClient.post("https://localhost:7107/api/Menu/createMenu", formData);
+  }
+
+  deleteMenuItem(id: string){
+    return this.httpClient.delete(`https://localhost:7107/api/Menu/DeleteMenu/${id}`);
   }
 }

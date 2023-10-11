@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-   
+
   
     <div class="totals">
        {{getTotal(menuItem.price)}}
@@ -30,7 +30,7 @@
  
 
   <div class="payment-button text-center">
-    <button (click)="proceedTopay()" class="btn btn-pink">Proceed to Pay</button>
+    <button (click)="proceedTopay(); createOrder()" class="btn btn-pink">Proceed to Pay</button>
   </div>
    
 </div>
