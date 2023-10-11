@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
+import { MenuItem } from 'src/app/Models/MenuItem';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ export class CheckoutService {
     {
       return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`)
     }
-
+      
   
+  
+    createorder(orderobj: any)
+    {
+         this.httpClient.post("https://localhost:7264/api/Order/CreateOrder",orderobj)
+    }
 }

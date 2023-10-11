@@ -15,10 +15,17 @@ export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
   
+  subscriptionTypes = {
+    0: 'gold',
+    1: 'silver',
+    2: 'platinum'
+  };
+  
   constructor(private menuService: MenuService,
    private route: ActivatedRoute,
    private router: Router,
-   private sanitizer: DomSanitizer) {}
+   private sanitizer: DomSanitizer,
+   private orderfetch:CheckoutService) {}
 
 
 
@@ -59,14 +66,12 @@ getTotal(price:any){
 
 }
 
-
-
-proceedTopay()
+proceedTopay(amount:number)
   {
     const RazorpayOptions={
       description:'Razorpay Payment',
       currency:'INR',
-      amount: 12345,
+      amount: amount*100,
       name: this.menuItem.name,
       key:'rzp_test_pmZ9sPkab2DGdZ',
       image:'https://th.bing.com/th?id=OIP.t6kmiUn7cQ4NJGjHEPAOXwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2',

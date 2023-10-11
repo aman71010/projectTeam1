@@ -20,9 +20,9 @@
     </div>
   </div>
    
-  
+  {{getTotal(menuItem.price)}}
     <div class="totals">
-       {{getTotal(menuItem.price)}}
+      
       <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
       <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
       <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
@@ -30,7 +30,7 @@
  
 
   <div class="payment-button text-center">
-    <button (click)="proceedTopay()" class="btn btn-pink">Proceed to Pay</button>
+    <button (click)="proceedTopay(100)" class="btn btn-pink">Proceed to Pay</button>
   </div>
    
 </div>
