@@ -9,6 +9,6 @@ export class OrderService {
   constructor(private svc: HttpClient) { }
 
   getOrdersByEmail(email: string) {
-    return this.svc.get(`https://localhost:44387/api/Order/getOrdersByEmail/${email}`);
+    return this.svc.get(`https://localhost:7264/api/Order/getOrdersByEmail/${email}`);
   }
 }

@@ -16,8 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
 import { MatFormFieldModule } from "@angular/material/form-field";
+import {NgxPaginationModule} from 'ngx-pagination';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { MenuDescriptionComponent } from './menu-description/menu-description.component';
@@ -49,7 +50,8 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     AddMenuItemComponent
   ],
   imports: [
-    BrowserModule,HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -72,7 +74,9 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { Component,OnInit} from '@angular/core';
 import { MenuItem } from '../Models/MenuItem';
-import { CheckoutService } from '../services/checkoutService/checkout.service';
-import { MenuService } from '../services/MenuService/menu.service';
+import { MenuService } from '../Services/MenuService/menu.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -14,18 +13,21 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
-  constructor(private menuService: MenuService, private route: ActivatedRoute,
-              private router: Router,private sanitizer: DomSanitizer) {}
+  constructor(
+    private menuService: MenuService, 
+    private route: ActivatedRoute,
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {}
 
-
-     getImage(imageData: any){                                           // imageData --> byte[]
-      const imageUrl = 'data:image/jpeg;base64,' + imageData;
-      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-   }
+  getImage(imageData: any){
+    const imageUrl = 'data:image/jpeg;base64,' + imageData;
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
    
   ngOnInit(): void {
     this.getIdFromUrl();
-}
+  }
 
 getIdFromUrl(){
   this.route.params.subscribe((params: Params) => {
@@ -40,13 +42,20 @@ getMenuItemById(id: string){
 }
 
 taxRate: number = 0.10;
+taxAmount?: number;
+subtotal?: number;
 
 proceedTopay()
-  {
+{
 
-  }
+}
 
- 
+getSubtotal(price: any){
+  this.taxAmount = this.taxRate * price;
+  this.subtotal = price + this.taxAmount;
+}
+
+
   
   
 
