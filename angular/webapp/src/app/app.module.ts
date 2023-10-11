@@ -43,7 +43,6 @@ import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-det
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 import { PaymentsComponent } from './payments/payments.component';
-import { SuccessDialogComponent } from './subscription/success-dialog/success-dialog/success-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { SuccessDialogComponent } from './subscription/success-dialog/success-di
     SubscriptionComponent,
     AddMenuItemComponent,
     PaymentsComponent,
-    SuccessDialogComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,
