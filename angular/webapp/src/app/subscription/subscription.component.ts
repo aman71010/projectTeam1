@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SubService } from './sub-.service';
+import { Router } from '@angular/router';
 
 declare var Razorpay: any;
 @Component({
@@ -8,7 +9,7 @@ declare var Razorpay: any;
   styleUrls: ['./subscription.component.css']
 })
 export class SubscriptionComponent {
-  constructor(private Obj : SubService){}
+  constructor(private Obj : SubService , private router: Router){}
   order: any = {
     "email": "string",
     "phoneNumber": "string",
@@ -29,7 +30,7 @@ export class SubscriptionComponent {
       image:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Ffood-delivery&psig=AOvVaw2sReYVrBuZs7ulUKL8mlqF&ust=1697090590125000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIitjKap7YEDFQAAAAAdAAAAABAE',
       prefill:{
         name:'bilwaraj',
-        email:'bilwa@gmail.com',
+        email:'leecopper@gmail.com',
         phone: '11234567809'
       },
       theme: {
@@ -44,6 +45,7 @@ export class SubscriptionComponent {
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      this.router.navigate(['/profile']);
 
     }
 
