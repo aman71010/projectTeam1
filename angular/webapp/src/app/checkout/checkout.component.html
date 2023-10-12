@@ -1,59 +1,46 @@
+<h1 style="margin-left: 60px;">Order Information</h1>
 <div class="container">
-
-  <header>
-    <div class="header-text">
-       <h2>Order Information</h2> 
-    </div>
-</header>
-  
-<div *ngFor="let item of items">
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-1">
-      <img [src]= "item.imageUrl" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
-    </div>
-    <div class="col-md-4">
-      <div class="card-body">
-        <h5 class="card-title">{{item.name}}</h5>
-        <p class="card-text">{{item.description}}</p>
-       
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img [src]= " getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
       </div>
-    </div>
-    <div class="col-md-2">
-      <div class="card-body">
-        <h5 class="card-text">Price: ${{item.price}}</h5>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h5 class="card-title">{{menuItem.name}}</h5>
+          <p class="card-text">{{menuItem.category}}</p>
+         
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="card-body">
+          <h5 class="card-text">Price: ${{menuItem.price}}</h5>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+   
+  {{getTotal(menuItem.price)}}
 
-<div class="order-summary">
   
+    <div class="totals">
+      
+      <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
+      <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
+      <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
+    </div>
+ 
+
+  <div class="payment-button text-center">
   
-  <div class="order-summary">
-    <h2>Order Summary</h2>
-    <div class="order-summary-row">
-      <p class="order-summary-label">SubTotal:</p>
-      <p class="order-summary-price">${{ getTotalPrice() | number:'1.2-2' }}</p>
-    </div>
-    <div class="order-summary-row">
-      <p class="order-summary-label">Tax (10%):</p>
-      <p class="order-summary-price">${{ getTax() | number:'1.2-2' }}</p>
-    </div>
-    <div class="order-summary-line"></div> 
-    <div class="order-summary-row">
-      <p class="order-summary-label"><strong>Total</strong></p>
-      <p class="order-summary-price"><strong>${{ getSubtotal() | number:'1.2-2' }}</strong></p>
-    </div>
+    <button (click)="proceedTopay(100); createOrder()" class="btn btn-pink">Proceed to Pay</button>
   </div>
+   
 </div>
+   
+   
+<!-- <button id="rzp-button1">Pay with Razorpay
 
-<div class="payment-button text-center">
-  <button class="btn btn-pink">Proceed to Pay</button>
-</div>
-   
-</div>
-   
-   
+    <button (click)="proceedTopay(100)" class="btn btn-pink">Proceed to Pay</button>
 
+</button> -->

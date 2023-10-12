@@ -6,12 +6,10 @@ namespace NotifyService.Services
     public class KafkaConsumer: IHostedService
     {
         private readonly IConfiguration config;
-        private readonly ILogger<KafkaConsumer> logger;
 
-        public KafkaConsumer(IConfiguration config, ILogger<KafkaConsumer> logger)
+        public KafkaConsumer(IConfiguration config)
         {
             this.config = config;
-            this.logger = logger;
         }
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -32,15 +30,11 @@ namespace NotifyService.Services
                     while (true)
                     {
                         var topicconsumer = consumer.Consume(canceltoken.Token);
-
-                        var userdata = JsonConvert.DeserializeObject<User>(topicconsumer.Message.Value);
-                        
-                        //logger.LogInformation($"{userdata.UserEmailId}  {userdata.Name} {userdata.MobileNo}");
+                        var userEmail = topicconsumer.Message.Value;
                     }
                 }
                 catch (OperationCanceledException ex)
                 {
-                    //logger.LogError(ex.Message);
                     consumer.Close();
                 }
             };

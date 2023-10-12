@@ -1,0 +1,90 @@
+/* big-card.component.css */
+.card-container {
+    margin: 20px;
+}
+.mat-elevation-z2 {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    background-color:#f0f0f0; 
+  }
+.flex-spacer {
+    flex: 1;
+  }
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0015;  
+    color: #fff;  
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-link:hover {
+    background-color: #ac2d48; /* Change the background color on hover */
+  }
+  .x{
+    height: 50%;
+    width: 50%;
+  }
+  .footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Additional styling for buttons and links */
+  .cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .social-media-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  .search-bar {
+    background-color: #db3131;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 7px;
+    border-radius: 20px;
+    background-color: aliceblue;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 20px;
+    flex: 1;
+  }
+  
+  .hero-banner {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .right-image {
+    max-width: 300px;
+    align-self: flex-end;
+    margin: 10px;
+  }
+  

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../Services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifyService } from '../Services/notify.service';
+import { Email } from '../Models/Email';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,7 @@ export class RegisterComponent {
  *
  */
 
-constructor(private fb:FormBuilder, private auth:AuthService,private router:Router){}
+constructor(private fb:FormBuilder, private auth:AuthService,private router:Router, private notify: NotifyService){}
 
 registerForm = this.fb.group(
   {
@@ -27,17 +29,26 @@ registerForm = this.fb.group(
 )
 get name(){return this.registerForm.get("name")}
 get email(){return this.registerForm.get("email")}
-get mobileNo(){return this.registerForm.get("city")}
-get password(){return this.registerForm.get("age")}
+get mobileNo(){return this.registerForm.get("mob")}
+get password(){return this.registerForm.get("pass")}
 get confirmpassword(){return this.registerForm.get("password")}
 
+sendEmail: any = new Email();
 
 onRegister()
 {
   if(this.registerForm.valid){
     this.auth.Register(this.registerForm.value).subscribe((data:any)=>
     {
-this.router.navigate(['login']);
+      this.router.navigate(['login']);
+
+
+      // this.sendEmail.emailId = this.registerForm.value.email;
+      // this.sendEmail.subject = "Register Successfully";
+      // this.sendEmail.body = "you have successfully registered to our application!";
+      // this.notify.sendEmail(this.sendEmail).subscribe((res) => {
+
+      // });
     }
     )
   }

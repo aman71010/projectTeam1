@@ -19,31 +19,38 @@
       </div>
     </div>
     <div id="menu-item-list" class="row my">
-      <div class="col" *ngFor="let item of menuList">
+      <div class="col col-lg-3 col-md-4 col-sm-6 card-container" *ngFor="let item of menuList | paginate: { itemsPerPage: 8, currentPage: p }">
         <mat-card class="example-card">
-          <img mat-card-image src="https://i.ibb.co/Rv91df4/chana-kulcha-625x350-41429707001.webp" [alt]="item.name">
+          <img class="menuImg" mat-card-image [src]="getImage(item.image)" [alt]="item.name">
           <mat-card-header>
             <p class="title">{{item.name}}</p>
           </mat-card-header>
           <mat-card-content>
-            <p>{{truncateDescription(item.description)}}</p>
+            <p class="desc">{{truncateDescription(item.description)}}</p>
             <p class="price">Rs. {{item.price}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button style="background-color: #e63946; color: white; margin-right: 15px;" (click)="onViewMenuDetails(item.menuItemId)">View Details</button>
-            <button mat-raised-button style="background-color: #e63946; color: white" (click)="onAdd()">Add</button>
+            <div class="button-container">
+              <button 
+              mat-raised-button 
+              style="background-color: #e63946; color: white; margin-right: 15px;" 
+              (click)="onViewMenuDetails(item.menuItemId)"
+              >View Details</button>
+              <button 
+                *ngIf="userType === 'Admin'"
+                mat-raised-button 
+                style="background-color: #e63946; color: white; margin-right: 15px;" 
+                (click)="onDeleteMenuItem(item.menuItemId, item.category)"
+              >Delete</button>
+            </div>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
+    
     <div id="page-nav" class="row my">
       <div class="col d-flex justify-content-center">
-          <div>
-            <button class="btn btn-primary button-style">prev</button>
-            <button class="btn btn-primary button-style">1</button>
-            <button class="btn btn-primary button-style">2</button>
-            <button class="btn btn-primary button-style">next</button>
-          </div>
+        <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

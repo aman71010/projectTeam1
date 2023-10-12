@@ -1,7 +1,14 @@
 .example-card {
-  max-width: 250px;
+  width: 250px;
+  height: 100%;
   margin: 15px 0;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-container{
+  width: 300px;
+  height: 345px;
+  margin: 20px 0
 }
 
 #banner{
@@ -30,9 +37,18 @@
   color: #fff !important;
 }
 
+.menuImg{
+  width: 250px;
+  height: 150px;
+}
+
 .title{
   font-size: 16px;
   font-weight:900
+}
+
+.desc{
+  word-break: break-all;
 }
 
 .price{
@@ -42,14 +58,31 @@
   font-weight: 700;
 }
 
-.button-style{
-  background-color: #f0ecec;
-  color: black;
-  margin: 0 10px;
-  border: none;
+.button-container{
+  position: absolute;
+  bottom: 10px;
+}
+.paginator{
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
 }
 
-.button-style:hover, .button-style:after{
-  background-color: #e63946;
-  color: white;
+.paginator /deep/ .ngx-pagination .current {
+  background: #e63946;
+  border-radius: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.paginator /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: #d4d4d4;
+  border-radius: 3px;
+  padding-left: 11px;
+  padding-right: 11px;
+  text-decoration: none;
+}
+
+.paginator /deep/ .ngx-pagination a:focus, .ngx-pagination button:focus {
+  outline: none;
+  background: #d4d4d4;
 }

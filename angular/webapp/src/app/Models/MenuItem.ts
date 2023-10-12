@@ -4,5 +4,5 @@ export class MenuItem{
   price?: number;
   description?: string;
   category?: string;
-  image?: string;
+  image?: any;
 }
