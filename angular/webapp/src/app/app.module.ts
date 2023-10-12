@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
-//import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
@@ -90,7 +90,7 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-   // NgxPaginationModule,
+    NgxPaginationModule,
     MatSnackBarModule
   ],
   providers: [],

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OrderItem } from '../Models/OrderItem';
 import { Order } from '../Models/Order';
+import { Subscriptiondata } from '../Models/Subscriptiondata';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
@@ -16,6 +17,7 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
+ 
   
   subscriptionTypes = {
     0: 'gold',
@@ -31,6 +33,7 @@ export class CheckoutComponent implements OnInit{
    private router: Router,
    private sanitizer: DomSanitizer,
    private orderfetch:CheckoutService, 
+   private orderService:CheckoutService,
 
    private checkoutService: CheckoutService) {}
 
@@ -72,6 +75,9 @@ getTotal(price:any){
 
 }
 
+
+
+
 createOrder(){
   this.orderItem.MenuItemId = this.menuItem.menuItemId;
   this.orderItem.Quantity = this.checkoutService.quantity;
@@ -85,9 +91,9 @@ createOrder(){
   this.order.CreatedAt = new Date();
   this.order.UpdatedAt = new Date();
 
-  // this.orderService.CreateOrder(this.order).subscribe((res) => {
-  //   console.log()
-  // })
+   this.orderService.createOrder(this.order).subscribe((res:any) => {
+     console.log();
+   })
 }
 
 

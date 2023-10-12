@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SubService } from './sub-.service';
+import { SubscriptionService } from '../services/subscriptionService/subscription.service';
+import { Subscriptiondata } from '../Models/Subscriptiondata';
 
 declare var Razorpay: any;
 @Component({
@@ -8,15 +9,29 @@ declare var Razorpay: any;
   styleUrls: ['./subscription.component.css']
 })
 export class SubscriptionComponent {
-  constructor(private Obj : SubService){}
+  constructor(private subscritionObj : SubscriptionService){}
+
+  subscription: Subscriptiondata[]=[];
+  subscribeobj:Subscriptiondata=new Subscriptiondata();
+  
+  
+
+
+
+
+
+
+
+
+
+
+
   order: any = {
     "email": "string",
     "phoneNumber": "string",
     "amount": 200000,
   }
-  OrderRequest() {
-    this.Obj.OrderRequest(this.order).subscribe(res => console.log(res))
-  }
+ 
   
   proceedTopay(amount:number)
   {
