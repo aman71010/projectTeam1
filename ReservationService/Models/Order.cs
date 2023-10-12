@@ -12,12 +12,13 @@ namespace OrderService.Models
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)] 
-        public string Order_Id { get; set; }
+        public string? Order_Id { get; set; }
 
         [Required(ErrorMessage = "UserEmailId is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string UserEmailId { get; set; }
         public List<OrderItem> Items { get; set; }
+        public int price { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public OrderStatus Status { get; set; }
