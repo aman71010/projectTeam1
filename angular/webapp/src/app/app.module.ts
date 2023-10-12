@@ -52,6 +52,7 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
 import { PaymentsComponent } from './payments/payments.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { SubscriptionformComponent } from './subscriptionform/subscriptionform.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { HomeComponent } from './home/home.component';
     PaymentsComponent,
     HeaderComponent,
     HomeComponent,
+    SubscriptionformComponent,
   ],
   imports: [
     BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,   

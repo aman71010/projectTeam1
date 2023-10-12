@@ -11,6 +11,6 @@ namespace SubscriptionService.Model
             client = new MongoClient(config.GetConnectionString("MyMongodbCon"));
             database = client.GetDatabase(config.GetSection("DatabaseName").Value);
         }
-        public IMongoCollection<Subscription> subscriptions => database.GetCollection<Subscription>("Subscriptions");
+        public IMongoCollection<Subscription> subscriptions => database.GetCollection<Subscription>("subscriptionka");
     }
 }
