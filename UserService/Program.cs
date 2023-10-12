@@ -10,7 +10,7 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseSqlServer(bui
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService.Services.UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddCors(option => option.AddPolicy("userService", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
+//builder.Services.AddCors(option => option.AddPolicy("userService", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
 
 
 builder.Services.AddControllers();
@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("userService");
+//app.UseCors("userService");
 
 app.UseHttpsRedirection();
 app.UseCors("mypolicy");

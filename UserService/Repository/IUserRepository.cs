@@ -4,7 +4,7 @@ namespace UserService.Repository
 {
     public interface IUserRepository
     {
-        void CreateUser(User user);
+        User CreateUser(User user);
         User GetUserByUserEmailId(string emailId);
         void UpdateName(string userEmailId, string name);
         void UpdatePassword(string userEmailId, string password);

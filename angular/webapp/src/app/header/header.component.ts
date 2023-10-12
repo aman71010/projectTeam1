@@ -29,27 +29,27 @@ export class HeaderComponent implements OnInit{
   user: any = new User();
 
   ngOnInit(): void {
-    const token = this.authService.GetToken();
-    if(token?.length != 0){
-      this.userService.FetchUser().subscribe((res: any) => {
-        this.user = res;
-        console.log(res);
-        this.avatarImage = this.getImage(res.user.userImage);
-      })
-    }
-    else{
-      this.avatarText = `${this.user.name.split(' ')[0][0]}${this.user.name.split(' ')[1][0]}`}
-    }
+    // const token = this.authService.GetToken();
+    // if(token?.length != 0){
+    //   this.userService.FetchUser().subscribe((res: any) => {
+    //     this.user = res;
+    //     console.log(res);
+    //     this.avatarImage = this.getImage(res.user.userImage);
+    //   })
+    // }
+    // else{
+    //   this.avatarText = `${this.user.name.split(' ')[0][0]}${this.user.name.split(' ')[1][0]}`}
+    // }
 
-    getImage(imageData: any){
-      const imageUrl = 'data:image/jpeg;base64,' + imageData;
-      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-    }
+    // getImage(imageData: any){
+    //   const imageUrl = 'data:image/jpeg;base64,' + imageData;
+    //   return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+    // }
 
-    logout(){
-      this.authService.logout();
-    }
+    // logout(){
+    //   this.authService.logout();
+    // }
   }
 
-  
+}
 

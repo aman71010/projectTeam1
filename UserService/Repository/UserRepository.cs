@@ -12,10 +12,11 @@ namespace UserService.Repository
         {
             this.context = context;
         }
-        public void CreateUser(User user)
+        public User CreateUser(User user)
         {
             context.Users.Add(user);
             context.SaveChanges();
+            return user;
         }
 
         public User GetUserByUserEmailId(string emailId)
