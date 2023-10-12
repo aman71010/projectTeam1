@@ -11,8 +11,6 @@ export class SubService {
   OrderRequest(order_data:any) : Observable<any>{
     return this.http.post('https://localhost:7205/api/Payment/CreateOrder',JSON.stringify(order_data));
   }
-<<<<<<< HEAD
-=======
 
   
 
@@ -27,5 +25,4 @@ export class SubService {
   createSubscription(subscription:any){
     return this.http.post("https://localhost:7042/api/subscription/Create", subscription);
   }
->>>>>>> 5a3e275caaed025c3953deaca1bc50b7027abaca
 }
