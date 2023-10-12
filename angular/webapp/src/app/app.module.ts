@@ -72,7 +72,7 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,    NgxPaginationModule,
+    BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,   
    
     AppRoutingModule,MatListModule,
      MatChipsModule, MatCardModule,

@@ -17,7 +17,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit()
    {
-    this.svc.getOrdersByEmail("mehul@gmail.com").subscribe((data:any)=>
+    this.svc.getOrdersByEmail("mehul@example.com").subscribe((data:any)=>
     {
       console.log(data);
       this.orders=data;

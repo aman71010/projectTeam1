@@ -13,7 +13,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 import { HomeComponent } from './home/home.component';
   
-import payments from 'razorpay/dist/types/payments';
+// import payments from 'razorpay/dist/types/payments';
 import { PaymentsComponent } from './payments/payments.component';
 
 
