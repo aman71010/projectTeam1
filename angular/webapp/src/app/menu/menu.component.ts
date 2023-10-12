@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { MenuItem } from '../Models/MenuItem';
-import { MenuService } from '../Services/MenuService/menu.service';
+import { MenuService } from '../services/MenuService/menu.service';
 
 @Component({
   selector: 'app-menu',

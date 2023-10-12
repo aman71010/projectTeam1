@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SubService } from './sub-.service';
-import { Router } from '@angular/router';
 
 declare var Razorpay: any;
 @Component({
@@ -9,15 +8,13 @@ declare var Razorpay: any;
   styleUrls: ['./subscription.component.css']
 })
 export class SubscriptionComponent {
-  constructor(private Obj : SubService , private router: Router){}
+  constructor(private Obj : SubService){}
   order: any = {
     "email": "string",
     "phoneNumber": "string",
     "amount": 200000,
   }
-  OrderRequest() {
-    this.Obj.OrderRequest(this.order).subscribe(res => console.log(res))
-  }
+ 
   
   proceedTopay(amount:number)
   {
