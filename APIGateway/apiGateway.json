@@ -42,7 +42,7 @@
         },
         {
             "UpstreamPathTemplate": "/UpdateName",
-            "UpstreamHttpMethod": [ "Patch" ],
+            "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -58,7 +58,7 @@
         },
         {
             "UpstreamPathTemplate": "/UpdatePassword",
-            "UpstreamHttpMethod": [ "Patch" ],
+            "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -74,7 +74,7 @@
         },
         {
             "UpstreamPathTemplate": "/UpdateNumber",
-            "UpstreamHttpMethod": [ "Patch" ],
+            "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -437,21 +437,37 @@
                 "AllowedScopes": []
             }
         },
-        {
-            "UpstreamPathTemplate": "/Payment",
-            "UpstreamHttpMethod": [ "Post" ],
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 7203
-                }
-            ],
-            "DownstreamPathTemplate": "/api/Payment/payment",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "token",
-                "AllowedScopes": []
-            }
+      {
+        "UpstreamPathTemplate": "/Payment",
+        "UpstreamHttpMethod": [ "Post" ],
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7203
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Payment/payment",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "token",
+          "AllowedScopes": []
         }
+      },
+      {
+        "UpstreamPathTemplate": "/Email",
+        "UpstreamHttpMethod": [ "Post" ],
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7024
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Email/SendEmail",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "token",
+          "AllowedScopes": []
+        }
+      }
     ]
 }
