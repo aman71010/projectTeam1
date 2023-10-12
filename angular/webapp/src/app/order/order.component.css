@@ -1,32 +1,27 @@
-.paginator {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .paginator ul.pagination {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .paginator ul.pagination li.page-item {
-    display: inline;
-    margin: 0 5px;
-  }
-  
-  .paginator ul.pagination li.page-item a.page-link {
-    color: #e63946;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
-    border-radius: 3px;
-  }
-  
-  .paginator ul.pagination li.page-item.active a.page-link {
-    background-color: #e63946;
-    color: #fff;
-    border: 1px solid #e63946;
-  }
+.my{
+  margin: 20px 0;
+}
+.paginator{
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
 
-  
+.paginator /deep/ .ngx-pagination .current {
+  background: #e63946;
+  border-radius: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.paginator /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: #d4d4d4;
+  border-radius: 3px;
+  padding-left: 11px;
+  padding-right: 11px;
+  text-decoration: none;
+}
+
+.paginator /deep/ .ngx-pagination a:focus, .ngx-pagination button:focus {
+  outline: none;
+  background: #d4d4d4;
+}
