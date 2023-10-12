@@ -29,11 +29,8 @@ onLogin(){
         this.router.navigate(['/menu']);
       },
       error:(err)=>{
-        let errorMessage = 'invalid credentials';
-        if (err.error && err.error.message) {
-          errorMessage = err.error.message; 
-        }
-        alert(errorMessage);
+        
+        alert(err.message);
       }
     })
    
