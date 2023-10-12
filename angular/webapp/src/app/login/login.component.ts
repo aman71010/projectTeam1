@@ -3,6 +3,7 @@ import { AuthService } from '../Services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,40 +11,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-/**
- *
- */
-  
-constructor(private auth:AuthService,private router:Router) {}
-EmailId= new FormControl("",Validators.required);
-Password = new FormControl("", Validators.required)
+
+  horizontalPosition: MatSnackBarHorizontalPosition = "right";
+  verticalPosition: MatSnackBarVerticalPosition = "top";
+
+  constructor(private auth:AuthService,private router:Router,private snackBar: MatSnackBar) {}
+  EmailId= new FormControl("",Validators.required);
+  Password = new FormControl("", Validators.required)
 
 
-onLogin(){
-  if(this.EmailId.valid && this.Password.valid )
-  {
-    
-    this.auth.Login({email:this.EmailId.value,password:this.Password.value})
-    .subscribe({
-      next:(res)=>{
-        this.router.navigate(['/menu']);
-      },
-      error:(err)=>{
-        
-        alert(err.message);
-      }
-    })
-   
+  onLogin(){
+    if(this.EmailId.valid && this.Password.valid)
+    {
+      this.auth.Login({email:this.EmailId.value,password:this.Password.value})
+      .subscribe({
+        next:(res:any)=>{
+          const data: any = JSON.parse(JSON.stringify(res));
+          console.log(data);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("role", data.role);
+          localStorage.setItem("email", data.userEmail);
+          this.openSnackBar("User logged in successfully");
+          this.router.navigate(['/menu']);
+        },
+        error:(err)=>{
+          this.openSnackBar(err.error);
+        }
+      })
+    }
   }
 
+  openSnackBar(message: string){
+    this.snackBar.open(message, "close", {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 }
-
-
-  
-}
-
-
-
-
-
-

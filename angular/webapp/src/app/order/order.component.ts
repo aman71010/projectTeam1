@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../Models/Order';
 import { OrderService } from 'src/OrderService/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaginatePipe } from 'ngx-pagination';
 
 @Component({
   selector: 'app-order',
@@ -17,7 +18,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit()
    {
-    this.svc.getOrdersByEmail("mehul@gmail.com").subscribe((data:any)=>
+    this.svc.getOrdersByEmail("mehul@example.com").subscribe((data:any)=>
     {
       console.log(data);
       this.orders=data;

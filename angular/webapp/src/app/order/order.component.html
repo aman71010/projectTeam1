@@ -31,7 +31,7 @@
 
 
             <div *ngFor="let item of order.items">
-              <p  style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;height: 22px;margin-top: -10px; margin-left: -240px;">Butterchicken x{{item.quantity }}</p>
+              <p  style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;height: 22px;margin-top: -10px; margin-left: -240px;">{{item.name}}x{{item.quantity }}</p>
             </div>
             <p style="background-color: #ffffff; color: #000000; padding: 5px;height: 22px ;margin-top: -10px; margin-left: -240px;">Price: ₹{{ order.price }}</p>
             <p style="background-color: #ffffff; color: #761ff8; padding: 5px; height: 22px;margin-top: -10px; margin-left: -240px;">OrderDate: {{ order.createdAt | date}}</p>

@@ -1,6 +1,6 @@
 import { Component,OnInit} from '@angular/core';
 import { MenuItem } from '../Models/MenuItem';
-import { CheckoutService } from '../Services/checkoutService/checkout.service';
+
 import { MenuService } from '../services/MenuService/menu.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { OrderItem } from '../Models/OrderItem';
 import { Order } from '../Models/Order';
 import { Subscriptiondata } from '../Models/Subscriptiondata';
+import { CheckoutService } from '../services/checkoutService/checkout.service';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',

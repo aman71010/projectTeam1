@@ -28,7 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
-import {NgxPaginationModule} from 'ngx-pagination';
+// import {NgxPaginationModule} from 'ngx-pagination';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
@@ -52,6 +52,8 @@ import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.compone
 import { PaymentsComponent } from './payments/payments.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { SubscriptionformComponent } from './subscriptionform/subscriptionform.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -70,9 +72,10 @@ import { HomeComponent } from './home/home.component';
     PaymentsComponent,
     HeaderComponent,
     HomeComponent,
+    SubscriptionformComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,    NgxPaginationModule,
+    BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,   
    
     AppRoutingModule,MatListModule,
      MatChipsModule, MatCardModule,
@@ -84,7 +87,8 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
+     NgxPaginationModule,
+    MatSnackBarModule,
     MatSnackBarModule,
     MatIconModule,
     MatSidenavModule
