@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SubService } from './sub-.service';
+import { Router } from '@angular/router';
 
 declare var Razorpay: any;
 @Component({
@@ -8,15 +9,14 @@ declare var Razorpay: any;
   styleUrls: ['./subscription.component.css']
 })
 export class SubscriptionComponent {
-  constructor(private Obj : SubService){}
+
+  constructor(private Obj : SubService , private router: Router ){}
   order: any = {
     "email": "string",
     "phoneNumber": "string",
     "amount": 200000,
   }
-  OrderRequest() {
-    this.Obj.OrderRequest(this.order).subscribe(res => console.log(res))
-  }
+ 
   
   proceedTopay(amount:number)
   {
@@ -24,12 +24,12 @@ export class SubscriptionComponent {
       description:'Razorpay Payment',
       currency:'INR',
       amount: amount*100,
-      name: 'Luncksy',
+      name: 'Lunchsy',
       key:'rzp_test_pmZ9sPkab2DGdZ',
       image:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Ffood-delivery&psig=AOvVaw2sReYVrBuZs7ulUKL8mlqF&ust=1697090590125000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIitjKap7YEDFQAAAAAdAAAAABAE',
       prefill:{
         name:'bilwaraj',
-        email:'bilwa@gmail.com',
+        email:'leecopper@gmail.com',
         phone: '11234567809'
       },
       theme: {
@@ -44,6 +44,7 @@ export class SubscriptionComponent {
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      this.router.navigate(['/menu']);
 
     }
 
@@ -54,6 +55,31 @@ export class SubscriptionComponent {
     rzp.on('payment.success', successCallback); // Set the success callback
     rzp.on('payment.failed', failureCallback); // Set the failure callback
     rzp.open();
+  }
+
+  createSubscription(option: number) {
+    let subscriptionData: any;
+
+    if (option === 0) {
+      subscriptionData = {
+        name: "Basic Subscription",
+        price: 2000,
+      };
+    } else if (option === 1) {
+      subscriptionData = {
+        name: "Silver Subscription",
+        price: 5000,
+      };
+    } else if (option === 2) {
+      subscriptionData = {
+        name: "Gold Subscription",
+        price: 7000, 
+      }
+    }
+
+    this.Obj.createSubscription(subscriptionData).subscribe((res) => {
+      console.log("Subscription created:", res);
+    });
   }
 
   }

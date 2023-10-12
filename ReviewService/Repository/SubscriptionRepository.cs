@@ -7,7 +7,7 @@ namespace SubscriptionService.Repository
     public class SubscriptionRepository : ISubscriptionRepository
     {
         private readonly SubscriptionContext context;
-        public SubscriptionRepository(SubscriptionContext context) 
+        public SubscriptionRepository(SubscriptionContext context)
         {
             this.context = context;
         }
@@ -16,24 +16,24 @@ namespace SubscriptionService.Repository
             context.subscriptions.InsertOne(subscription);
         }
 
-        public void DeleteSubscription(int id)
+        public void DeleteSubscription(string UserId)
         {
-            context.subscriptions.DeleteOne(t => t.Id == id);
+            context.subscriptions.DeleteOne(t => t.UserId == UserId);
         }
 
-        public Subscription GetSubscription(int id)
+        public Subscription GetSubscription(string UserId)
         {
-            return context.subscriptions.Find(t=>t.Id==id).FirstOrDefault();
+            return context.subscriptions.Find(t => t.UserId == UserId).FirstOrDefault();
         }
 
-        public List<Subscription> GetSubscription()
+        public List<Subscription> GetSubscriptions()
         {
-            return context.subscriptions.Find(t=>true).ToList();
+            return context.subscriptions.Find(t => true).ToList();
         }
 
-        public void UpdateSubscription(int id, Subscription subscription)
+        public void UpdateSubscription(string UserId, Subscription subscription)
         {
-            var filter = Builders<Subscription>.Filter.Where(t=> t.Id == id);
+            var filter = Builders<Subscription>.Filter.Where(t => t.UserId == UserId);
             var update = Builders<Subscription>.Update.Set(t => t.UserId, subscription.UserId)
                 .Set(t => t.Type, subscription.Type)
                 .Set(t => t.StartDate, subscription.StartDate)

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { MenuService } from '../Services/MenuService/menu.service';
+import { MenuService } from '../services/MenuService/menu.service';
 import { MenuItem } from '../Models/MenuItem';
-import { CheckoutService } from '../Services/checkoutService/checkout.service';
+import { CheckoutService } from '../services/checkoutService/checkout.service';
 
 
 @Component({
