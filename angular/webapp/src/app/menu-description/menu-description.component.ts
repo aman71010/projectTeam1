@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { MenuService } from '../services/MenuService/menu.service';
 import { MenuItem } from '../Models/MenuItem';
-import { CheckoutService } from '../Services/checkoutService/checkout.service';
+import { CheckoutService } from '../services/checkoutService/checkout.service';
 
 
 @Component({

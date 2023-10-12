@@ -27,6 +27,7 @@
       
       <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
       <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
+      <div class="order-summary-line"></div>
       <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
     </div>
  
