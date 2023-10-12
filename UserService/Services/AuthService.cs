@@ -56,7 +56,9 @@ namespace UserService.Services
 
             var response = new
             {
-                token = new JwtSecurityTokenHandler().WriteToken(token)
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                userEmail = user.UserEmailId,
+                role = user.UserRole.ToString()
             };
 
             return JsonConvert.SerializeObject(response);

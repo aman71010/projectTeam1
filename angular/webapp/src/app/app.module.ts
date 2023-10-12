@@ -27,13 +27,14 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 import { PaymentsComponent } from './payments/payments.component';
+import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -51,6 +52,7 @@ import { HomeComponent } from './home/home.component';
     SubscriptionComponent,
     AddMenuItemComponent,
     PaymentsComponent,
+    HeaderComponent,
     HomeComponent,
   ],
   imports: [
@@ -91,7 +93,9 @@ import { HomeComponent } from './home/home.component';
     MatSelectModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

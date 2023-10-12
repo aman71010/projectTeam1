@@ -1,0 +1,33 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+span{
+  margin: 0 8px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+span:first-child{
+  font-size: 40px;
+  align-self: center;
+  padding-bottom: 8px;
+}
+
+.active{
+  background-color: rgb(229, 224, 224);
+  border-radius: 5px;
+}
+
+.material-icons{
+  position: absolute;
+  bottom: 5px;
+  right: -10px;
+}
+
+.hamburger{
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}

@@ -11,13 +11,14 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './menu/menu.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
+import { HomeComponent } from './home/home.component';
+  
 import payments from 'razorpay/dist/types/payments';
 import { PaymentsComponent } from './payments/payments.component';
-import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path:"", component: HomeComponent},
   {path:"register",component:RegisterComponent},
   {path:"login",component:LoginComponent},
   {path:'profile',component:ProfileComponent},
