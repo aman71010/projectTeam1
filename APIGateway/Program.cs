@@ -27,8 +27,11 @@ builder.Services.AddAuthentication(options =>
     IssuerSigningKey = key
 });
 
+builder.Services.AddCors(option => option.AddPolicy("ocelot", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
+
 var app = builder.Build();
 
+app.UseCors("ocelot");
 app.UseAuthentication();
 app.UseAuthorization();
 

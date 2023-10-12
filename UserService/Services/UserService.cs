@@ -35,16 +35,17 @@ namespace UserService.Services
                     MobileNo = user.MobileNo
                 };
 
-                //ProduceMessage(newUser);
+                ProduceMessage(newUser.UserEmailId);
 
                 userRepository.CreateUser(newUser);
             }
                 
         }
 
-        public async Task ProduceMessage(User user)
+        public async Task ProduceMessage(string email)
         {
-            string message = JsonConvert.SerializeObject(user);
+            //string message = JsonConvert.SerializeObject(email);
+            string message = email;
 
             ProducerConfig pconfig = new ProducerConfig
             {

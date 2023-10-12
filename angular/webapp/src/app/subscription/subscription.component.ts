@@ -15,9 +15,7 @@ export class SubscriptionComponent {
     "phoneNumber": "string",
     "amount": 200000,
   }
-  OrderRequest() {
-    this.Obj.OrderRequest(this.order).subscribe(res => console.log(res))
-  }
+ 
   
   proceedTopay(amount:number)
   {
@@ -30,7 +28,7 @@ export class SubscriptionComponent {
       image:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Ffood-delivery&psig=AOvVaw2sReYVrBuZs7ulUKL8mlqF&ust=1697090590125000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIitjKap7YEDFQAAAAAdAAAAABAE',
       prefill:{
         name:'bilwaraj',
-        email:'bilwa@gmail.com',
+        email:'leecopper@gmail.com',
         phone: '11234567809'
       },
       theme: {
@@ -45,6 +43,7 @@ export class SubscriptionComponent {
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      this.router.navigate(['/profile']);
 
     }
 
