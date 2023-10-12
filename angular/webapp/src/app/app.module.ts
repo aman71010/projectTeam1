@@ -35,6 +35,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { HomeComponent } from './home/home.component';
+import { SubscriptionformComponent } from './subscriptionform/subscriptionform.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { HomeComponent } from './home/home.component';
     AddMenuItemComponent,
     PaymentsComponent,
     HomeComponent,
+    SubscriptionformComponent,
   ],
   imports: [
     BrowserModule,

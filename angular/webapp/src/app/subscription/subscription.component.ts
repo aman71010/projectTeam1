@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SubService } from './sub-.service';
+import { AuthService } from '../services/auth.service';
 
 declare var Razorpay: any;
 @Component({
@@ -8,7 +9,7 @@ declare var Razorpay: any;
   styleUrls: ['./subscription.component.css']
 })
 export class SubscriptionComponent {
-  constructor(private Obj : SubService){}
+  constructor(private Obj : SubService,private userid:AuthService){}
   order: any = {
     "email": "string",
     "phoneNumber": "string",
@@ -54,6 +55,31 @@ export class SubscriptionComponent {
     rzp.on('payment.success', successCallback); // Set the success callback
     rzp.on('payment.failed', failureCallback); // Set the failure callback
     rzp.open();
+  }
+
+  createSubscription(option: number) {
+    let subscriptionData: any;
+
+    if (option === 0) {
+      subscriptionData = {
+        name: "Basic Subscription",
+        price: 2000,
+      };
+    } else if (option === 1) {
+      subscriptionData = {
+        name: "Silver Subscription",
+        price: 5000,
+      };
+    } else if (option === 2) {
+      subscriptionData = {
+        name: "Gold Subscription",
+        price: 7000, 
+      }
+    }
+
+    this.Obj.createSubscription(subscriptionData).subscribe((res) => {
+      console.log("Subscription created:", res);
+    });
   }
 
   }
