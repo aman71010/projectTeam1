@@ -1,0 +1,27 @@
+.my{
+  margin: 20px 0;
+}
+.paginator{
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
+
+.paginator /deep/ .ngx-pagination .current {
+  background: #e63946;
+  border-radius: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.paginator /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: #d4d4d4;
+  border-radius: 3px;
+  padding-left: 11px;
+  padding-right: 11px;
+  text-decoration: none;
+}
+
+.paginator /deep/ .ngx-pagination a:focus, .ngx-pagination button:focus {
+  outline: none;
+  background: #d4d4d4;
+}

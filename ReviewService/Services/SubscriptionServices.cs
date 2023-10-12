@@ -13,8 +13,8 @@ namespace SubscriptionService.Service
         }
         public void AddSubscription(Subscription subscription)
         {
-            var res = repo.GetSubscription(subscription.Id);
-            if(res != null)
+            var res = repo.GetSubscription(subscription.UserId);
+            if (res != null)
             {
                 throw new SubscriptionAlreadyExistException($"Subscription with id {subscription.Id} already exist");
             }
@@ -24,47 +24,47 @@ namespace SubscriptionService.Service
             }
         }
 
-        public void DeleteSubscription(int id)
+        public void DeleteSubscription(string UserId)
         {
-            var res = repo.GetSubscription(id);
-            if(res != null)
-            {
-                repo.DeleteSubscription(id);
-            }
-            else
-            {
-                throw new SubscriptionDoesNotExistException($"Subscription with id {id} does not exist");
-            }
-        }
-
-        public Subscription GetSubscription(int id)
-        {
-            var res = repo.GetSubscription(id);
+            var res = repo.GetSubscription(UserId);
             if (res != null)
             {
-                return repo.GetSubscription(id);
+                repo.DeleteSubscription(UserId);
             }
             else
             {
-                throw new SubscriptionDoesNotExistException($"Trainee with id {id} does not exist");
+                throw new SubscriptionDoesNotExistException($"Subscription with UserId {UserId} does not exist");
             }
         }
 
-        public List<Subscription> GetSubscription()
+        public Subscription GetSubscription(string UserId)
         {
-            return repo.GetSubscription();
-        }
-
-        public void UpdateSubscription(int id, Subscription subscription)
-        {
-            var res = repo.GetSubscription(id);
-            if(res != null)
+            var res = repo.GetSubscription(UserId);
+            if (res != null)
             {
-                repo.UpdateSubscription(id, subscription);
+                return repo.GetSubscription(UserId);
             }
             else
             {
-                throw new SubscriptionDoesNotExistException($"Subscription with id {id} does not exists");
+                throw new SubscriptionDoesNotExistException($"Trainee with UserId {UserId} does not exist");
+            }
+        }
+
+        public List<Subscription> GetSubscriptions()
+        {
+            return repo.GetSubscriptions();
+        }
+
+        public void UpdateSubscription(string UserId, Subscription subscription)
+        {
+            var res = repo.GetSubscription(UserId);
+            if (res != null)
+            {
+                repo.UpdateSubscription(UserId, subscription);
+            }
+            else
+            {
+                throw new SubscriptionDoesNotExistException($"Subscription with UserId {UserId} does not exists");
             }
         }
     }
