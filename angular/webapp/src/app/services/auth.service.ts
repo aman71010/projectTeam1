@@ -20,5 +20,26 @@ export class AuthService {
     const body = { userEmailId, newPassword };
     return this.http.put(this.forgotPasswordUrl, body);
   }
+
+  logout(){
+    const token = this.GetToken();
+    if(!token){
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      localStorage.removeItem('email');
+    }
+  }
+
+  GetToken(){
+    return localStorage.getItem('token');
+  }
+
+  GetEmail(){
+    return localStorage.getItem('email');
+  }
+
+  GetRole(){
+    return localStorage.getItem('role');
+  }
  
 }

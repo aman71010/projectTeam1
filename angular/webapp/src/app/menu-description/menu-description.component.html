@@ -23,7 +23,7 @@
     <h3>{{menuItem.name}}</h3>
     <p>{{menuItem.description}}</p><br>
     <p>{{menuItem.category}}</p>
-    <p style="color: red;">&#8377; 199</p>
+    <p style="color: red;">&#8377; {{menuItem.price}}</p>
     <div class="quantity-control">
       <button (click)="decrementQuantity()">-</button>
       <input type="number" [(ngModel)]="quantity" min="1" />
@@ -31,14 +31,14 @@
       <button (click)="addToCart(); onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
       
   
-    </div>
+     <!-- </div>
     <div class="content">
       <h3>{{menuItem.name}}</h3>
       <p>{{menuItem.description}}</p><br>
       <p>{{menuItem.category}}</p>
        <h4><strong>xyz</strong></h4>
       <p>sertghgfdsaqwert</p><br>
-      <p class="custom-font">sdrfghjbvc</p> -->
+      <p class="custom-font">sdrfghjbvc</p>
       <p style="color: red;">&#8377; 69</p>
       <div class="quantity-control">
         <button (click)="decrementQuantity()">-</button>
@@ -46,7 +46,7 @@
         <button (click)="incrementQuantity()">+</button>
         <button (click)="addToCart() ; onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
         
-      </div>
+      </div> -->
    
     </div>
     <div class="reviews">
@@ -71,7 +71,6 @@
     <button class="checkout-button">Checkout</button>
   </div><br> -->
 <!-- </div> -->
-------------------------------------------
   <!-- <div class="content">
      <h3>{{menuItem.name}}</h3>
     <p>{{menuItem.description}}</p><br>

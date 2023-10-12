@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button (click)="clickMenu()" class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button  class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon class="hamburger">menu</mat-icon>
   </button>
   <span>Lunchsy</span>
@@ -9,8 +9,9 @@
   <span><button mat-mini-fab disabled aria-label="Example icon button with a home icon">
     {{avatar}}
   </button></span>
+  
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <span class="material-icons" style="color: rgb(84, 84, 84); font-size: 30px;">logout</span>
+    <span class="material-icons" style="color: rgb(84, 84, 84); font-size: 30px;" (click)="logout()">logout</span>
   </button>
 </mat-toolbar>
 
