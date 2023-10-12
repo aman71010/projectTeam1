@@ -1,47 +1,49 @@
 <header>
   <mat-card>
-    <mat-card-content style="text-align: center;">
-      <h2 style="margin-bottom: 10px;">Order history</h2>
+    <mat-card-content style="text-align: left;">
+      <h2 >Order history</h2>
     </mat-card-content>
   </mat-card>
 </header>
 
-<div class="row my-orders-card d-flex" >
+<div class="row my-orders-card d-flex">
   <div class="col justify-content-space-around">
-    
-  
-  <mat-card class="mb-2" style="width: 500px; border: 1px solid #000000; margin-bottom: 10px; margin-right: 10px; margin-top: 10px; margin-left: 10px;" *ngFor="let order of orders">
-    <mat-card-content>
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img mat-card-image src="https://static.toiimg.com/thumb/53205522.cms?imgsize=302803&width=120&height=120" alt="butterchicken" class="img-fluid rounded-start mt-2" />
+
+
+    <mat-card class="mb-2"
+      style=" border: 1px solid #000000;  margin-right: 10px; margin-top: 10px; margin-left: 10px; height: 150px;"
+      *ngFor="let order of orders | paginate :{itemsPerPage : 4,currentPage:p}">
+      <mat-card-content>
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img mat-card-image
+              src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              alt="butterchicken" height="145px" width=250px style="margin-top: -15px; margin-left: -15px;" />
+          </div>
+          <div class="col-md-8">
+            <div class="row my-orders-card d-flex my-card-container">
+              <p style="background-color: #C0C0C0;  color: #e63946; padding: 5px; height: 23px;margin-top: -10px; margin-left: -225px;">OrderID: {{order.order_Id }}</p>
+              <p  style="background-color: #C0C0C0; color: #e63946; padding: 5px;height: 23px ;margin-top: -10px; margin-left: -225px;">Status: {{ order.status}}</p>
+            </div>
+
+
+
+
+
+            <div *ngFor="let item of order.items">
+              <p  style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;height: 22px;margin-top: -10px; margin-left: -240px;">Butterchicken x{{item.quantity }}</p>
+            </div>
+            <p style="background-color: #ffffff; color: #000000; padding: 5px;height: 22px ;margin-top: -10px; margin-left: -240px;">Price: ₹{{ order.price }}</p>
+            <p style="background-color: #ffffff; color: #761ff8; padding: 5px; height: 22px;margin-top: -10px; margin-left: -240px;">OrderDate: {{ order.createdAt | date}}</p>
+
+          </div>
         </div>
-        <div class="col-md-8">
-          
-          <mat-card class="mb-2" style="background-color: #C0C0C0; border: 0px;">
-            <mat-card-content>
-              <ul class="list-group list-group-light border :0px">
-                <li class="list-group-item px-3" style="background-color: #C0C0C0; color: #e63946; padding: 10px;">OrderID:{{ order.order_Id }}</li>
-                <li class="list-group-item px-3" style="background-color: #C0C0C0; color: #e63946; padding: 10px;">Status: {{ order.status }}</li>
-              </ul>
-            </mat-card-content>
-          </mat-card>
-          
-          
-          <mat-card class="mb-2" style="width: 295px; background-color: #ffffff; margin-left: auto; border: 0px;">
-            <mat-card-content>
-              <ul class="list-group list-group-light border :0px">
-                <div *ngFor="let item of order.items">
-                  <li class="list-group-item px-3" style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;">{{item.quantity }}*itemname</li>
-                </div>
-                <li class="list-group-item px-3" style="background-color: #ffffff; color: #000000; padding: 5px;">Price: ₹{{ order.price }}</li>
-                <li class="list-group-item px-3" style="background-color: #ffffff; color: #000000; padding: 5px;">OrderDate: {{ order.createdAt | date}}</li>
-              </ul>
-            </mat-card-content>
-          </mat-card>
-        </div>
+      </mat-card-content>
+    </mat-card>
+    <div id="page-nav" class=" row my">
+      <div class="col d-flex justify-content-center">
+        <pagination-controls class="paginator" (pageChange)="p=$event"></pagination-controls>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
   </div>
 </div>
