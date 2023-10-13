@@ -57,6 +57,7 @@ namespace UserService.Services
             var response = new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiresIn = 40*60,
                 userEmail = user.UserEmailId,
                 role = user.UserRole.ToString()
             };

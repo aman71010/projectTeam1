@@ -28,9 +28,7 @@ export class LoginComponent {
         next:(res:any)=>{
           const data: any = JSON.parse(JSON.stringify(res));
           console.log(data);
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("role", data.role);
-          localStorage.setItem("email", data.userEmail);
+          this.auth.handleAuthentication(data.userEmail, data.role, data.token, +data.expiresIn);
           this.openSnackBar("User logged in successfully");
           this.router.navigate(['/menu']);
         },

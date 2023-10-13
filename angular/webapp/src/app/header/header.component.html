@@ -1,17 +1,20 @@
-<mat-toolbar>
-  <button mat-icon-button  class="example-icon" aria-label="Example icon-button with menu icon">
+<mat-toolbar style="background-color: #C21E56; color: white" class="navbar">
+  <button *ngIf="isAuthenticated" mat-icon-button  class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon class="hamburger">menu</mat-icon>
   </button>
-  <span>Lunchsy</span>
+  <span class="logo nav-logo">Lunchsy</span>
   <span class="example-spacer"></span>
-  <span routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="register">Register</span>
-  <span routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="login">Login</span>
-  <span><button mat-mini-fab disabled aria-label="Example icon button with a home icon">
-    {{avatar}}
-  </button></span>
+  <span *ngIf="!isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="register">Register</span>
+  <span *ngIf="!isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="login">Login</span>
   
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <span class="material-icons" style="color: rgb(84, 84, 84); font-size: 30px;" >logout</span>
+  <span *ngIf="isAuthenticated "><button class= "avatar-text" mat-mini-fab disabled aria-label="Example icon button with a home icon">
+    {{avatarText}}
+  </button></span>
+
+  <!-- <div *ngIf="isAuthenticated && isAvatarImage" class="Avatar" [ngStyle]="{'backgroundImage': getImage()}"></div> -->
+  
+  <button *ngIf="isAuthenticated" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="onLogout()">
+    <span class="material-icons" style="color: white; font-size: 30px;">logout</span>
   </button>
 </mat-toolbar>
 
