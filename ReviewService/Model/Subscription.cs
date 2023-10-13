@@ -8,8 +8,9 @@ namespace SubscriptionService.Model
 {
     public enum SubscriptionType
     {
-        Monthly,
-        ThreeMonths
+        Basic,
+        Silver,
+        Gold
     }
 
     public enum PaymentStatus
