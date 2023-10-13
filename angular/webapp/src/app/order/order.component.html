@@ -1,45 +1,32 @@
 <header>
   <mat-card>
-    <mat-card-content style="text-align: left;">
-      <h2 >Order history</h2>
+    <mat-card-content style="text-align: left; max-width: fit-content;">
+      <h2>Order history</h2>
     </mat-card-content>
   </mat-card>
 </header>
 
-<div class="row my-orders-card d-flex">
-  <div class="col justify-content-space-around">
-
-
-    <mat-card class="mb-2"
-      style=" border: 1px solid #000000;  margin-right: 10px; margin-top: 10px; margin-left: 10px; height: 150px;"
-      *ngFor="let order of orders | paginate :{itemsPerPage : 4,currentPage:p}">
-      <mat-card-content>
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img mat-card-image
-              src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-              alt="butterchicken" height="145px" width=250px style="margin-top: -15px; margin-left: -15px;" />
+<div class="container">
+  <div class="card mb-3" style="height: 150px;"
+    style=" border: 1px solid #000000;  margin-right: 5px; margin-top: 10px; margin-left: 5px; height: 150px;" *ngFor="let order of orders | paginate :{itemsPerPage : 4,currentPage:p}">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img
+          src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          class="img-fluid rounded-start" style="width: 250px; height: 148px;" alt="...">
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h4 class="card-title" style="background-color: #ffffff;  color: #e63946; padding: 5px; height: 23px;margin-top: -10px;">OrderID:{{order.order_Id }}</h4>
+          <p class="card-text"
+            style="background-color: #ffffff; color: #e63946; padding: 5px;height: 23px ;margin-top: -10px;">Status: {{order.status}}</p>
+          <div *ngFor="let item of order.items">
+            <p style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;height: 22px;margin-top: -10px;">{{item.name}}  x{{item.quantity }}</p>
           </div>
-          <div class="col-md-8">
-            <div class="row my-orders-card d-flex my-card-container">
-              <p style="background-color: #C0C0C0;  color: #e63946; padding: 5px; height: 23px;margin-top: -10px; margin-left: -225px;">OrderID: {{order.order_Id }}</p>
-              <p  style="background-color: #C0C0C0; color: #e63946; padding: 5px;height: 23px ;margin-top: -10px; margin-left: -225px;">Status: {{ order.status}}</p>
-            </div>
-
-
-
-
-
-            <div *ngFor="let item of order.items">
-              <p  style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;height: 22px;margin-top: -10px; margin-left: -240px;">{{item.name}}x{{item.quantity }}</p>
-            </div>
-            <p style="background-color: #ffffff; color: #000000; padding: 5px;height: 22px ;margin-top: -10px; margin-left: -240px;">Price: ₹{{ order.price }}</p>
-            <p style="background-color: #ffffff; color: #761ff8; padding: 5px; height: 22px;margin-top: -10px; margin-left: -240px;">OrderDate: {{ order.createdAt | date}}</p>
-
-          </div>
+          <p style="background-color: #ffffff; color: #000000; padding: 5px;height: 22px ;margin-top: -10px; ">Price:₹{{ order.price }}</p>
+          <p style="background-color: #ffffff; color: #761ff8; padding: 5px; height: 22px;margin-top: -10px;">OrderDate:{{ order.createdAt | date}}</p>
         </div>
-      </mat-card-content>
-    </mat-card>
+     
      <div id="page-nav" class=" row my">
       <div class="col d-flex justify-content-center">
         <pagination-controls class="paginator" (pageChange)="p=$event"></pagination-controls>

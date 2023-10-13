@@ -126,6 +126,7 @@ proceedTopay(amount:number)
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      
     }
 
     const failureCallback = (e: any) => {
