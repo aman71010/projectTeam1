@@ -4,7 +4,6 @@ import { User } from '../../Models/User/User';
 import { NameUpdate } from '../../Models/User/NameUpdate';
 import { MobileNoUpdate } from '../../Models/User/MobileNoUpdate';
 import { AddressUpdate } from '../../Models/User/AddressUpdate';
-import { ImageUpdate } from '../../Models/User/ImageUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +12,12 @@ export class UserService {
 
   constructor(private httpsvc:HttpClient) { }
 
-  FetchUser(){
-    return this.httpsvc.get("https://localhost:7030/api/User/get/aman%40gmail.com");
+  FetchUser(email :any){
+    return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
   }
 
-  FetchAddress(){
-    return this.httpsvc.get("https://localhost:7030/api/User/get/address/aman%40gmail.com");
+  FetchAddress(email:any){
+    return this.httpsvc.get(`https://localhost:7030/api/User/get/address/${email}`);
   }
 
   updateName(updateNameobj:NameUpdate)
@@ -36,9 +35,9 @@ export class UserService {
     return this.httpsvc.put("https://localhost:7030/api/User/update/Address",updateAddressobj);
   }
 
-  updateImage(updateImageobj:ImageUpdate)
+  updateImage(formData: any)
   {
-    return this.httpsvc.put("https://localhost:7030/api/User/update/image",updateImageobj);
+    return this.httpsvc.put("https://localhost:7030/api/User/update/image",formData);
   }
   
 }

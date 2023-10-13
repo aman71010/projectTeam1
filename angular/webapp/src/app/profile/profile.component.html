@@ -4,39 +4,38 @@
             <div id="profile-img-box">
                 <img src="../../assets/profile.jpg" *ngIf="!user.userImage && !isImageSelected">
 
-                <form #imageform="ngForm" (ngSubmit)="SaveImage(imageform)">
+                <form>
                 <div id="UserImgInput">
                     <img [src]="profileImg" *ngIf="isImageSelected" alt="image">
                     <img [src]="getImage(user.userImage)" *ngIf="user.userImage && !isImageSelected">
+
                     <label for="userImage" *ngIf="isImageEditVisible">
                         <i class="bi bi-pencil-square"></i>
                     </label>
 
-                    <input #userEmailId="ngModel" type="email"  name="userEmailId" id="email"
-                        matInput [(ngModel)]="user.userEmailId" hidden>
-                    <input #userImage="ngModel" type="file" name="userImage" id="userImage" 
-                    [(ngModel)]="updateImageObj.userImage" [readonly]="isImageEditVisible" (change)="onFileSelected($event)">
+                    <input type="file" name="userImage" id="userImage" 
+                     [readonly]="isImageEditVisible" (change)="onFileSelected($event)">
 
-                    <button *ngIf="!isImageEditVisible">Save</button>
-                    
+                    <button *ngIf="!isImageEditVisible" (click)="SaveImage()">Save</button>  
                 </div>
                 </form>
             </div>
 
-            <div id="extrainfo">
+            <div id="extrainfo" *ngIf="user.userEmailId">
                 <h4>My Orders</h4>
                 <h4>My Subscription</h4>
                 <h4>Change Password</h4>
+                <h4>Logout</h4>
             </div>
         </div>
-        <div id="profile-info">
+        <div id="profile-info" *ngIf="user.userEmailId">
             <ul>
                 <form #nameform="ngForm" id="col" (ngSubmit)="SaveName(nameform)">
                     <div id="row">
-                        <input #userEmailId="ngModel" type="email" name="userEmailId"
+                        <input #userEmailId="ngModel" type="email" name="UserEmailId"
                             id="email" [(ngModel)]="user.userEmailId" hidden>
-                        <input #name="ngModel" type="text" name="name" id="name"
-                            placeholder="Enter the name" [(ngModel)]="updateNameObj.name || user.name"
+                        <input #name="ngModel" type="text" name="Name" id="name"
+                            placeholder="Enter the name" [(ngModel)]="user.name"
                             [readonly]="isNameEditVisible" required>
                         <i class="bi bi-pencil-square" id="EditName" *ngIf="isNameEditVisible" (click)="EditName()"></i>
 
@@ -50,19 +49,19 @@
                 <form id="col">
                     <div id="row">
                         <i class="fa-solid fa-envelope fa-2xl" style="color: #e63946;"></i>
-                        <input type="email" name="userEmailId"
+                        <input type="email" name="UserEmailId"
                             id="email" [(ngModel)]="user.userEmailId" [readonly]="true">
                     </div>
                 </form>
 
                 <form #MobileNoform="ngForm" id="col" (ngSubmit)="SaveMobileNo(MobileNoform)">
                     <div id="row">
-                        <input #userEmailId="ngModel" type="email" name="userEmailId"
+                        <input #userEmailId="ngModel" type="email" name="UserEmailId"
                             id="email" [(ngModel)]="user.userEmailId" hidden>
                         <i class="fa-solid fa-phone fa-2xl" style="color: #e63946;"></i>
-                        <input #mobileNo="ngModel" type="number" name="mobileNo" id="mobileNo"
-                            matInput placeholder="Enter the MobileNo"
-                            [(ngModel)]="updateMobileNoObj.mobileNo || user.mobileNo" [readonly]="isMobileNoEditVisible"
+                        <input #mobileNo="ngModel" type="number" name="MobileNo" id="mobileNo"
+                            placeholder="Enter the MobileNo"
+                            [(ngModel)]="user.mobileNo" [readonly]="isMobileNoEditVisible"
                             required>
                             
                         <i class="bi bi-pencil-square" id="EditMobileNo" *ngIf="isMobileNoEditVisible"
@@ -79,21 +78,21 @@
 
                 </form>
 
-                <form #addressform="ngForm" id="col" (ngSubmit)="SaveAddress(addressform)"  *ngIf="address.userEmailId && user.userEmailId">
+                <form #addressform="ngForm" id="col" (ngSubmit)="SaveAddress(addressform)"  *ngIf="user.userEmailId">
                     <div id="row">
                         <div id="col">
-                            <h4 id="address">Address : </h4>
-                            <div id="AddressForm" *ngIf="!isAddAddressVisible">
+                            <h4 id="address">Address</h4>
+                            <div id="AddressForm" *ngIf="address.userEmailId || !isAddAddressVisible">
 
                                 <div id="col">
                                     <input #userEmailId="ngModel" type="email"
-                                        name="userEmailId" id="email" matInput [(ngModel)]="user.userEmailId" hidden>
+                                        name="UserEmailId" id="email" [(ngModel)]="user.userEmailId" hidden>
                                 </div>
 
                                 <div id="col">
-                                    <input #houseNo="ngModel" type="text" name="houseNo"
+                                    <input #houseNo="ngModel" type="text" name="HouseNo"
                                         id="houseNo" placeholder="Enter the houseNo"
-                                        [(ngModel)]="updateAddressObj.houseNo || (address && address.houseNo) || newAdd.houseNo"
+                                        [(ngModel)]="(address && address.houseNo) || newAdd.houseNo"
                                         [readonly]="isAddressEditVisible" required>
                                     <p *ngIf="houseNo.dirty && houseNo.errors?.['required']" class="text-danger">HouseNo
                                         should not
@@ -101,9 +100,9 @@
                                 </div>
                                 
                                 <div id="col">
-                                    <input #landmark="ngModel" type="text" name="landmark"
+                                    <input #landmark="ngModel" type="text" name="Landmark"
                                         id="landmark" placeholder="Enter the landmark"
-                                        [(ngModel)]="updateAddressObj.landmark || (address && address.landmark) || newAdd.landmark"
+                                        [(ngModel)]="(address && address.landmark) || newAdd.landmark"
                                         [readonly]="isAddressEditVisible" required>
                                     <p *ngIf="landmark.dirty && landmark.errors?.['required']" class="text-danger">
                                         Landmark should not
@@ -111,9 +110,9 @@
                                 </div>
 
                                 <div id="col">
-                                    <input #city="ngModel" type="text" name="city" id="city"
+                                    <input #city="ngModel" type="text" name="City" id="city"
                                         placeholder="Enter the city"
-                                        [(ngModel)]="updateAddressObj.city || (address && address.city) || newAdd.city"
+                                        [(ngModel)]="(address && address.city) || newAdd.city"
                                         [readonly]="isAddressEditVisible" required>
                                     <p *ngIf="city.dirty && city.errors?.['required']" class="text-danger">City should
                                         not
@@ -121,20 +120,22 @@
                                 </div>
 
                                 <div id="col">
-                                    <input #pincode="ngModel" type="number" name="pincode"
-                                        id="pincode" matInput placeholder="Enter the pincode"
-                                        [(ngModel)]="updateAddressObj.pincode || (address && address.pincode) || newAdd.pincode"
+                                    <input #pincode="ngModel" type="number" name="Pincode"
+                                        id="pincode" placeholder="Enter the pincode"
+                                        [(ngModel)]="(address && address.pincode) || newAdd.pincode"
                                         [readonly]="isAddressEditVisible" required>
                                     <p *ngIf="pincode.dirty && pincode.errors?.['required']" class="text-danger">Pincode
                                         should not
                                         be empty</p>
+                                        <p *ngIf="pincode.dirty && pincode.value.toString() && pincode.value.toString().length !== 6" class="text-danger">Pincode
+                                            should be of 6 digits</p>
                                 </div>
 
 
                                 <div id="col">
-                                    <input #state="ngModel" type="text" name="state" id="state"
-                                        matInput placeholder="Enter the state"
-                                        [(ngModel)]="updateAddressObj.state || (address && address.state) || newAdd.state"
+                                    <input #state="ngModel" type="text" name="State" id="state"
+                                        placeholder="Enter the state"
+                                        [(ngModel)]="(address && address.state) || newAdd.state"
                                         [readonly]="isAddressEditVisible" required>
                                     <p *ngIf="state.dirty && state.errors?.['required']" class="text-danger">State
                                         should not
@@ -142,9 +143,9 @@
                                 </div>
 
                                 <div id="col">
-                                    <input #country="ngModel" type="text" name="country"
-                                        id="country" matInput placeholder="Enter the country"
-                                        [(ngModel)]="updateAddressObj.country || (address && address.country) || newAdd.country"
+                                    <input #country="ngModel" type="text" name="Country"
+                                        id="country" placeholder="Enter the country"
+                                        [(ngModel)]="(address && address.country) || newAdd.country"
                                         [readonly]="isAddressEditVisible" required>
                                     <p *ngIf="country.dirty && country.errors?.['required']" class="text-danger">Country
                                         should not
@@ -154,19 +155,15 @@
                             </div>
                         </div>
 
-                        <i class="bi bi-pencil-square" id="EditAddress" *ngIf="isAddressEditVisible && address"
+                        <i class="bi bi-pencil-square" id="EditAddress" *ngIf="isAddressEditVisible && !isAddAddressVisible"
                             (click)="EditAddress()"></i>
                         <button id="EditAddress"
-                            *ngIf="!isAddressEditVisible && (address || !isAddAddressVisible)">Save</button>
+                            *ngIf="!isAddressEditVisible && !isAddAddressVisible">Save</button>
                         <button id="SaveAddress" *ngIf="isAddAddressVisible" (click)="AddAddress()">Add Address</button>
 
                     </div>
 
                 </form>
-
-                <!-- <button id="chagePassBtn" *ngIf="user.userEmailId">My Orders</button>
-
-                <button id="chagePassBtn" *ngIf="user.userEmailId">Change Password</button> -->
             </ul>
         </div>
     </div>

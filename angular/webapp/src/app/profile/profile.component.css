@@ -20,6 +20,9 @@
     background:#d3d3d369 ;
     padding: 30px 0px;
     box-shadow: 0px 22px 29px #8a8a8a63;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #profile-img-box{
     display: flex;
@@ -66,6 +69,10 @@ form{
     display: flex;
     flex-wrap: wrap;
 }
+#AddressForm input{
+    width: auto;
+    margin-right: 5px;
+}
 h4{
     color: #e63946;
 }
@@ -84,6 +91,7 @@ input{
     padding: 4px 7px;
     background-color: none;
     width: 100%;
+    font-size: 20px;
     color:grey ;
     background-color: transparent;
 }
@@ -103,6 +111,9 @@ button{
     color: white;
     display: inline-block;
 }
+button:hover, label:hover, i:hover{
+    cursor: pointer;
+}
 label{
     position: relative;
     left: 85px;
@@ -116,5 +127,24 @@ label{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    width: 194px;
+    margin-top: 20px;
+}
+#extrainfo h4{
+    color: grey;
+    border-left: 2px solid darkgrey;
+    padding-left: 5px;
+}
+#extrainfo h4:hover{
+    color: #e63946;
+    cursor: pointer;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset;
+    -webkit-text-fill-color: grey;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;
+    -webkit-text-fill-color: grey;
 }

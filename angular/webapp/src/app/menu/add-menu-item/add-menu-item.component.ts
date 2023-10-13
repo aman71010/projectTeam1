@@ -57,6 +57,9 @@ export class AddMenuItemComponent implements OnInit{
     formData.append('Category', menuItemData.Category);
     formData.append('Price', menuItemData.Price);
     formData.append('Image', this.selectedFile);
+
+    console.log(formData);
+
     this.menuService.createMenuItem(formData).subscribe(
       (data: any) => {
         this.openSnackBar("Menu added");
