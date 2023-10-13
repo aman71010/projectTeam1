@@ -21,8 +21,7 @@ namespace UserService.Controllers
         {
             try
             {
-                userService.CreateUser(user);
-                return StatusCode(201, "User registered successfully");
+                return StatusCode(201, userService.CreateUser(user));
             }
             catch (UserAlreadyExistException ex)
             {

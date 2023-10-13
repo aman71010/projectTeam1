@@ -3,9 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../Models/Order';
 import { OrderService } from 'src/OrderService/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
+<<<<<<< HEAD
 import { MenuService } from '../Services/MenuService/menu.service';
 import { Observable, map } from 'rxjs';
 
+=======
+import { PaginatePipe } from 'ngx-pagination';
+>>>>>>> 32a721ea4d9ffe607b233e8f15fb4a58f56f2b84
 
 @Component({
   selector: 'app-order',

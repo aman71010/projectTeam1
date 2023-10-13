@@ -4,10 +4,10 @@ namespace SubscriptionService.Repository
 {
     public interface ISubscriptionRepository
     {
-        Subscription GetSubscription(int id);
-        List<Subscription> GetSubscription();
+        Subscription GetSubscription(string UserId);
+        List<Subscription> GetSubscriptions();
         void AddSubscription(Subscription subscription);
-        void UpdateSubscription(int id, Subscription subscription);
-        void DeleteSubscription(int id);
+        void UpdateSubscription(string UserId, Subscription subscription);
+        void DeleteSubscription(string UserId);
     }
 }

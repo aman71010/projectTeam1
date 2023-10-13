@@ -1,99 +1,87 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SubscriptionService.Service;
-using SubscriptionService.Model;
+﻿using Microsoft.AspNetCore.Mvc;
 using SubscriptionService.Exceptions;
+using SubscriptionService.Model;
+using SubscriptionService.Service;
 
-namespace SubscriptionService.Controllers
+[ApiController]
+[Route("api/subscription")]
+public class SubscriptionController : ControllerBase
 {
-    [ApiController]
-    [Route("api/subscription")] // Base route for all actions in the controller
-    public class SubscriptionController : ControllerBase
+    private readonly ISubscriptionServices svc;
+
+    public SubscriptionController(ISubscriptionServices svc)
     {
-        private readonly ISubscriptionServices svc;
-        public SubscriptionController(ISubscriptionServices svc)
+        this.svc = svc;
+    }
+
+    [HttpPost]
+    [Route("Create")]
+    public IActionResult Create(Subscription subscriptionobj)
+    {
+        try
         {
-            this.svc = svc;
+            svc.AddSubscription(subscriptionobj);
+            return StatusCode(201, "Subscription Added");
         }
-
-
-
-        [HttpPost]
-        [Route("Create")]
-        public IActionResult Create(Subscription subscriptionobj)
+        catch (SubscriptionAlreadyExistException e)
         {
-            try
-            {
-                svc.AddSubscription(subscriptionobj);
-                return StatusCode(201, "Subscription Added");
-            }
-            catch (SubscriptionAlreadyExistException e)
-            {
-                return Conflict(e.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
+            return Conflict(e.Message);
         }
-
-
-
-        [HttpGet]
-        [Route("List")]
-        public IActionResult List()
+        catch (Exception e)
         {
-            return Ok(svc.GetSubscription());
+            return StatusCode(500, e.Message);
         }
+    }
 
+    [HttpGet]
+    [Route("List")]
+    public IActionResult list()
+    {
+        return Ok(svc.GetSubscriptions());
+    }
 
-
-        [HttpGet]
-        [Route("get/{id}")]
-        public IActionResult Get(int id)
+    [HttpGet]
+    [Route("get/{userId}")]
+    public IActionResult Get(string userId)
+    {
+        string decodedUserId = Uri.UnescapeDataString(userId);
+        try
         {
-            try
-            {
-                return Ok(svc.GetSubscription(id));
-            }
-            catch (SubscriptionDoesNotExistException e)
-            {
-                return NotFound(e.Message);
-            }
+            return Ok(svc.GetSubscription(userId));
         }
-
-
-
-        [HttpPut]
-        [Route("update/{id}")]
-        public IActionResult Update(int id, Subscription sobj)
+        catch (SubscriptionDoesNotExistException e)
         {
-            try
-            {
-                svc.UpdateSubscription(id, sobj);
-                return Ok("Subscription Updated");
-            }
-            catch (SubscriptionDoesNotExistException e)
-            {
-                return NotFound(e.Message);
-            }
+            return NotFound(e.Message);
         }
+    }
 
-
-
-        [HttpDelete]
-        [Route("delete/{id}")]
-        public IActionResult Delete(int id)
+    [HttpPut]
+    [Route("update/{userId}")]
+    public IActionResult Update(string userId, Subscription sobj)
+    {
+        try
         {
-            try
-            {
-                svc.DeleteSubscription(id);
-                return Ok("Subscription Deleted");
-            }
-            catch (SubscriptionDoesNotExistException e)
-            {
-                return NotFound(e.Message);
-            }
+            svc.UpdateSubscription(userId, sobj);
+            return Ok("Subscription Updated");
+        }
+        catch (SubscriptionDoesNotExistException e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpDelete]
+    [Route("delete/{userId}")]
+    public IActionResult Delete(string userId)
+    {
+        try
+        {
+            svc.DeleteSubscription(userId);
+            return Ok("Subscription Deleted");
+        }
+        catch (SubscriptionDoesNotExistException e)
+        {
+            return NotFound(e.Message);
         }
     }
 }

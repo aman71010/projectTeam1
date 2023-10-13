@@ -36,12 +36,12 @@
               style="background-color: #e63946; color: white; margin-right: 15px;" 
               (click)="onViewMenuDetails(item.menuItemId)"
               >View Details</button>
-              <button 
-                *ngIf="userType === 'Admin'"
+              <button  -->
+                *ngIf="userType === 'Admin'" 
                 mat-raised-button 
                 style="background-color: #e63946; color: white; margin-right: 15px;" 
                 (click)="onDeleteMenuItem(item.menuItemId, item.category)"
-              >Delete</button>
+               >Delete</button>
             </div>
           </mat-card-actions>
         </mat-card>
