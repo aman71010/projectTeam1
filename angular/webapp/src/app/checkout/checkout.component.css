@@ -7,16 +7,16 @@ header {
   padding: 10px 20px; 
 }
 
+.container {
+  margin-top: 4rem;
+  margin-left: 9rem;
+  margin-bottom: 4rem;
+}
 
 .header-text {
   color: #000; 
   font-weight: bold;
   
-}
-
-.order-summary-line {
-  border-top: 1px solid #ccc;
-  margin: 10px 0; 
 }
 
 

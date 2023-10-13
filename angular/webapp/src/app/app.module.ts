@@ -28,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
+
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
