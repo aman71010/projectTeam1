@@ -4,7 +4,7 @@ namespace UserService.Services
 {
     public interface IUserService
     {
-        void CreateUser(UserRegister user);
+        User CreateUser(UserRegister user);
         User GetUserByUserEmailId(string emailId);
         void UpdateName(string userEmailId, string name);
         void UpdatePassword(string userEmailId, string password);

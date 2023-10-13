@@ -12,4 +12,5 @@ export class OrderService {
     return this.svc.get(`https://localhost:7264/api/Order/getOrdersByEmail/${email}`);
     
   }
+  
 }

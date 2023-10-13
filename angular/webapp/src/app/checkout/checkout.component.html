@@ -1,4 +1,4 @@
-<h1 style="margin-left: 60px;">Order Information</h1>
+<h1 style="margin-left: 4rem;margin-top: 4rem;">Order Information</h1>
 <div class="container">
   <div class="card mb-3">
     <div class="row g-0">
@@ -27,7 +27,6 @@
       
       <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
       <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
-      <div class="order-summary-line"></div>
       <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
     </div>
  

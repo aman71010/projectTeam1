@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from "rxjs";
 import { SidenavbarService } from '../Services/sidenavbar.service';
 import { AuthService } from '../Services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,11 +14,12 @@ import { User } from '../Models/User/User';
 export class HeaderComponent implements OnInit{
   opened?: boolean;
 
-  userEmail?: string;
+  isAuthenticated?: boolean;
+  private userSubs?: Subscription;
 
-  avatar: any = 'AM';
+  user: User = new User();
   avatarText?: any;
-  avatarImage?: any;
+  isAvatarImage?: boolean = false;
 
   constructor(private sideNavbarService: SidenavbarService, 
     private authService: AuthService,
@@ -26,30 +28,33 @@ export class HeaderComponent implements OnInit{
 
   }
 
-  user: any = new User();
+  
 
   ngOnInit(): void {
-    const token = this.authService.GetToken();
-    if(token?.length != 0){
-      this.userService.FetchUser().subscribe((res: any) => {
-        this.user = res;
-        console.log(res);
-        this.avatarImage = this.getImage(res.user.userImage);
-      })
-    }
-    else{
-      this.avatarText = `${this.user.name.split(' ')[0][0]}${this.user.name.split(' ')[1][0]}`}
-    }
-
-    getImage(imageData: any){
-      const imageUrl = 'data:image/jpeg;base64,' + imageData;
-      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-    }
-
-    logout(){
-      this.authService.logout();
-    }
+    this.userSubs = this.authService.loginUser.subscribe(user => {
+      this.isAuthenticated = !!user;
+      if(user){
+        this.userService.FetchUser(user.email).subscribe((res: any) => {
+          this.user = res;
+          this.avatarText = `${this.user.name?.split(' ')[0][0]}${this.user.name?.split(' ')[1][0]}`
+          this.isAvatarImage = this.user.userImage != null;
+        })
+      }
+    })
   }
 
-  
+  getImage(){
+    const imageUrl = 'data:image/jpeg;base64,' + this.user.userImage;
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+
+  getAvatarText(){
+     
+  }
+
+  onLogout(){
+    this.authService.logout();
+  }
+
+}
 

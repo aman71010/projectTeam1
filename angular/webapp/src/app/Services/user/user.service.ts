@@ -5,16 +5,18 @@ import { NameUpdate } from '../../Models/User/NameUpdate';
 import { MobileNoUpdate } from '../../Models/User/MobileNoUpdate';
 import { AddressUpdate } from '../../Models/User/AddressUpdate';
 import { ImageUpdate } from '../../Models/User/ImageUpdate';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  
   constructor(private httpsvc:HttpClient) { }
 
-  FetchUser(){
-    return this.httpsvc.get("https://localhost:7030/api/User/get/aman%40gmail.com");
+  FetchUser(email: string){
+    return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
   }
 
   FetchAddress(){

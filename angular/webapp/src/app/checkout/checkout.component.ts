@@ -1,14 +1,20 @@
 import { Component,OnInit} from '@angular/core';
 import { MenuItem } from '../Models/MenuItem';
 
-import { MenuService } from '../services/MenuService/menu.service';
+import { MenuService } from '../Services/MenuService/menu.service';
+import { CheckoutService } from '../Services/checkoutService/checkout.service';
+<<<<<<< HEAD
+import { MenuService } from '../Services/MenuService/menu.service';
+=======
+
+
+>>>>>>> 32a721ea4d9ffe607b233e8f15fb4a58f56f2b84
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OrderItem } from '../Models/OrderItem';
 import { Order } from '../Models/Order';
 import { Subscriptiondata } from '../Models/Subscriptiondata';
-import { CheckoutService } from '../services/checkoutService/checkout.service';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
@@ -124,6 +130,7 @@ proceedTopay(amount:number)
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      
     }
 
     const failureCallback = (e: any) => {
