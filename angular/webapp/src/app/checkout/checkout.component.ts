@@ -1,6 +1,6 @@
 import { Component,OnInit} from '@angular/core';
 import { MenuItem } from '../Models/MenuItem';
-import { CheckoutService } from '../Services/checkoutService/checkout.service';
+import { CheckoutService } from '../services/checkoutService/checkout.service';
 import { MenuService } from '../services/MenuService/menu.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
