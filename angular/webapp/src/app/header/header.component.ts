@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { SidenavbarService } from '../services/sidenavbar.service';
-=======
+
 import { Subscription } from "rxjs";
-import { SidenavbarService } from '../Services/sidenavbar.service';
->>>>>>> 4274d0e25f26262e13338e90075eecd49894cff6
+import { SidenavbarService } from '../services/sidenavbar.service';
 import { AuthService } from '../Services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../Services/user/user.service';
