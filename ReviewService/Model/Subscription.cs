@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using MongoDB.Bson;
 
 namespace SubscriptionService.Model
 {

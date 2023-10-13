@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SubService } from './sub-.service';
 import { Router } from '@angular/router';
+import { Subscriptiondata } from '../Models/Subscriptiondata';
+import { subscribes } from '../Models/subscribes';
 
 declare var Razorpay: any;
 @Component({
@@ -8,7 +10,7 @@ declare var Razorpay: any;
   templateUrl: './subscription.component.html',
   styleUrls: ['./subscription.component.css']
 })
-export class SubscriptionComponent {
+export class SubscriptionComponent implements OnInit{
 
   constructor(private Obj : SubService , private router: Router ){}
   order: any = {
@@ -16,8 +18,29 @@ export class SubscriptionComponent {
     "phoneNumber": "string",
     "amount": 200000,
   }
+
+  isUserSubsrcibed: any = false;
+
+  subscriptionList: subscribes[] = [];
  
-  
+  ngOnInit(): void {
+    this.Obj.getAllSubscription().subscribe((res: any) => {
+      this.subscriptionList = res;
+      console.log(res);
+    })
+    this.checkUserSubscribed();
+
+  }
+
+  checkUserSubscribed(){
+    const userEmail = localStorage.getItem('email');
+    for(let i=0; i<this.subscriptionList.length; i++){
+      if(this.subscriptionList[i].UserId === userEmail){
+        this.isUserSubsrcibed = true;
+      }
+    }
+  }
+
   proceedTopay(amount:number)
   {
     const RazorpayOptions={
@@ -44,7 +67,7 @@ export class SubscriptionComponent {
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
-      this.router.navigate(['/menu']);
+      this.router.navigate(['menu']);
 
     }
 
@@ -57,25 +80,34 @@ export class SubscriptionComponent {
     rzp.open();
   }
 
-  createSubscription(option: number) {
-    let subscriptionData: any;
 
-    if (option === 0) {
-      subscriptionData = {
-        name: "Basic Subscription",
-        price: 2000,
-      };
-    } else if (option === 1) {
-      subscriptionData = {
-        name: "Silver Subscription",
-        price: 5000,
-      };
-    } else if (option === 2) {
-      subscriptionData = {
-        name: "Gold Subscription",
-        price: 7000, 
-      }
-    }
+  createSubscription(option: number) {
+    let subscriptionData: any = {
+      UserId: 'amangupta@gmail.com',
+      Type: option,
+      StartDate: new Date(),
+      EndData: new Date(new Date().setMonth(new Date().getMonth() + 3)),
+      Status: 0,
+      CreatedAt: new Date(),
+      UpdatedAt: new Date()
+    };
+
+    // if (option === 0) {
+    //   subscriptionData = {
+    //     name: "Basic Subscription",
+    //     price: 2000,
+    //   };
+    // } else if (option === 1) {
+    //   subscriptionData = {
+    //     name: "Silver Subscription",
+    //     price: 5000,
+    //   };
+    // } else if (option === 2) {
+    //   subscriptionData = {
+    //     name: "Gold Subscription",
+    //     price: 7000, 
+    //   }
+    // }
 
     this.Obj.createSubscription(subscriptionData).subscribe((res) => {
       console.log("Subscription created:", res);

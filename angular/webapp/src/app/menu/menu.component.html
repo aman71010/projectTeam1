@@ -19,38 +19,38 @@
       </div>
     </div>
     <div id="menu-item-list" class="row my">
-      <!-- <div class="col col-lg-3 col-md-4 col-sm-6 card-container" *ngFor="let item of menuList | paginate: { itemsPerPage: 8, currentPage: p }"> -->
+      <div class="col col-lg-3 col-md-4 col-sm-6 card-container" *ngFor="let item of menuList | paginate: { itemsPerPage: 8, currentPage: p }">
         <mat-card class="example-card">
-          <!-- <img class="menuImg" mat-card-image [src]="getImage(item.image)" [alt]="item.name"> -->
+          <img class="menuImg" mat-card-image [src]="getImage(item.image)" [alt]="item.name">
           <mat-card-header>
-            <!-- <p class="title">{{item.name}}</p> -->
+            <p class="title">{{item.name}}</p>
           </mat-card-header>
           <mat-card-content>
-            <!-- <p class="desc">{{truncateDescription(item.description)}}</p> -->
-            <!-- <p class="price">Rs. {{item.price}}</p> -->
+            <p class="desc">{{truncateDescription(item.description)}}</p>
+            <p class="price">Rs. {{item.price}}</p>
           </mat-card-content>
           <mat-card-actions>
             <div class="button-container">
-              <!-- <button 
+              <button 
               mat-raised-button 
               style="background-color: #e63946; color: white; margin-right: 15px;" 
               (click)="onViewMenuDetails(item.menuItemId)"
               >View Details</button>
               <button  -->
-                <!-- *ngIf="userType === 'Admin'" 
+                *ngIf="userType === 'Admin'" 
                 mat-raised-button 
                 style="background-color: #e63946; color: white; margin-right: 15px;" 
                 (click)="onDeleteMenuItem(item.menuItemId, item.category)"
-               >Delete</button> -->
+               >Delete</button>
             </div>
           </mat-card-actions>
         </mat-card>
-      <!-- </div> -->
+      </div>
     </div>
     
     <div id="page-nav" class="row my">
       <div class="col d-flex justify-content-center">
-        <!-- <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls> -->
+        <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

@@ -40,5 +40,9 @@ export class UserService {
   {
     return this.httpsvc.put("https://localhost:7030/api/User/update/image",updateImageobj);
   }
+
+  GetUserByEmail(email: any){
+    return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
+  }
   
 }

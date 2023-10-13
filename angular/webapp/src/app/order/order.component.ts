@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../Models/Order';
 import { OrderService } from 'src/OrderService/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaginatePipe } from 'ngx-pagination';
 
 @Component({
   selector: 'app-order',

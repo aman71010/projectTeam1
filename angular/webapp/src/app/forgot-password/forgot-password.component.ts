@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -14,15 +15,17 @@ export class ForgotPasswordComponent {
  */
 userEmailId: string = '';
 newPassword: string = '';
-responseMessage: string = '';
 
-constructor(private auth:AuthService, private fb:FormBuilder) {}
+
+constructor(private auth:AuthService, private fb:FormBuilder,private router:Router) {}
   
 
 resetPassword() {
   this.auth.ForgotPassword(this.userEmailId,this.newPassword).subscribe(
 (data:any)=>{
-  this.responseMessage=data.message;
+ 
+  console.log(data);
+  this.router.navigate(['/login'])
 }
   );
     

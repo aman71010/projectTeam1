@@ -17,7 +17,7 @@ namespace UserService.Services
             this.userRepository = userRepository;
             this.configuration = configuration;
         }
-        public void CreateUser(UserRegister user)
+        public User CreateUser(UserRegister user)
         {
 
             User u = userRepository.GetUserByUserEmailId(user.Email);
@@ -37,7 +37,7 @@ namespace UserService.Services
 
                 ProduceMessage(newUser.UserEmailId);
 
-                userRepository.CreateUser(newUser);
+                return userRepository.CreateUser(newUser);
             }
                 
         }
