@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavbarService } from '../Services/sidenavbar.service';
+import { SidenavbarService } from '../services/sidenavbar.service';
 import { AuthService } from '../Services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../Services/user/user.service';
