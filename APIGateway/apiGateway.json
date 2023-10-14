@@ -518,7 +518,6 @@
                 "Role": "Customer"
             }
         },
-<<<<<<< HEAD
         {
             "UpstreamPathTemplate": "/Payment",
             "UpstreamHttpMethod": [ "Post" ],
@@ -537,7 +536,6 @@
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
-=======
       {
         "UpstreamPathTemplate": "/Payment",
         "UpstreamHttpMethod": [ "Post" ],
@@ -552,7 +550,6 @@
         "AuthenticationOptions": {
           "AuthenticationProviderKey": "token",
           "AllowedScopes": []
->>>>>>> b5ac9690edf32e1ac951b65d75da6f2f64cd095a
         }
       },
       {
