@@ -18,12 +18,12 @@ import { PaginatePipe } from 'ngx-pagination';
 export class OrderComponent implements OnInit {
   
   
-  // order: any = ""
-  // orderimage: any = ""
-  // orderobj: any = {
-  // orderimg: this.orderimage, orderdata: this.order
-  // }
-  orders: any ;
+  order: any = ""
+  orderimage: any = ""
+  orderobj: any = {
+  orderimg: this.orderimage, orderdata: this.order
+  }
+  orders: any = [] ;
   menuitem:any;
   
   p: number = 1;
@@ -39,37 +39,37 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     
    
-   this.svc.getOrdersByEmail("user@example.com").subscribe((data :any)=>
-    {
-      console.log(data);
-      this.orders=data;
-    })
+  //  this.svc.getOrdersByEmail("amangupta@gmail.com").subscribe((data :any)=>
+  //   {
+  //     console.log(data);
+  //     this.orders=data;
+  //   })
     
-    this.menuservice.getMenuItemById("65297c0cf370f2a89e9b2bd8").subscribe((data1 :any)=>
-    {
-      console.log(data1);
-      this.menuitem=data1;
-    }
-    )
+  //   this.menuservice.getMenuItemById("65219e923858f20a1986c9a5").subscribe((data1 :any)=>
+  //   {
+  //     console.log(data1);
+  //     this.menuitem=data1;
+  //   }
+  //   )
 
 
-    /*let o :any 
-    let chain: Observable<any> = this.svc.getOrdersByEmail("mehul@example.com");
-    console.log(chain);
+    // let o :any 
+    // let chain: Observable<any> = this.svc.getOrdersByEmail("amangupta@gmail.com");
+    // console.log(chain);
     
-    chain.pipe(map((ordersResp: any) =>{
+    // chain.pipe(map((ordersResp: any) =>{
       
-     for ( o in ordersResp) {
+    //  for ( o in ordersResp) {
+    //     console.log(o);
+    //     this.orderobj.orderData = o;
+    //     this.menuservice.getMenuItemById((o.items[0].menuItemId)).subscribe((results: any) => {
 
-        this.orderobj.orderData = o;
-        this.menuservice.getMenuItemById((o.items[0].menuItemId)).subscribe((results: any) => {
-
-          this.orderobj.orderImg = results.image;
-          this.orders.push(this.orderobj);
-          console.log(this.orderobj);
-        })
-      }
-    }))*/
+    //       this.orderobj.orderImg = results.image;
+    //       this.orders.push(this.orderobj);
+    //       console.log(this.orderobj);
+    //     })
+    //   }
+    // }))
 
 
     
@@ -88,10 +88,6 @@ export class OrderComponent implements OnInit {
     //       })
     //     );
     //   });
-    // });
   }
 
 }
- 
-  
-

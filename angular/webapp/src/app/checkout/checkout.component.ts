@@ -4,14 +4,15 @@ import { MenuItem } from '../Models/MenuItem';
 import { MenuService } from '../Services/MenuService/menu.service';
 import { CheckoutService } from '../Services/checkoutService/checkout.service';
 
-
-
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OrderItem } from '../Models/OrderItem';
 import { Order } from '../Models/Order';
+
 import { Subscriptiondata } from '../Models/Subscriptiondata';
+import { AuthService } from '../Services/auth.service';
+import { OrderService } from 'src/OrderService/order.service';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
@@ -21,79 +22,87 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
- 
-  
-
-  
   orderItem: any = new OrderItem();
   order: any = new Order();
+  userEmail?: string;
 
-  constructor(private menuService: MenuService,
-   private route: ActivatedRoute,
-   private router: Router,
-   private sanitizer: DomSanitizer,
-  
-   private orderService:CheckoutService,
+  constructor(
+    private menuService: MenuService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private orderService: OrderService,
+    private checkoutService: CheckoutService,
+    private authService: AuthService
+  ) {}
 
-   private checkoutService: CheckoutService) {}
 
-
-getImage(imageData: any)
-{                                           
-  const imageUrl = 'data:image/jpeg;base64,' + imageData;
-  return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-}
+  getImage(imageData: any)
+  {                                           
+    const imageUrl = 'data:image/jpeg;base64,' + imageData;
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
    
   ngOnInit(): void
-{
-  this.getIdFromUrl();
-}
+  {
+    this.getIdFromUrl();
+    this.getUserEmail();
+  }
 
-getIdFromUrl()
-{
-  this.route.params.subscribe((params: Params) => {
-    this.getMenuItemById(params['id']);
-  })
-}
+  getIdFromUrl()
+  {
+    this.route.params.subscribe((params: Params) => {
+      this.getMenuItemById(params['id']);
+    })
+  }
 
-getMenuItemById(id: string)
-{
-  this.menuService.getMenuItemById(id).subscribe((data: any) => {
-    this.menuItem = data;
-  });
-}
+  getMenuItemById(id: string)
+  {
+    this.menuService.getMenuItemById(id).subscribe((data: any) => {
+      this.menuItem = data;
+    });
+  }
 
-taxRate: number = 0.18;
-taxAmount?:number;
-subtotal?:number;
-
-
-getTotal(price:any){
-
-  this.taxAmount=this.taxRate*price;
-  this.subtotal=price+this.taxAmount;
-
-}
+  taxRate: number = 0.18;
+  taxAmount?:number;
+  subtotal?:number;
 
 
+  getTotal(price:any){
+    this.taxAmount=this.taxRate*price;
+    this.subtotal=price+this.taxAmount;
+  }
+
+
+  getUserEmail(){
+    this.authService.loginUser.subscribe((userData: any) => {
+      this.userEmail = userData.email;
+      console.log(this.userEmail);
+    })
+  }
 
 
 createOrder(){
+
+  console.log(this.menuItem);
+
+  console.log(this.orderItem);
+  console.log(this.order);
   this.orderItem.MenuItemId = this.menuItem.menuItemId;
-  this.orderItem.Quantity = this.checkoutService.quantity;
+  this.orderItem.Quantity = 1;
   this.orderItem.Name = this.menuItem.name;
 
-  this.order.Order_Id = "";
-  this.order.UserEmailId = localStorage.getItem("userData.UserEmailId");
+  // this.order.Order_Id = "";
+  this.order.UserEmailId = this.userEmail;
   this.order.Items.push(this.orderItem);
   this.order.price = this.subtotal;
-  this.order.Status = 0;
+  this.order.Status = 5;
   this.order.CreatedAt = new Date();
   this.order.UpdatedAt = new Date();
 
-   this.orderService.createOrder(this.order).subscribe((res:any) => {
-     console.log();
-   })
+  this.orderService.createOrder(this.order).subscribe((res:any) => {
+    console.log(res);
+  })
 }
 
 

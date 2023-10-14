@@ -14,11 +14,5 @@ export class CheckoutService {
     {
       return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`)
     }
-      
-  
-  
-    createOrder(orderobj: any)
-    {
-       return this.httpClient.post("https://localhost:7264/api/Order/CreateOrder",orderobj)
-    }
+
 }

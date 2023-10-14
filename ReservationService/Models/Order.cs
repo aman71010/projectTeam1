@@ -31,6 +31,7 @@ namespace OrderService.Models
         Pending ,
         InProgress,
         Delivered,
-        Canceled
+        Canceled,
+        completed
     }
 }
