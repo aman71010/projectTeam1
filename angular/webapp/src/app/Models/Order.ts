@@ -1,11 +1,11 @@
 import { OrderItem } from "./OrderItem";
 
 export class Order{
-   Order_Id?: string;
-   UserEmailId?: string;
-   Items?: OrderItem[];
-   Price?: number;
-   OrderStatus?: number;
-   CreatedAt?: Date
+   order_Id?: string;
+   userEmailId?: string;
+   items?: OrderItem[];
+   price?: number;
+   status?: number;
+   createdAt?: Date
    UpdatedAt?: Date
 }

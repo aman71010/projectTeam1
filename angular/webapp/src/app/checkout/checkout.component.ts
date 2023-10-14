@@ -79,15 +79,15 @@ getTotal(price:any){
 
 
 createOrder(){
-  this.orderItem.MenuItemId = this.menuItem.menuItemId;
-  this.orderItem.Quantity = this.checkoutService.quantity;
-  this.orderItem.Name = this.menuItem.name;
+  this.orderItem.menuItemId = this.menuItem.menuItemId;
+  this.orderItem.quantity = this.checkoutService.quantity;
+  this.orderItem.name = this.menuItem.name;
 
   this.order.Order_Id = "";
-  this.order.UserEmailId = localStorage.getItem("userData.UserEmailId");
-  this.order.Items.push(this.orderItem);
+  this.order.userEmailId = localStorage.getItem("userData.UserEmailId");
+  this.order.items.push(this.orderItem);
   this.order.price = this.subtotal;
-  this.order.Status = 0;
+  this.order.status = 0;
   this.order.CreatedAt = new Date();
   this.order.UpdatedAt = new Date();
 
