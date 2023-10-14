@@ -23,11 +23,7 @@ export class CheckoutComponent implements OnInit{
   menuItem: MenuItem = new MenuItem();
  
   
-  subscriptionTypes = {
-    0: 'gold',
-    1: 'silver',
-    2: 'platinum'
-  };
+
   
   orderItem: any = new OrderItem();
   order: any = new Order();
@@ -36,7 +32,7 @@ export class CheckoutComponent implements OnInit{
    private route: ActivatedRoute,
    private router: Router,
    private sanitizer: DomSanitizer,
-   private orderfetch:CheckoutService, 
+  
    private orderService:CheckoutService,
 
    private checkoutService: CheckoutService) {}

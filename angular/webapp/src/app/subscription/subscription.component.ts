@@ -80,34 +80,16 @@ export class SubscriptionComponent implements OnInit{
     rzp.open();
   }
 
-
-  createSubscription(option: number) {
+  createSubscription(option: any) {
     let subscriptionData: any = {
-      UserId: 'amangupta@gmail.com',
-      Type: option,
+      UserId: 'gopisettysaikarthik9@gmail.com',
+      Type: 1,
       StartDate: new Date(),
       EndData: new Date(new Date().setMonth(new Date().getMonth() + 3)),
-      Status: 0,
+      Status: 1,
       CreatedAt: new Date(),
       UpdatedAt: new Date()
     };
-
-    // if (option === 0) {
-    //   subscriptionData = {
-    //     name: "Basic Subscription",
-    //     price: 2000,
-    //   };
-    // } else if (option === 1) {
-    //   subscriptionData = {
-    //     name: "Silver Subscription",
-    //     price: 5000,
-    //   };
-    // } else if (option === 2) {
-    //   subscriptionData = {
-    //     name: "Gold Subscription",
-    //     price: 7000, 
-    //   }
-    // }
 
     this.Obj.createSubscription(subscriptionData).subscribe((res) => {
       console.log("Subscription created:", res);

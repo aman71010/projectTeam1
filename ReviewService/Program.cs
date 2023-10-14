@@ -14,7 +14,7 @@ builder.Services.AddScoped<SubscriptionContext>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 builder.Services.AddScoped<ISubscriptionServices, SubscriptionServices>();
 
-builder.Services.AddCors(op => op.AddPolicy("Mysubscription", plcy => plcy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,7 +23,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("Mysubscription");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -45,7 +45,7 @@ export class ProfileComponent {
   }
 
   ngOnInit(){
-    this.svc.FetchUser().subscribe((data:any)=> {
+    this.svc.FetchUser("aman%40gmail.com").subscribe((data:any)=> {
       console.log(data);
       this.user=data;
     })
