@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UserService.Exceptions;
 using UserService.Services;
 using UserService.Models;
+using System.Text.Json;
 
 namespace UserService.Controllers
 {
@@ -58,7 +59,7 @@ namespace UserService.Controllers
             try
             {
                 userService.UpdateName(req.UserEmailId, req.Name);
-                return Ok("Name updated successfully");
+                return Ok(new { message = "Name updated successfully" });
             }
             catch(UserNotFoundException ex)
             {
@@ -96,7 +97,7 @@ namespace UserService.Controllers
             try
             {
                 userService.UpdateMobileNo(req.UserEmailId, req.MobileNo);
-                return Ok("Number updated successfully");
+                return Ok(new { message = "Number updated successfully" });
             }
             catch (UserNotFoundException ex)
             {
@@ -110,16 +111,21 @@ namespace UserService.Controllers
 
         [HttpPut]
         [Route("update/image")]
-        public IActionResult AddOrUpdateUserImage([FromForm] FileModel file)
+        public IActionResult AddOrUpdateUserImage([FromForm] string email, [FromForm] IFormFile Img)
         {
             try
             {
+                FileModel fm = new FileModel();
+
+                fm.UserEmailId = email;
+                fm.FormFile = Img;
+
                 using (MemoryStream mStream = new MemoryStream())
                 {
-                    file.FormFile.CopyTo(mStream);
-                    userService.UpdateUserImage(file.UserEmailId, mStream.ToArray());
+                    fm.FormFile.CopyTo(mStream);
+                    userService.UpdateUserImage(fm.UserEmailId, mStream.ToArray());
                 }
-                return Ok("UserImage updated successfully");
+                return Ok(new { message = "Image updated successfully" });
             }
             catch(UserNotFoundException ex)
             {
@@ -138,7 +144,7 @@ namespace UserService.Controllers
             try
             {
                 userService.UpdateAddress(req.UserEmailId, req);
-                return Ok("Address updated successfully");
+                return Ok(new { message = "Address updated successfully" });
             }
             catch (UserNotFoundException ex)
             {
