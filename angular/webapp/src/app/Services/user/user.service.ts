@@ -12,11 +12,11 @@ export class UserService {
 
   constructor(private httpsvc:HttpClient) { }
 
-  FetchUser(email :any){
+  FetchUser(email: string){
     return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
   }
 
-  FetchAddress(email:any){
+  FetchAddress(email:string){
     return this.httpsvc.get(`https://localhost:7030/api/User/get/address/${email}`);
   }
 
@@ -38,6 +38,10 @@ export class UserService {
   updateImage(formData: any)
   {
     return this.httpsvc.put("https://localhost:7030/api/User/update/image",formData);
+  }
+
+  GetUserByEmail(email: any){
+    return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
   }
   
 }

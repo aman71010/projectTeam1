@@ -17,7 +17,7 @@ namespace UserService.Services
             this.userRepository = userRepository;
             this.configuration = configuration;
         }
-        public void CreateUser(UserRegister user)
+        public User CreateUser(UserRegister user)
         {
 
             User u = userRepository.GetUserByUserEmailId(user.Email);
@@ -35,16 +35,17 @@ namespace UserService.Services
                     MobileNo = user.MobileNo
                 };
 
-                //ProduceMessage(newUser);
+                ProduceMessage(newUser.UserEmailId);
 
-                userRepository.CreateUser(newUser);
+                return userRepository.CreateUser(newUser);
             }
                 
         }
 
-        public async Task ProduceMessage(User user)
+        public async Task ProduceMessage(string email)
         {
-            string message = JsonConvert.SerializeObject(user);
+            //string message = JsonConvert.SerializeObject(email);
+            string message = email;
 
             ProducerConfig pconfig = new ProducerConfig
             {

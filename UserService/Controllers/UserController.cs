@@ -22,8 +22,7 @@ namespace UserService.Controllers
         {
             try
             {
-                userService.CreateUser(user);
-                return StatusCode(201, "User registered successfully");
+                return StatusCode(201, userService.CreateUser(user));
             }
             catch (UserAlreadyExistException ex)
             {
@@ -60,7 +59,7 @@ namespace UserService.Controllers
             try
             {
                 userService.UpdateName(req.UserEmailId, req.Name);
-                return StatusCode(200,"Name updated successfully");
+                return Ok(new { message = "Name updated successfully" });
             }
             catch(UserNotFoundException ex)
             {
@@ -98,7 +97,7 @@ namespace UserService.Controllers
             try
             {
                 userService.UpdateMobileNo(req.UserEmailId, req.MobileNo);
-                return StatusCode(200,"Number updated successfully");
+                return Ok(new { message = "Number updated successfully" });
             }
             catch (UserNotFoundException ex)
             {
@@ -126,7 +125,7 @@ namespace UserService.Controllers
                     fm.FormFile.CopyTo(mStream);
                     userService.UpdateUserImage(fm.UserEmailId, mStream.ToArray());
                 }
-                return StatusCode(200,"UserImage updated successfully");
+                return Ok(new { message = "Image updated successfully" });
             }
             catch(UserNotFoundException ex)
             {
@@ -145,7 +144,7 @@ namespace UserService.Controllers
             try
             {
                 userService.UpdateAddress(req.UserEmailId, req);
-                return StatusCode(200,"Address updated successfully");
+                return Ok(new { message = "Address updated successfully" });
             }
             catch (UserNotFoundException ex)
             {

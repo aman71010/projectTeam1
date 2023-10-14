@@ -1,4 +1,4 @@
-<h1 style="margin-left: 60px;">Order Information</h1>
+<h1 style="margin-left: 4rem;margin-top: 4rem;">Order Information</h1>
 <div class="container">
   <div class="card mb-3">
     <div class="row g-0">
@@ -19,10 +19,12 @@
       </div>
     </div>
   </div>
+   
+  {{getTotal(menuItem.price)}}
 
   
     <div class="totals">
-       {{getTotal(menuItem.price)}}
+      
       <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
       <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
       <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
@@ -30,10 +32,15 @@
  
 
   <div class="payment-button text-center">
-    <button (click)="proceedTopay(); createOrder()" class="btn btn-pink">Proceed to Pay</button>
+  
+    <button (click)="proceedTopay(100); createOrder()" class="btn btn-pink">Proceed to Pay</button>
   </div>
    
 </div>
    
    
-<!-- <button id="rzp-button1">Pay with Razorpay</button> -->
+<!-- <button id="rzp-button1">Pay with Razorpay
+
+    <button (click)="proceedTopay(100)" class="btn btn-pink">Proceed to Pay</button>
+
+</button> -->

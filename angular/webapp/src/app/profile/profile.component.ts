@@ -7,7 +7,7 @@ import { Address } from '../Models/User/Address';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from "rxjs";
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -44,43 +44,26 @@ export class ProfileComponent {
 
   prevUserData:any;
   prevUserAddress:any;
-
-  private userSubs?: Subscription;
   email:any;
 
-  ngOnInit(){
-    this.Usersvc.FetchUser("aman@gmail.com").subscribe((data:any)=> {
-      console.log(data);
-      this.user=data;
-      this.prevUserData=data;
-      this.email=this.user.userEmailId;
-    })
-    this.Usersvc.FetchAddress("aman@gmail.com").subscribe((data:any)=> {
-      console.log(data);
-      this.isAddressEditVisible=data?true:false;
-      this.isAddAddressVisible=data?false:true;
-      this.address=data;
-      this.prevUserAddress=data;
+  ngOnInit(): void {
+    this.Authsvc.loginUser.subscribe(LoggedUser => {
+      this.email=LoggedUser?.email;
+      this.Usersvc.FetchUser(this.email).subscribe((data:any)=> {
+        console.log(data);
+        this.user=data;
+        this.prevUserData=data;
+        this.Imgemail=this.user.userEmailId;
+      })
+      this.Usersvc.FetchAddress(this.email).subscribe((data:any)=> {
+        console.log(data);
+        this.isAddressEditVisible=data?true:false;
+        this.isAddAddressVisible=data?false:true;
+        this.address=data;
+        this.prevUserAddress=data;
+      })
     })
   }
-
-  // ngOnInit(): void {
-  //   this.userSubs = this.Authsvc.loginUser.subscribe(user => {
-  //     this.Usersvc.FetchUser(this.email).subscribe((data:any)=> {
-  //       console.log(data);
-  //       this.user=data;
-  //       this.prevUserData=data;
-  //       this.Imgemail=this.user.userEmailId;
-  //     })
-  //     this.Usersvc.FetchAddress(this.email).subscribe((data:any)=> {
-  //       console.log(data);
-  //       this.isAddressEditVisible=data?true:false;
-  //       this.isAddAddressVisible=data?false:true;
-  //       this.address=data;
-  //       this.prevUserAddress=data;
-  //     })
-  //     )
-  // }
 
 
   openSnackBar(message: string){
@@ -101,21 +84,21 @@ export class ProfileComponent {
     if(form.valid)
     {
       if(!this.isNameEditVisible)this.Usersvc.updateName(form.value).subscribe(
-        // () => {
-        //   this.openSnackBar("failed");
-        //   this.user.name=this.prevUserData.name;
-        // },
-        // (Response) => {
-        //   this.openSnackBar("Name Updated");
-        //   this.prevUserData.name=this.user.name;
-        // }
-        // (Response)=>{console.log(Response);}
+        {
+          next:(res:any)=>{
+            this.openSnackBar("Name Updated");
+            this.prevUserData.name=this.user.name;
+          },
+          error:(err)=>{
+            this.openSnackBar("Name Updated Failed");
+            this.user.name=this.prevUserData.name;
+          }
+        }
       );
     }
     const element = this.el.nativeElement.querySelector('#name');
     this.renderer.setStyle(element, 'border-bottom', 'none');
     this.isNameEditVisible=!this.isNameEditVisible;
-    console.log(form.value);
    }
 
   EditMobileNo(){
@@ -127,25 +110,24 @@ export class ProfileComponent {
     if(form.valid)
     {
       if(!this.isMobileNoEditVisible)this.Usersvc.updateMobileNo(form.value).subscribe(
-        // (err) => {
-        //   this.openSnackBar("failed");
-        //   this.user.mobileNo=this.prevUserData.mobileNo;
-        // },
-        // () => {
-        //   this.openSnackBar("MobileNo Updated");
-        //   this.prevUserData.mobileNo=this.user.mobileNo;
-        // }
-        // (Response)=>{console.log(Response);}
+        {
+          next:(res:any)=>{
+            this.openSnackBar("MobileNo Updated");
+            this.prevUserData.mobileNo=this.user.mobileNo;
+          },
+          error:(err)=>{
+            this.openSnackBar("MobileNo Update Failed");
+            this.user.mobileNo=this.prevUserData.mobileNo;
+          }
+        }
       );
     }
-    console.log(form.value);
     const element = this.el.nativeElement.querySelector('#mobileNo');
     this.renderer.setStyle(element, 'border-bottom', 'none');
     this.isMobileNoEditVisible=!this.isMobileNoEditVisible;
   }
 
   AddAddress(){
-    console.log(this.newAdd);
     this.isAddAddressVisible=!this.isAddAddressVisible;
     const addressForm = this.el.nativeElement.querySelector('#AddressForm');
     if (addressForm) {
@@ -172,14 +154,16 @@ export class ProfileComponent {
     {
       this.isAddressEditVisible=!this.isAddressEditVisible;
       this.Usersvc.updateAddrress(form.value).subscribe(
-        // (err) => {
-        //   this.openSnackBar("failed");
-        //   this.address=this.prevUserAddress;
-        // },
-        // () => {
-        //   this.openSnackBar("Address Updated");
-        //   this.prevUserAddress=this.address;
-        // }
+        {
+          next:(res:any)=>{
+            this.openSnackBar("Address Updated");
+            this.prevUserAddress=this.address;
+          },
+          error:(err)=>{
+            this.openSnackBar("Address Update Failed");
+            this.address=this.prevUserAddress;
+          }
+        }
         );
     }
     const addressForm = this.el.nativeElement.querySelector('#AddressForm');
@@ -189,7 +173,6 @@ export class ProfileComponent {
         this.renderer.setStyle(input, 'borderBottom', 'none');
       });
     }
-    console.log(form.value);
   }
 
   getImage(imageData: any){                                           
@@ -221,13 +204,15 @@ export class ProfileComponent {
     formData.append('Img',this.selectedFile);
 
     this.Usersvc.updateImage(formData).subscribe(
-      // (err) => {
-      //   this.openSnackBar("failed");
-      //   this.isImageSelected=false;
-      // },
-      // () => {
-      //   this.openSnackBar("Image Updated");
-      // }
+      {
+        next:(res:any)=>{
+          this.openSnackBar("Image Updated");
+        },
+        error:(err)=>{
+          this.openSnackBar("Image Update Failed");
+          this.isImageSelected=false;
+        }
+      }
       );
     
     this.isImageEditVisible=!this.isImageEditVisible;  

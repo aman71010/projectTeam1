@@ -1,12 +1,16 @@
 import { Component,OnInit} from '@angular/core';
 import { MenuItem } from '../Models/MenuItem';
-import { CheckoutService } from '../Services/checkoutService/checkout.service';
+
 import { MenuService } from '../Services/MenuService/menu.service';
+import { CheckoutService } from '../Services/checkoutService/checkout.service';
+
+
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OrderItem } from '../Models/OrderItem';
 import { Order } from '../Models/Order';
+import { Subscriptiondata } from '../Models/Subscriptiondata';
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
@@ -16,6 +20,10 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
+ 
+  
+
+  
   orderItem: any = new OrderItem();
   order: any = new Order();
 
@@ -23,6 +31,9 @@ export class CheckoutComponent implements OnInit{
    private route: ActivatedRoute,
    private router: Router,
    private sanitizer: DomSanitizer,
+  
+   private orderService:CheckoutService,
+
    private checkoutService: CheckoutService) {}
 
 
@@ -63,6 +74,9 @@ getTotal(price:any){
 
 }
 
+
+
+
 createOrder(){
   this.orderItem.MenuItemId = this.menuItem.menuItemId;
   this.orderItem.Quantity = this.checkoutService.quantity;
@@ -76,18 +90,18 @@ createOrder(){
   this.order.CreatedAt = new Date();
   this.order.UpdatedAt = new Date();
 
-  // this.orderService.CreateOrder(this.order).subscribe((res) => {
-  //   console.log()
-  // })
+   this.orderService.createOrder(this.order).subscribe((res:any) => {
+     console.log();
+   })
 }
 
 
-proceedTopay()
+proceedTopay(amount:number)
   {
     const RazorpayOptions={
       description:'Razorpay Payment',
       currency:'INR',
-      amount: 12345,
+      amount: amount*100,
       name: this.menuItem.name,
       key:'rzp_test_pmZ9sPkab2DGdZ',
       image:'https://th.bing.com/th?id=OIP.t6kmiUn7cQ4NJGjHEPAOXwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2',
@@ -108,6 +122,7 @@ proceedTopay()
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      
     }
 
     const failureCallback = (e: any) => {

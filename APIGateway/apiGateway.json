@@ -45,7 +45,7 @@
         },
         {
             "UpstreamPathTemplate": "/UpdateName",
-            "UpstreamHttpMethod": [ "Patch" ],
+            "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -64,7 +64,7 @@
         },
         {
             "UpstreamPathTemplate": "/UpdatePassword",
-            "UpstreamHttpMethod": [ "Patch" ],
+            "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -83,7 +83,7 @@
         },
         {
             "UpstreamPathTemplate": "/UpdateNumber",
-            "UpstreamHttpMethod": [ "Patch" ],
+            "UpstreamHttpMethod": [ "Put" ],
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -518,6 +518,7 @@
                 "Role": "Customer"
             }
         },
+<<<<<<< HEAD
         {
             "UpstreamPathTemplate": "/Payment",
             "UpstreamHttpMethod": [ "Post" ],
@@ -536,6 +537,39 @@
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
+=======
+      {
+        "UpstreamPathTemplate": "/Payment",
+        "UpstreamHttpMethod": [ "Post" ],
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7203
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Payment/payment",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "token",
+          "AllowedScopes": []
+>>>>>>> b5ac9690edf32e1ac951b65d75da6f2f64cd095a
         }
+      },
+      {
+        "UpstreamPathTemplate": "/Email",
+        "UpstreamHttpMethod": [ "Post" ],
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7024
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Email/SendEmail",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "token",
+          "AllowedScopes": []
+        }
+      }
     ]
 }

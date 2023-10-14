@@ -82,7 +82,7 @@
                     <div id="row">
                         <div id="col">
                             <h4 id="address">Address</h4>
-                            <div id="AddressForm" *ngIf="address.userEmailId || !isAddAddressVisible">
+                            <div id="AddressForm" *ngIf="(address && address.userEmailId) || !isAddAddressVisible">
 
                                 <div id="col">
                                     <input #userEmailId="ngModel" type="email"

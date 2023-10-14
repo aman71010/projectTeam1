@@ -14,6 +14,7 @@ builder.Services.AddScoped<SubscriptionContext>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 builder.Services.AddScoped<ISubscriptionServices, SubscriptionServices>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,7 +23,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
