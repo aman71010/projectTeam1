@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from "rxjs";
+
 import { AuthService } from '../Services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../Services/user/user.service';
 import { User } from '../Models/User/User';
-import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
