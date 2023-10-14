@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { MenuItem } from '../Models/MenuItem';
 import { MenuService } from '../Services/MenuService/menu.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,11 +27,13 @@ export class MenuComponent implements OnInit {
   menuItem: MenuItem = new MenuItem();
   menuList: MenuItem[] = [];
   p: number = 1;
+  userType?: string;
 
   constructor(
     private menuService: MenuService, 
     private router: Router, 
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private authService: AuthService
   ) { }
 
   getImage(imageData: any){
@@ -40,6 +43,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllMenuItems();
+    this.getUserRole();
   }
 
   getAllMenuItems(){
@@ -60,11 +64,11 @@ export class MenuComponent implements OnInit {
       })
     }
   }
-
-  userType: string = 'Admin';
-
-  changeUserType(){
-    this.userType = 'Customer';
+  
+  getUserRole(){
+    this.authService.loginUser.subscribe(user => {
+      this.userType = user?.role;
+    })
   }
 
   onDeleteMenuItem(id: any, category: any){

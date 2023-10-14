@@ -32,12 +32,13 @@
           <mat-card-actions>
             <div class="button-container">
               <button 
-              mat-raised-button 
-              style="background-color: #e63946; color: white; margin-right: 15px;" 
-              (click)="onViewMenuDetails(item.menuItemId)"
-              >View Details</button>
-              <button  -->
-                *ngIf="userType === 'Admin'" 
+                *ngIf="userType !='Admin'"
+                mat-raised-button 
+                style="background-color: #e63946; color: white; margin-right: 15px;" 
+                (click)="onViewMenuDetails(item.menuItemId)"
+                >View Details</button>
+              <button
+                *ngIf="userType =='Admin'" 
                 mat-raised-button 
                 style="background-color: #e63946; color: white; margin-right: 15px;" 
                 (click)="onDeleteMenuItem(item.menuItemId, item.category)"

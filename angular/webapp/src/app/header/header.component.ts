@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from "rxjs";
-import { SidenavbarService } from '../Services/sidenavbar.service';
 import { AuthService } from '../Services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../Services/user/user.service';
 import { User } from '../Models/User/User';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,6 @@ import { User } from '../Models/User/User';
 })
 export class HeaderComponent implements OnInit{
   opened?: boolean;
-
   isAuthenticated?: boolean;
   private userSubs?: Subscription;
 
@@ -21,14 +20,12 @@ export class HeaderComponent implements OnInit{
   avatarText?: any;
   isAvatarImage?: boolean = false;
 
-  constructor(private sideNavbarService: SidenavbarService, 
+  constructor(
     private authService: AuthService,
     private userService: UserService,
     private sanitizer: DomSanitizer) {
-
+    
   }
-
-  
 
   ngOnInit(): void {
     this.userSubs = this.authService.loginUser.subscribe(user => {

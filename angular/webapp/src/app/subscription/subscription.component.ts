@@ -80,14 +80,13 @@ export class SubscriptionComponent implements OnInit{
     rzp.open();
   }
 
-
-  createSubscription(option: number) {
+  createSubscription(option: any) {
     let subscriptionData: any = {
       UserId: 'gopisettysaikarthik9@gmail.com',
-      Type: option,
+      Type: 1,
       StartDate: new Date(),
       EndData: new Date(new Date().setMonth(new Date().getMonth() + 3)),
-      Status: 0,
+      Status: 1,
       CreatedAt: new Date(),
       UpdatedAt: new Date()
     };
