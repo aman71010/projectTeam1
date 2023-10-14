@@ -1,43 +1,41 @@
 <header>
   <mat-card>
-    <mat-card-content style="text-align: left; max-width: fit-content;">
+    <mat-card-content style="text-align: left; max-width: fit-content; margin-bottom: 10px;">
       <h2>Order history</h2>
     </mat-card-content>
   </mat-card>
 </header>
 
 <div class="container">
-  <div class="card mb-3" style="height: 150px;" style=" border: 1px solid #000000;  margin-right: 5px; margin-top: 10px; margin-left: 5px; height: 150px;"
-    *ngFor="let order of orders | paginate :{itemsPerPage : 4,currentPage:p}">
+  <div class="card mb-3" style="height: 150px;" *ngFor="let order of orders | paginate: { itemsPerPage: 4, currentPage: p } ">
     <div class="row g-0">
       <div>
-        <img class="menuImg" mat-card-image [src]="getImage(menuitem.image)" style="height: 140px ;width: 150px;margin-top: 8px;">
+        <img class="menuImg" mat-card-image [src]="getImage(order.orderImg)" style="height: 140px; width: 150px; margin-top: 8px;">
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card-body" style="margin-top: -9.2cqi;margin-left: 10cqi; width: 30cqi;">
-        <h4 class="card-title"
-          style="background-color: #ffffff;  color: #e63946; padding: 5px; height: 23px;margin-top: -10px;">
-          OrderID:{{order.order_Id }}</h4>
-        <p class="card-text"
-          style="background-color: #ffffff; color: #e63946; padding: 5px;height: 23px ;margin-top: -10px;">Status:
-          {{order.status}}</p>
-        <div *ngFor="let item of order.items">
-          <p
-            style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%;height: 22px;margin-top: -10px;">
-            {{item.name}} x{{item.quantity }}</p>
+      <div class="card-body" style="margin-top: -9.2cqi; margin-left: 10cqi; width: 30cqi;">
+        <h4 class="card-title" style="background-color: #ffffff; color: #e63946; padding: 5px; height: 23px; margin-top: -10px;">
+          OrderID: {{ order.orderData.order_Id }}
+        </h4>
+        <p class="card-text" style="background-color: #ffffff; color: #e63946; padding: 5px; height: 23px; margin-top: -10px;">
+          Status: {{ order.orderData.status }}
+        </p>
+        <div *ngFor="let item of order.orderData.items">
+          <p style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%; height: 22px; margin-top: -10px;">
+            {{ item.name }} x{{ item.quantity }}
+          </p>
         </div>
-        <p style="background-color: #ffffff; color: #000000; padding: 5px;height: 22px ;margin-top: -10px; ">Price:₹{{
-          order.price }}</p>
-        <p class="Order_Date"
-          style="background-color: #ffffff; color: #761ff8; padding: 5px; height: 22px;margin-top: -10px;">OrderDate:{{
-          order.createdAt | date}}</p>
+        <p style="background-color: #ffffff; color: #000000; padding: 5px; height: 22px; margin-top: -10px;">Price: ₹{{ order.orderData.price }}</p>
+        <p class="Order_Date" style="background-color: #ffffff; color: #761ff8; padding: 5px; height: 22px; margin-top: -10px;">
+          OrderDate: {{ order.orderData.createdAt | date }}
+        </p>
       </div>
     </div>
   </div>
-  <div id="page-nav" class=" row my">
+  <div id="page-nav" class="row my">
     <div class="col d-flex justify-content-center">
-      <pagination-controls class="paginator" (pageChange)="p=$event"></pagination-controls>
+      <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
 </div>

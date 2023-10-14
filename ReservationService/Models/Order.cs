@@ -18,7 +18,7 @@ namespace OrderService.Models
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string UserEmailId { get; set; }
         public List<OrderItem> Items { get; set; }
-        public int price { get; set; }
+        public decimal price { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public OrderStatus Status { get; set; }
@@ -28,10 +28,10 @@ namespace OrderService.Models
 
     public enum OrderStatus
     {
-        Pending ,
+        Pending,
         InProgress,
         Delivered,
         Canceled,
-        completed
+        Completed
     }
 }

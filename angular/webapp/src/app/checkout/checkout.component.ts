@@ -1,18 +1,16 @@
 import { Component,OnInit} from '@angular/core';
-import { MenuItem } from '../Models/MenuItem';
-
-import { MenuService } from '../Services/MenuService/menu.service';
-import { CheckoutService } from '../Services/checkoutService/checkout.service';
-
 import { ActivatedRoute, Params } from '@angular/router';
-import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
 import { OrderItem } from '../Models/OrderItem';
 import { Order } from '../Models/Order';
-
-import { Subscriptiondata } from '../Models/Subscriptiondata';
+import { MenuItem } from '../Models/MenuItem';
+import { MenuService } from '../Services/MenuService/menu.service';
+import { CheckoutService } from '../Services/checkoutService/checkout.service';
 import { AuthService } from '../Services/auth.service';
 import { OrderService } from 'src/OrderService/order.service';
+
 declare var Razorpay: any;
 @Component({
   selector: 'app-checkout',
@@ -22,8 +20,6 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
-  orderItem: any = new OrderItem();
-  order: any = new Order();
   userEmail?: string;
 
   constructor(
@@ -49,6 +45,13 @@ export class CheckoutComponent implements OnInit{
     this.getUserEmail();
   }
 
+  getUserEmail(){
+    this.authService.loginUser.subscribe((userData: any) => {
+      this.userEmail = userData.email;
+      console.log(this.userEmail);
+    })
+  }
+
   getIdFromUrl()
   {
     this.route.params.subscribe((params: Params) => {
@@ -67,47 +70,35 @@ export class CheckoutComponent implements OnInit{
   taxAmount?:number;
   subtotal?:number;
 
-
   getTotal(price:any){
     this.taxAmount=this.taxRate*price;
     this.subtotal=price+this.taxAmount;
   }
 
+  createOrder(){
 
-  getUserEmail(){
-    this.authService.loginUser.subscribe((userData: any) => {
-      this.userEmail = userData.email;
-      console.log(this.userEmail);
+    const orderItem: OrderItem = new OrderItem();
+    const order: Order = new Order();
+    order.items = [];
+
+    orderItem.menuItemId = this.menuItem.menuItemId;
+    orderItem.quantity = 1;
+    orderItem.name = this.menuItem.name;
+
+    order.userEmailId = this.userEmail;
+    order.items.push(orderItem);
+    order.price = this.subtotal;
+    order.status = 5;
+    order.createdAt = new Date();
+    order.updatedAt = new Date();
+
+    this.orderService.createOrder(order).subscribe((res:any) => {
+      console.log(res);
     })
   }
 
 
-createOrder(){
-
-  console.log(this.menuItem);
-
-  console.log(this.orderItem);
-  console.log(this.order);
-  this.orderItem.MenuItemId = this.menuItem.menuItemId;
-  this.orderItem.Quantity = 1;
-  this.orderItem.Name = this.menuItem.name;
-
-  // this.order.Order_Id = "";
-  this.order.UserEmailId = this.userEmail;
-  this.order.Items.push(this.orderItem);
-  this.order.price = this.subtotal;
-  this.order.Status = 5;
-  this.order.CreatedAt = new Date();
-  this.order.UpdatedAt = new Date();
-
-  this.orderService.createOrder(this.order).subscribe((res:any) => {
-    console.log(res);
-  })
-}
-
-
-proceedTopay(amount:number)
-  {
+  proceedTopay(amount:number){
     const RazorpayOptions={
       description:'Razorpay Payment',
       currency:'INR',
@@ -145,5 +136,3 @@ proceedTopay(amount:number)
 
   }
 }
-
-
