@@ -19,7 +19,7 @@
           OrderID: {{ order.orderData.order_Id }}
         </h4>
         <p class="card-text" style="background-color: #ffffff; color: #e63946; padding: 5px; height: 23px; margin-top: -10px;">
-          Status: {{ order.orderData.status }}
+          Status: {{ status[order.orderData.status] }}
         </p>
         <div *ngFor="let item of order.orderData.items">
           <p style="background-color: #ffffff; color: #000000; padding: 5px; border-radius: 0%; height: 22px; margin-top: -10px;">

@@ -54,7 +54,6 @@ export class AppComponent implements OnInit{
         })
       }
     })
-    console.log(this.userType);
     this.isLoginOrRegisterPath();
   }
 

@@ -14,6 +14,7 @@ export class OrderComponent implements OnInit {
   orders: any = [];
   p: number = 1;
   userEmail?: any;
+  status:string[] = ['Pending', 'InProgress', 'Delivered', 'Canceled', 'Completed'];
 
   constructor(
     private orderService: OrderService,
