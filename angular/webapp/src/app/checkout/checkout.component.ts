@@ -97,7 +97,11 @@ export class CheckoutComponent implements OnInit{
     })
   }
 
-
+  var:any=this.subtotal;
+  paynow()
+  {
+    this.proceedTopay(this.var);
+  }
   proceedTopay(amount:number){
     const RazorpayOptions={
       description:'Razorpay Payment',
