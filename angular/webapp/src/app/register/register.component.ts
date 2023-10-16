@@ -35,8 +35,9 @@ export class RegisterComponent {
   get password(){return this.registerForm.get("pass")}
   get confirmpassword(){return this.registerForm.get("password")}
 
-  sendEmail: any = new Email();
   user: User = new User();
+  horizontalPosition: MatSnackBarHorizontalPosition = "center";
+  verticalPosition: MatSnackBarVerticalPosition = "top";
   onRegister()
   {
     if(this.registerForm.valid){
@@ -44,24 +45,17 @@ export class RegisterComponent {
       next: (res: any) => {
         const data: any = JSON.parse(JSON.stringify(res));
         this.user = data;
-        this.sendEmail.emailId = this.user.userEmailId;
-        this.sendEmail.subject = "Registered Successfully";
-        this.sendEmail.body = "you have successfully registered to our application!";
-        this.notify.sendEmail(this.sendEmail).subscribe((res) => {
-
-        });
-
+        this.openSnackBar("Registration sucessfull");
+        this.router.navigate(['login'])
       },
       error:(err:any)=>{
         if(err.status==201) 
         {
-          alert("Registration sucessfull")
-          this.router.navigate(['/login'])
         }else if(err.status==409){
-          alert(`User already exist`)
+          this.openSnackBar("User already exist");
         }
         else{
-      alert("registration failed")
+          this.openSnackBar("registration failed");
         }
       }
      
@@ -70,6 +64,12 @@ export class RegisterComponent {
 
     }
 
+  }
+  openSnackBar(message: string){
+    this.snackBar.open(message, "close", {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
  
   }

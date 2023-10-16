@@ -38,9 +38,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -57,9 +54,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -76,9 +70,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -95,9 +86,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -114,9 +102,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -133,9 +118,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -152,12 +134,8 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
-
         {
             "UpstreamPathTemplate": "/SendEmail",
             "UpstreamHttpMethod": [ "Post" ],
@@ -172,12 +150,8 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
-
         {
             "UpstreamPathTemplate": "/CreateMenu",
             "UpstreamHttpMethod": [ "Post" ],
@@ -192,9 +166,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -211,9 +182,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -230,9 +198,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -249,9 +214,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -268,9 +230,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -287,9 +246,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -306,9 +262,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -325,12 +278,8 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
-
         {
             "UpstreamPathTemplate": "/CreateSubscription",
             "UpstreamHttpMethod": [ "Post" ],
@@ -345,9 +294,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -364,9 +310,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -383,9 +326,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -402,9 +342,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -421,12 +358,8 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
-
         {
             "UpstreamPathTemplate": "/Order",
             "UpstreamHttpMethod": [ "Post" ],
@@ -441,9 +374,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -460,9 +390,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -479,9 +406,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -498,12 +422,8 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
-
         {
             "UpstreamPathTemplate": "/CreateOrder",
             "UpstreamHttpMethod": [ "Post" ],
@@ -518,9 +438,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -537,9 +454,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         },
         {
@@ -556,9 +470,6 @@
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "token",
                 "AllowedScopes": []
-            },
-            "RouteClaimsRequirement": {
-                "Role": "Customer"
             }
         }
     ]

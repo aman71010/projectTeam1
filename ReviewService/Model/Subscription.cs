@@ -25,6 +25,7 @@ namespace SubscriptionService.Model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
+        [Required, EmailAddress]
         public string? UserId { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]

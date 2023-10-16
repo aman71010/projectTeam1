@@ -4,7 +4,7 @@
   
       </div>
     </div>
-  <div class="bg">
+  <div class="bg" style="padding: 2rem">
     <h2>Menu Item Details</h2>
     <div class="small-card">
       <mat-card>
@@ -26,12 +26,17 @@
       <p class="custom-font">{{menuItem.category}}</p>
       <p style="color: #e63946;">&#8377; {{menuItem.price}}</p>
       <div class="quantity-control">
-        <button (click)="addToCart() ; onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
-        
+        <!-- <button (click)="addToCart() ; onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button> -->
+        <button 
+                
+                mat-raised-button 
+                style="background-color: #e63946; color: white;" 
+                (click)="onViewMenuDetails(menuItem.menuItemId)"
+                >Proceed to Checkout</button>
       </div>
    
     </div>
-    <div class="reviews">
+    <!-- <div class="reviews">
       <h3 style="color:#e63946;">Reviews:</h3>
       <div class="reviews-content">
         
@@ -45,11 +50,11 @@
         </p>
         
       </div>
-    </div>
+    </div> -->
 
   </div><br>
 
-  
+
 <!-- 
 
     <div class="container">

@@ -10,6 +10,6 @@ export class NotifyService {
   constructor(private httpClient: HttpClient) { }
 
   sendEmail(emailObj: Email){
-    return this.httpClient.post("https://localhost:7128/Email", emailObj);
+    return this.httpClient.post("https://localhost:7024/Email/SendEMail", emailObj);
   }
 }

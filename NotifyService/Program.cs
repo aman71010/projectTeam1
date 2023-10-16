@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmailService, EmailService>();
 //builder.Services.AddSingleton<IHostedService, KafkaConsumer>();
-
+builder.Services.AddCors(option => option.AddPolicy("notifyService", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
 
 var app = builder.Build();
 
@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("notifyService");
 app.UseAuthorization();
 
 app.MapControllers();
