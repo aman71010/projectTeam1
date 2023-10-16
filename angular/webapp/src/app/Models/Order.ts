@@ -7,5 +7,5 @@ export class Order{
    price?: number;
    status?: number;
    createdAt?: Date
-   UpdatedAt?: Date
+   updatedAt?: Date
 }

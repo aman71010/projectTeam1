@@ -12,9 +12,10 @@ import { MenuComponent } from './menu/menu.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddMenuItemComponent } from './menu/add-menu-item/add-menu-item.component';
 import { HomeComponent } from './home/home.component';
-  
+
 //import payments from 'razorpay/dist/types/payments';
 import { PaymentsComponent } from './payments/payments.component';
+import { HomealtComponent } from './homealt/homealt.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'menudiscription/:id',component:MenuDescriptionComponent},
   {path: 'checkout/:id',component: CheckoutComponent},
   // {path: 'payment',component:PaymentsComponent},
+  {path:'homealt',component:HomealtComponent}
 ];
 
 @NgModule({

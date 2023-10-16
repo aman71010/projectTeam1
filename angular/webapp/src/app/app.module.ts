@@ -54,6 +54,7 @@ import { PaymentsComponent } from './payments/payments.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SubscriptionformComponent } from './subscriptionform/subscriptionform.component';
+import { HomealtComponent } from './homealt/homealt.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { SubscriptionformComponent } from './subscriptionform/subscriptionform.c
     HeaderComponent,
     HomeComponent,
     SubscriptionformComponent,
+    HomealtComponent,
   ],
   imports: [
     BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,   

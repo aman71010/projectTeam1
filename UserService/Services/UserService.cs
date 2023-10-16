@@ -35,6 +35,10 @@ namespace UserService.Services
                     MobileNo = user.MobileNo
                 };
 
+                if(newUser.UserEmailId.Equals(configuration["Admin:email"]) && newUser.Password.Equals(configuration["Admin:password"])){
+                    newUser.UserRole = Role.Admin;
+                } 
+
                 ProduceMessage(newUser.UserEmailId);
 
                 return userRepository.CreateUser(newUser);

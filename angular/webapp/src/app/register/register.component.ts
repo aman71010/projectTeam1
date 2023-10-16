@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NotifyService } from '../Services/notify.service';
 import { Email } from '../Models/Email';
 import { User } from '../Models/User/User';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,10 @@ import { User } from '../Models/User/User';
 })
 export class RegisterComponent {
 
-  constructor(private fb:FormBuilder, private auth:AuthService,private router:Router, private notify: NotifyService){}
+  
+
+
+  constructor(private fb:FormBuilder, private auth:AuthService,private router:Router, private notify: NotifyService,private snackBar:MatSnackBar){}
 
   registerForm = this.fb.group(
     {
@@ -36,8 +40,9 @@ export class RegisterComponent {
   onRegister()
   {
     if(this.registerForm.valid){
-      this.auth.Register(this.registerForm.value).subscribe((data:any)=>
-      {
+      this.auth.Register(this.registerForm.value).subscribe({
+      next: (res: any) => {
+        const data: any = JSON.parse(JSON.stringify(res));
         this.user = data;
         this.sendEmail.emailId = this.user.userEmailId;
         this.sendEmail.subject = "Register Successfully";
@@ -45,9 +50,26 @@ export class RegisterComponent {
         this.notify.sendEmail(this.sendEmail).subscribe((res) => {
 
         });
-        this.router.navigate(['login']);
-      })
+
+      },
+      error:(err:any)=>{
+        if(err.status==201) 
+        {
+          alert("Registration sucessfull")
+          this.router.navigate(['/login'])
+        }else if(err.status==409){
+          alert(`User already exist`)
+        }
+        else{
+      alert("registration failed")
+        }
+      }
+     
+    }
+      );
+
     }
 
   }
+ 
   }
