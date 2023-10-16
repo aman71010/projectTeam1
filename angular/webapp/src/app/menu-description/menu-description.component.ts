@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { MenuService } from '../Services/MenuService/menu.service';
 import { MenuItem } from '../Models/MenuItem';
 import { CheckoutService } from '../Services/checkoutService/checkout.service';
@@ -17,9 +17,8 @@ export class MenuDescriptionComponent implements OnInit {
 
   menuItem: MenuItem = new MenuItem();
 
-  // constructor(private menuService: MenuService, private route: ActivatedRoute) {}
   constructor(private menuService: MenuService, private route: ActivatedRoute, private router: Router, 
-    private checkoutService: CheckoutService) {}
+    private checkoutService: CheckoutService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
       this.getIdFromUrl();
@@ -35,6 +34,11 @@ export class MenuDescriptionComponent implements OnInit {
     this.menuService.getMenuItemById(id).subscribe((data: any) => {
       this.menuItem = data;
     });
+  }
+
+  getImage(imageData: any){
+    const imageUrl = 'data:image/jpeg;base64,' + imageData;
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 
   incrementQuantity() {

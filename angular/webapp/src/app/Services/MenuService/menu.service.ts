@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
+
+  token: any;
+  getToken(){
+    this.authService.loginUser.subscribe((data: any) => {
+      this.token = data.token;
+      console.log(this.token);
+    })
+  }
 
   getAllMenuItems(){
     return this.httpClient.get("https://localhost:7107/api/Menu/get/menulist");

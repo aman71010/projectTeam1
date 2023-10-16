@@ -10,6 +10,8 @@ import { MenuService } from '../Services/MenuService/menu.service';
 import { CheckoutService } from '../Services/checkoutService/checkout.service';
 import { AuthService } from '../Services/auth.service';
 import { OrderService } from 'src/OrderService/order.service';
+import { User } from '../Models/User/User';
+import { UserService } from '../Services/user/user.service';
 
 declare var Razorpay: any;
 @Component({
@@ -20,7 +22,8 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit{
 
   menuItem: MenuItem = new MenuItem();
-  userEmail?: string;
+  userEmail?: any;
+  user: User = new User();
 
   constructor(
     private menuService: MenuService,
@@ -29,7 +32,8 @@ export class CheckoutComponent implements OnInit{
     private sanitizer: DomSanitizer,
     private orderService: OrderService,
     private checkoutService: CheckoutService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {}
 
 
@@ -48,7 +52,7 @@ export class CheckoutComponent implements OnInit{
   getUserEmail(){
     this.authService.loginUser.subscribe((userData: any) => {
       this.userEmail = userData.email;
-      console.log(this.userEmail);
+      this.getUserDetails();
     })
   }
 
@@ -64,6 +68,12 @@ export class CheckoutComponent implements OnInit{
     this.menuService.getMenuItemById(id).subscribe((data: any) => {
       this.menuItem = data;
     });
+  }
+
+  getUserDetails(){
+    this.userService.FetchUser(this.userEmail).subscribe((res: any) => {
+      this.user = res;
+    })
   }
 
   taxRate: number = 0.18;
@@ -88,17 +98,19 @@ export class CheckoutComponent implements OnInit{
     order.userEmailId = this.userEmail;
     order.items.push(orderItem);
     order.price = this.subtotal;
-    order.status = 5;
+    order.status = 4;
     order.createdAt = new Date();
     order.updatedAt = new Date();
 
     this.orderService.createOrder(order).subscribe((res:any) => {
       console.log(res);
     })
+
+    // this.router.navigate(['order']);
   }
 
 
-  proceedTopay(amount:number){
+  proceedTopay(amount: any){
     const RazorpayOptions={
       description:'Razorpay Payment',
       currency:'INR',
@@ -107,23 +119,23 @@ export class CheckoutComponent implements OnInit{
       key:'rzp_test_pmZ9sPkab2DGdZ',
       image:'https://th.bing.com/th?id=OIP.t6kmiUn7cQ4NJGjHEPAOXwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2',
       prefill:{
-        name:'bilwaraj',
-        email:'bilwa@gmail.com',
-        phone: '11234567809'
+        name: this.user.name,
+        email: this.user.userEmailId,
+        phone: this.user.mobileNo
       },
       theme: {
-        color :'#f37254'
+        color :'#C21E56'
       },
       model:{
         ondismiss: () =>{
-            console.log('dismissed')
+          console.log('dismissed')
         }
-      }
+      },
+      handler: this.createOrder()
     }
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
-      
     }
 
     const failureCallback = (e: any) => {

@@ -40,7 +40,7 @@ export class RegisterComponent {
       {
         this.user = data;
         this.sendEmail.emailId = this.user.userEmailId;
-        this.sendEmail.subject = "Register Successfully";
+        this.sendEmail.subject = "Registered Successfully";
         this.sendEmail.body = "you have successfully registered to our application!";
         this.notify.sendEmail(this.sendEmail).subscribe((res) => {
 

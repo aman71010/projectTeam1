@@ -9,6 +9,11 @@
     </mat-nav-list> -->
     <mat-nav-list>
       <mat-list-item *ngIf="isUserAllowed(['Customer', 'Admin'])">
+        <a [routerLink]="''" mat-list-item (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">Home</p>
+        </a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isUserAllowed(['Customer', 'Admin'])">
         <a [routerLink]="'profile'" mat-list-item (click)="sidenav.toggle()"> 
           <p [ngClass]="['listItem']">User Profile</p>
         </a>
@@ -26,6 +31,11 @@
       <mat-list-item *ngIf="isUserAllowed(['Customer'])">
         <a [routerLink]="'subscribe'" mat-list-item (click)="sidenav.toggle()"> 
           <p [ngClass]="['listItem']">Subscribe</p>
+        </a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isUserAllowed(['Customer'])">
+        <a [routerLink]="'order'" mat-list-item (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">Orders</p>
         </a>
       </mat-list-item>
     </mat-nav-list>

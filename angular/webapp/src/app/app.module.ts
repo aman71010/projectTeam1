@@ -45,7 +45,6 @@ import { OrderComponent } from './order/order.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
-import { MenuItemDetailsComponent } from './menu/menu-item-details/menu-item-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 
 
@@ -54,6 +53,7 @@ import { PaymentsComponent } from './payments/payments.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SubscriptionformComponent } from './subscriptionform/subscriptionform.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -66,13 +66,13 @@ import { SubscriptionformComponent } from './subscriptionform/subscriptionform.c
     ProfileComponent,
     OrderComponent,
     ForgotPasswordComponent,
-    MenuItemDetailsComponent,
     SubscriptionComponent,
     AddMenuItemComponent,
     PaymentsComponent,
     HeaderComponent,
     HomeComponent,
     SubscriptionformComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,   

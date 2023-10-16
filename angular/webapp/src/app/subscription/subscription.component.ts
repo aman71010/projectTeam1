@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Subscription } from '../Models/Subscription';
 import { AuthService } from '../Services/auth.service';
 import { SubscriptionService } from '../Services/subscriptionService/subscription.service';
+import { User } from '../Models/User/User';
+import { UserService } from '../Services/user/user.service';
 
 declare var Razorpay: any;
 @Component({
@@ -16,7 +18,8 @@ export class SubscriptionComponent implements OnInit{
   constructor(
     private subService : SubscriptionService, 
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ){}
 
   subsType = ['Basic', 'Silver','Gold'];
@@ -26,8 +29,9 @@ export class SubscriptionComponent implements OnInit{
   userCurrSubscription?: any = null;
   isUserSubsrcibed: any = false;
 
-  currSubsVal?: number;
-
+  chosenSubsType?: number;
+  user: User = new User();
+  
   order: any = {
     "email": "string",
     "phoneNumber": "string",
@@ -44,6 +48,13 @@ export class SubscriptionComponent implements OnInit{
   getUserEmail(){
     this.authService.loginUser.subscribe((userData: any) => {
       this.userEmail = userData.email;
+      this.getUserDetails();
+    })
+  }
+
+  getUserDetails(){
+    this.userService.FetchUser(this.userEmail).subscribe((res: any) => {
+      this.user = res;
     })
   }
 
@@ -58,13 +69,21 @@ export class SubscriptionComponent implements OnInit{
     });
   }
 
+  setChosenSubsType(type: any){
+    this.chosenSubsType = type;
+  }
+
+  AlreadySubscribed(type: any){
+    return (this.isUserSubsrcibed && this.userCurrSubscription.type == type && this.userCurrSubscription.endDate >= new Date());
+  }
+
   createOrUpdateSubscription() {
 
     if(this.isUserSubsrcibed == false){
       const subscription: Subscription = new Subscription();
 
       subscription.userId = this.userEmail;
-      subscription.type = this.currSubsVal;
+      subscription.type = this.chosenSubsType;
       subscription.startDate = new Date();
       subscription.endDate = new Date(new Date().setMonth(new Date().getMonth() + 3));
       subscription.status = 1;
@@ -72,17 +91,15 @@ export class SubscriptionComponent implements OnInit{
       subscription.updatedAt = new Date();
       
       this.subService.createSubscription(subscription).subscribe((res) => {
-        console.log("Subscription created:", res);
         this.checkUserSubscription();
       });
     }
     else{
       const currSubs = this.userCurrSubscription;
-      currSubs.type = this.currSubsVal;
+      currSubs.type = this.chosenSubsType;
       currSubs.updatedAt = new Date();
 
       this.subService.updateSubscriptionByUserId(this.userEmail, currSubs).subscribe((res: any) => {
-        console.log(res);
         this.checkUserSubscription();
       });
     }
@@ -98,24 +115,24 @@ export class SubscriptionComponent implements OnInit{
       key:'rzp_test_pmZ9sPkab2DGdZ',
       image:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Ffood-delivery&psig=AOvVaw2sReYVrBuZs7ulUKL8mlqF&ust=1697090590125000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIitjKap7YEDFQAAAAAdAAAAABAE',
       prefill:{
-        name:'bilwaraj',
-        email:'leecopper@gmail.com',
-        phone: '11234567809'
+        name: this.user.name,
+        email: this.user.userEmailId,
+        phone: this.user.mobileNo
       },
       theme: {
-        color :'#f37254'
+        color :'#C21E56'
       },
       model:{
         ondismiss: () =>{
             console.log('dismissed')
         }
-      }
+      },
+      handler: this.createOrUpdateSubscription()
     }
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
       this.router.navigate(['menu']);
-
     }
 
     const failureCallback = (e: any) => {

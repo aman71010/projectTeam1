@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { MenuService } from 'src/app/Services/MenuService/menu.service';
 
@@ -16,7 +17,7 @@ export class AddMenuItemComponent implements OnInit{
 
   selectedFile: any;
 
-  constructor(private menuService: MenuService,private snackBar: MatSnackBar) {}
+  constructor(private menuService: MenuService,private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {
       
@@ -43,6 +44,8 @@ export class AddMenuItemComponent implements OnInit{
         Category: this.menuItemForm.value.category,
       };
       this.onUpload(menuItemData);
+      this.menuItemForm.reset();
+      this.router.navigate(['menu']); 
     }
   }
 
