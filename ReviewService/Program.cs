@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<SubscriptionContext>();
 builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 builder.Services.AddScoped<ISubscriptionServices, SubscriptionServices>();
-
+builder.Services.AddCors(option => option.AddPolicy("subscriptionService", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
 
 var app = builder.Build();
 
@@ -24,6 +24,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
+app.UseCors("subscriptionService");
 
 app.UseAuthorization();
 

@@ -1,6 +1,55 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-
-
-
-
+<mat-sidenav-container [ngClass]="['sidebar-container']">
+  <mat-sidenav #sidenav  [ngClass]="['sidebar-events']">
+    <!-- <mat-nav-list>
+      <mat-list-item *ngFor="let route of routes" *ngIf="isUserAllowed(route.forUserType)">
+        <a mat-list-item [routerLink]="route.path" (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">{{route.label}}</p>
+        </a>
+      </mat-list-item>
+    </mat-nav-list> -->
+    <mat-nav-list>
+      <mat-list-item *ngIf="isUserAllowed(['Customer', 'Admin'])">
+        <a [routerLink]="'profile'" mat-list-item (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">User Profile</p>
+        </a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isUserAllowed(['Customer', 'Admin'])">
+        <a [routerLink]="'menu'" mat-list-item (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">Menu</p>
+        </a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isUserAllowed(['Admin'])">
+        <a [routerLink]="'addmenu'" mat-list-item (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">Add Menu</p>
+        </a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isUserAllowed(['Customer'])">
+        <a [routerLink]="'subscribe'" mat-list-item (click)="sidenav.toggle()"> 
+          <p [ngClass]="['listItem']">Subscribe</p>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar [ngClass]="['navbar']">
+      <button *ngIf="isAuthenticated" mat-icon-button  class="example-icon" (click)="sidenav.toggle()" aria-label="Example icon-button with menu icon">
+        <mat-icon class="hamburger">menu</mat-icon>
+      </button>
+      <span class="logo nav-logo" routerLink="/">Lunchsy</span>
+      <span class="example-spacer"></span>
+      <span *ngIf="!isAuthenticated && !isRegisterOrLoginPath" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="register">Register</span>
+      <span *ngIf="!isAuthenticated && !isRegisterOrLoginPath" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="login">Login</span>
+      
+      <span *ngIf="isAuthenticated && !isAvatarImage"><button class= "avatar-text" mat-mini-fab disabled aria-label="Example icon button with a home icon">
+        {{avatarText}}
+      </button></span>
+    
+      <div *ngIf="isAuthenticated && isAvatarImage" class="Avatar" [style.background-image]="getImage()"></div>
+      
+      <button *ngIf="isAuthenticated" [ngClass]="{'ava': isAvatarImage}" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="onLogout()">
+        <span class="material-icons" style="color: white; font-size: 30px;">logout</span>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

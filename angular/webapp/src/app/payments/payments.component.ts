@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { WindowService } from '../services/Windows/window.service';
+import { WindowService } from '../Services/Windows/window.service';
 
 @Component({
   selector: 'app-payments',

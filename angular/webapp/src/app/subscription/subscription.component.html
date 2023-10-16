@@ -17,7 +17,16 @@
             <li>Standard Delivery Charges Apply.</li>
         </ul>
         <div class="payment-button text-center">
-            <button (click)="proceedTopay(2000) " class="btn btn-pink">Subscribe</button>
+            <button 
+                (click)="proceedTopay(2000);" 
+                class="btn btn-pink">Subscribe</button>
+        </div>
+        <div>
+            <button 
+                class="btn btn-primary" 
+                (click)="currSubsVal=0; createOrUpdateSubscription()"
+                [disabled]="isUserSubsrcibed && userCurrSubscription.type == 0"
+            >Add Subs</button>
           </div>
     </div>
 
@@ -31,8 +40,18 @@
             <li>Standard Delivery Charges Apply.</li>
         </ul>
         <div class="payment-button text-center">
-            <button (click)="proceedTopay(5000); createSubscription(1)" class="btn btn-pink">Subscribe</button>
-          </div>
+            <button 
+            (click)="proceedTopay(5000); " 
+            class="btn btn-pink">Subscribe</button>
+        </div>
+
+        <div>
+        <button 
+            class="btn btn-primary" 
+            (click)="currSubsVal=1; createOrUpdateSubscription()"
+            [disabled]="isUserSubsrcibed && userCurrSubscription.type == 1"
+        >Add Subs</button>
+        </div>
     </div>
     
     <div class = "subscribe-col">
@@ -47,7 +66,16 @@
             <li>No Delivery Costs.</li>
         </ul>
         <div class="payment-button text-center">
-            <button (click)="proceedTopay(7000); createSubscription(2)" class="btn btn-pink">Subscribe</button>
-          </div>
+            <button 
+                (click)="proceedTopay(7000);" 
+                class="btn btn-pink">Subscribe</button>
+        </div>
+        <div>
+            <button 
+                class="btn btn-primary" 
+                (click)="currSubsVal=2; createOrUpdateSubscription()"
+                [disabled]="isUserSubsrcibed && userCurrSubscription.type == 2"
+            >Add Subs</button>
+        </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-3">
-        <img [src]= " getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
+        <img [src]= "getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
       </div>
       <div class="col-md-4">
         <div class="card-body">
@@ -33,9 +33,13 @@
 
   <div class="payment-button text-center">
   
-    <button (click)="proceedTopay(100); createOrder()" class="btn btn-pink">Proceed to Pay</button>
+    <button (click)="proceedTopay(100);" class="btn btn-pink">Proceed to Pay</button>
   </div>
    
+</div>
+
+<div>
+  <button class="btn btn-primary" (click)="createOrder()"> Create Order</button>
 </div>
    
    

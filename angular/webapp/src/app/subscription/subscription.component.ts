@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SubService } from './sub-.service';
 import { Router } from '@angular/router';
-import { Subscriptiondata } from '../Models/Subscriptiondata';
-import { subscribes } from '../Models/subscribes';
+
+import { Subscription } from '../Models/Subscription';
+import { AuthService } from '../Services/auth.service';
+import { SubscriptionService } from '../Services/subscriptionService/subscription.service';
 
 declare var Razorpay: any;
 @Component({
@@ -12,32 +13,78 @@ declare var Razorpay: any;
 })
 export class SubscriptionComponent implements OnInit{
 
-  constructor(private Obj : SubService , private router: Router ){}
+  constructor(
+    private subService : SubscriptionService, 
+    private router: Router,
+    private authService: AuthService
+  ){}
+
+  subsType = ['Basic', 'Silver','Gold'];
+  paymentStatus = ['Pending', 'Paid','Cancelled'];
+
+  userEmail?: any;
+  userCurrSubscription?: any = null;
+  isUserSubsrcibed: any = false;
+
+  currSubsVal?: number;
+
   order: any = {
     "email": "string",
     "phoneNumber": "string",
     "amount": 200000,
   }
-
-  isUserSubsrcibed: any = false;
-
-  subscriptionList: subscribes[] = [];
  
   ngOnInit(): void {
-    this.Obj.getAllSubscription().subscribe((res: any) => {
-      this.subscriptionList = res;
-      console.log(res);
-    })
-    this.checkUserSubscribed();
+    this.getUserEmail();
 
+    this.checkUserSubscription();
+    
   }
 
-  checkUserSubscribed(){
-    const userEmail = localStorage.getItem('email');
-    for(let i=0; i<this.subscriptionList.length; i++){
-      if(this.subscriptionList[i].UserId === userEmail){
-        this.isUserSubsrcibed = true;
-      }
+  getUserEmail(){
+    this.authService.loginUser.subscribe((userData: any) => {
+      this.userEmail = userData.email;
+    })
+  }
+
+  checkUserSubscription(){
+    this.subService.getSubscription().subscribe((res: any) => {
+      res.map((data: any) => {
+        if(data.userId == this.userEmail){
+          this.isUserSubsrcibed = true;
+          this.userCurrSubscription = data;
+        }
+      })
+    });
+  }
+
+  createOrUpdateSubscription() {
+
+    if(this.isUserSubsrcibed == false){
+      const subscription: Subscription = new Subscription();
+
+      subscription.userId = this.userEmail;
+      subscription.type = this.currSubsVal;
+      subscription.startDate = new Date();
+      subscription.endDate = new Date(new Date().setMonth(new Date().getMonth() + 3));
+      subscription.status = 1;
+      subscription.createdAt = new Date();
+      subscription.updatedAt = new Date();
+      
+      this.subService.createSubscription(subscription).subscribe((res) => {
+        console.log("Subscription created:", res);
+        this.checkUserSubscription();
+      });
+    }
+    else{
+      const currSubs = this.userCurrSubscription;
+      currSubs.type = this.currSubsVal;
+      currSubs.updatedAt = new Date();
+
+      this.subService.updateSubscriptionByUserId(this.userEmail, currSubs).subscribe((res: any) => {
+        console.log(res);
+        this.checkUserSubscription();
+      });
     }
   }
 
@@ -80,21 +127,4 @@ export class SubscriptionComponent implements OnInit{
     rzp.open();
   }
 
-
-  createSubscription(option: number) {
-    let subscriptionData: any = {
-      UserId: 'gopisettysaikarthik9@gmail.com',
-      Type: option,
-      StartDate: new Date(),
-      EndData: new Date(new Date().setMonth(new Date().getMonth() + 3)),
-      Status: 0,
-      CreatedAt: new Date(),
-      UpdatedAt: new Date()
-    };
-
-    this.Obj.createSubscription(subscriptionData).subscribe((res) => {
-      console.log("Subscription created:", res);
-    });
-  }
-
-  }
+}
