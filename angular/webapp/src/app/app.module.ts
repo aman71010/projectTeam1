@@ -54,6 +54,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SubscriptionformComponent } from './subscriptionform/subscriptionform.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HomealtComponent } from './homealt/homealt.component';
 
 @NgModule({
   declarations: [
@@ -72,13 +73,18 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HeaderComponent,
     HomeComponent,
     SubscriptionformComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HomealtComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule, BrowserAnimationsModule,MatToolbarModule,   
-   
-    AppRoutingModule,MatListModule,
-     MatChipsModule, MatCardModule,
+    BrowserModule,
+    HttpClientModule, 
+    BrowserAnimationsModule,
+    MatToolbarModule,   
+    AppRoutingModule,
+    MatListModule,
+    MatChipsModule, 
+    MatCardModule,
     MatButtonModule,
     MatDividerModule,
     CommonModule,

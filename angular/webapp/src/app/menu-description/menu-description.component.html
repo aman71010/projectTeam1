@@ -20,34 +20,12 @@
         </mat-card-content>
       </mat-card>
     </div>
-      <!-- </mat-card-content>
-    </mat-card> -->
-  <!-- </div> -->
-  <!-- <div class="content">
-    <h3>{{menuItem.name}}</h3>
-    <p>{{menuItem.description}}</p><br>
-    <p>{{menuItem.category}}</p>
-    <p style="color: red;">&#8377; {{menuItem.price}}</p>
-    <div class="quantity-control">
-      <button (click)="decrementQuantity()">-</button>
-      <input type="number" [(ngModel)]="quantity" min="1" />
-      <button (click)="incrementQuantity()">+</button>
-      <button (click)="addToCart(); onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
-      
-  
-    </div> -->
     <div class="content">
-      <!-- <h3>{{menuItem.name}}</h3>
-      <p>{{menuItem.description}}</p><br>
-      <p>{{menuItem.category}}</p> -->
        <h4><strong>{{menuItem.name}}</strong></h4>
       <p>{{menuItem.description}}</p><br>
       <p class="custom-font">{{menuItem.category}}</p>
       <p style="color: #e63946;">&#8377; {{menuItem.price}}</p>
       <div class="quantity-control">
-        <!-- <button (click)="decrementQuantity()">-</button>
-        <input type="number" [(ngModel)]="quantity" min="1" />
-        <button (click)="incrementQuantity()">+</button> -->
         <button (click)="addToCart() ; onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
         
       </div>
@@ -70,26 +48,48 @@
     </div>
 
   </div><br>
+
+  
 <!-- 
-  <div class="center-button">
-    <button class="checkout-button">Checkout</button>
-  </div><br> -->
-<!-- </div> -->
-  <!-- <div class="content">
-     <h3>{{menuItem.name}}</h3>
-    <p>{{menuItem.description}}</p><br>
-    <p class="custom-font">{{menuItem.category}}</p>
-    <p style="color: red;">&#8377; 199</p>
 
-    <div class="quantity-control">
-      <button (click)="decrementQuantity()">-</button>
-      <input type="number" [(ngModel)]="quantity" min="1" />
-      <button (click)="incrementQuantity()">+</button>
-      <button (click)="addToCart(); onViewMenuDetails(menuItem.menuItemId)" class="add-to-cart-button">Proceed to Checkout</button>
-    </div> -->
-
-
-
-
-
-
+    <div class="container">
+      <div id="banner" class="my d-flex"> </div><br>
+      <div class="bg">
+        <h2 style="margin-left: 0px;padding-top: 15px;">Menu Item Details</h2>
+        <div class="leftright">
+          <div class="image-container">
+            <img [src]= "getImage(menuItem.image)" class="img-fluid rounded-start" style="width: 100%;height: 100%; object-fit: cover;" alt="...">
+          </div>
+          <div class="content-container">
+              <h4><strong>MASALA DOSA</strong></h4>
+              <p class="custom-font">The dosa is typically prepared by spreading the fermented batter thinly on a hot griddle or tava, creating a large, thin pancake-like crepe. The crepe is then filled with a spicy and savory potato mixture, known as masala, made with boiled potatoes, onions, mustard seeds, curry leaves, and a blend of spices such as turmeric, coriander, and cumin. The masala is often cooked until it achieves a rich, aromatic flavor and is then used as a filling for the dosa.</p>
+              <p style="color: red;font-weight: bold;font-size: 18px;margin-left: 0px;">&#8377; 87.00</p> 
+              
+              
+                   
+            </div>
+      </div>
+    
+        <div class="small-card">
+         
+              <div class="ratings-container">
+                <p class="ratings-label">Ratings: </p>
+                <div class="rating-box">
+                  <span class="rating-number">4.5</span>
+    
+                </div>
+              </div>
+    
+        </div>
+    
+        <div class="reviews">
+          <div style="border: 1px solid black;padding: 10px;">
+            <h3 style="color: red;margin-left: 0px;font-size: 20px;font-weight: bold;">Reviews</h3>
+            <div class="reviews-content">
+                <p>You can't say anything about the taste. It's just amazing. The taste of the dosas or the chutneys is really good. Cost for the food is high considering that there is no shelter and you have to eat in the open. So people might feel it's costly but definitely worth the taste.</p>
+            </div>
+        </div>
+            
+          </div>
+        </div>
+ -->

@@ -83,7 +83,6 @@
   background-color: darkred; 
 }
 
-/* Add this CSS in your component's CSS file or styles.css */
 
 .reviews {
   margin-top: 20px;
@@ -109,8 +108,6 @@
 }
 
 
-/* Add this CSS in your component's CSS file or styles.css */
-
 .center-button {
   display: flex;
   justify-content: center;
@@ -135,3 +132,46 @@
   background-color: #e93a51; 
   transform: scale(1.05); 
 }
+
+
+/* #banner{
+  width: 100%;
+  height: 160px;
+  background-image: url(https://i.ibb.co/nw1NgmQ/image-3.png);
+  background-size: 100% 160px;
+  background-repeat: no-repeat;
+}
+
+.leftright {
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.content-container {
+  flex: 1 1 auto;
+  margin-left: 240px;
+  margin-bottom:140px;
+}
+
+.ratings-container {
+  display: flex;
+  align-items: center; 
+}
+
+.ratings-label {
+  margin-right: 10px; 
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.rating-box {
+  padding: 1px 10px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+} */

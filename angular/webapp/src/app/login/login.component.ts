@@ -12,7 +12,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 })
 export class LoginComponent {
 
-  horizontalPosition: MatSnackBarHorizontalPosition = "right";
+  horizontalPosition: MatSnackBarHorizontalPosition = "center";
   verticalPosition: MatSnackBarVerticalPosition = "top";
 
   constructor(private auth:AuthService,private router:Router,private snackBar: MatSnackBar) {}
@@ -32,8 +32,8 @@ export class LoginComponent {
           this.openSnackBar("User logged in successfully");
           this.router.navigate(['/menu']);
         },
-        error:(err)=>{
-          this.openSnackBar(err.error);
+        error:(err:any)=>{
+         this.openSnackBar("Invalid credentials")
         }
       })
     }

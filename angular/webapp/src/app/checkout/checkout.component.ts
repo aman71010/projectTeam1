@@ -12,6 +12,8 @@ import { AuthService } from '../Services/auth.service';
 import { OrderService } from 'src/OrderService/order.service';
 import { User } from '../Models/User/User';
 import { UserService } from '../Services/user/user.service';
+import { SubscriptionService } from '../Services/subscriptionService/subscription.service';
+import { Subscription } from '../Models/Subscription';
 
 declare var Razorpay: any;
 @Component({
@@ -24,6 +26,7 @@ export class CheckoutComponent implements OnInit{
   menuItem: MenuItem = new MenuItem();
   userEmail?: any;
   user: User = new User();
+  subscriptionData:any=new Subscription();
 
   constructor(
     private menuService: MenuService,
@@ -33,7 +36,8 @@ export class CheckoutComponent implements OnInit{
     private orderService: OrderService,
     private checkoutService: CheckoutService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private subscriptionService: SubscriptionService
   ) {}
 
 
@@ -47,6 +51,7 @@ export class CheckoutComponent implements OnInit{
   {
     this.getIdFromUrl();
     this.getUserEmail();
+    this.getSubscriptionId(this.userEmail);
   }
 
   getUserEmail(){
@@ -76,13 +81,40 @@ export class CheckoutComponent implements OnInit{
     })
   }
 
+  getSubscriptionId(userEmail:any){
+    this.userEmail=userEmail;
+    this.subscriptionService.getSubscriptionByUserId(userEmail).subscribe(data=>{
+      this.subscriptionData=data
+    })
+  }
+
   taxRate: number = 0.18;
   taxAmount?:number;
   subtotal?:number;
 
   getTotal(price:any){
-    this.taxAmount=this.taxRate*price;
-    this.subtotal=price+this.taxAmount;
+
+    if(this.subscriptionData.Type===0)
+    {
+      price=price-(price*0.10);
+    }
+   
+    else if(this.subscriptionData.Type===1)
+    {
+      price=price-(price*0.15);
+    }
+  
+    else if(this.subscriptionData.Type===2)
+    {
+      price=price-(price*0.20);
+    }
+    else
+    {
+      this.taxAmount=this.taxRate*price;
+      this.subtotal=price+this.taxAmount;
+    }
+    this.taxAmount= Math.trunc(this.taxRate*price);
+    this.subtotal= Math.trunc(price+this.taxAmount);
   }
 
   createOrder(){
@@ -111,6 +143,12 @@ export class CheckoutComponent implements OnInit{
 
 
   proceedTopay(amount: any){
+  // var:any=this.subtotal;
+  // paynow()
+  // {
+  //   this.proceedTopay(this.var);
+  // }
+  // proceedTopay(amount:number){
     const RazorpayOptions={
       description:'Razorpay Payment',
       currency:'INR',

@@ -2,9 +2,9 @@
 <div class="container">
   <div class="card mb-3">
     <div class="row g-0">
-      <div class="col-md-3">
-        <img [src]= "getImage(menuItem.image)" class="img-fluid rounded-start" style="max-width: 100%; height: auto;" alt="...">
-      </div>
+      <div class="col-md-1" style="width: 200px; height: 150px;">
+        <img [src]= "getImage(menuItem.image)" class="img-fluid rounded-start" style="width: 100%;height: 100%; object-fit: cover;" alt="...">
+      </div>
       <div class="col-md-4">
         <div class="card-body">
           <h5 class="card-title">{{menuItem.name}}</h5>
@@ -14,7 +14,7 @@
       </div>
       <div class="col-md-2">
         <div class="card-body">
-          <h5 class="card-text">Price: ${{menuItem.price}}</h5>
+          <h5 class="card-text">Price: {{   menuItem.price| currency:'INR':'₹' }}</h5>
         </div>
       </div>
     </div>
@@ -23,17 +23,18 @@
   {{getTotal(menuItem.price)}}
 
   
-    <div class="totals">
+  <div class="totals">
       
-      <p>Subtotal: {{ menuItem.price| currency:'USD':'symbol-narrow' }}</p>
-      <p>Tax ({{ taxRate * 100 }}%): {{ taxAmount | currency:'USD':'symbol-narrow' }}</p>
-      <p>Total: {{ subtotal | currency:'USD':'symbol-narrow' }}</p>
-    </div>
+    <p>Subtotal:   {{ menuItem.price| currency:'INR':'₹' }}</p>
+    <p>Tax  ({{ taxRate * 100 }}%): {{ taxAmount | currency:'INR':'₹' }}</p>
+    <p>Total:   {{ subtotal | currency:'INR':'₹' }}</p>
+    </div>
  
 
   <div class="payment-button text-center">
   
-    <button (click)="proceedTopay(menuItem.price);" class="btn btn-pink">Proceed to Pay</button>
+    <button (click)="proceedTopay(subtotal);" class="btn btn-pink">Proceed to Pay</button>
+    <!-- <button (click)="paynow(); createOrder()" class="btn btn-pink">Proceed to Pay</button> -->
   </div>
    
 </div>

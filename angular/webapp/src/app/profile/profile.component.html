@@ -25,7 +25,7 @@
                 <h4>My Orders</h4>
                 <h4>My Subscription</h4>
                 <h4>Change Password</h4>
-                <h4>Logout</h4>
+                <h4 (click)="onLogout()">Logout</h4>
             </div>
         </div>
         <div id="profile-info" *ngIf="user.userEmailId">

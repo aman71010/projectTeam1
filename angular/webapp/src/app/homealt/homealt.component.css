@@ -1,58 +1,89 @@
+.container{
+    background-image: url("https://t3.ftcdn.net/jpg/02/75/14/26/360_F_275142616_tAjx36FyAOWpkCJID2aG6iFWrDavQqm9.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
 
-   .button-container {
-    position: relative;
-    top: 10px; /* Adjust the top position as needed */
-    right: 10px; /* Adjust the right position as needed */
-    text-align: right;
-  }
-  
-  .login-button, .register-button {
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 30px;
-  }
-  .login-button:hover, .register-button:hover{
-    background-color: #500808;
-  }
-  
-  #home {
-    text-align: center;
-    padding-bottom: 50px;
-  }
-  
-  #home h1,#home p,#home button {
-    margin: 0 auto;
-  }
-  .xyz{
-    /* background-color: antiquewhite; */
-    background-image: url('../../assets/bg_image.jpg');
-  }
-  
-  /*  OUR SERVICES PAGE */
-  
-  .card-container {
+overflow: hidden;
+margin-top: 20px;
+
+max-height: 100%;
+}
+img{
+    height: 400px;
+}
+
+.centered-content {
+   /* background-image: url("https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-wooden-board-food-lunch-background-poster-image_220338.jpg");
+    background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;*/
+ background-color: white;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 60px;
-  }
-  .example-card {
-    max-width: 200px;
-  }
-  
-  .card-description {
-    text-align: center;
-  }
-  
-  
-  /* Center the content in the footer */
-  
-  /* Footer styles */
-  footer {
+    flex-direction: column;
+    align-items: center; 
+    margin-left: 100px;
+margin-right: 100px;
+    overflow: hidden;
+margin-top: 10px;
+max-height: 100%;
+   
+}
+.centered-content.reg-title{
+    font-family: MarcJacobs;
+    text-transform: uppercase;
+    font-size: 1.375rem;
+    letter-spacing: 1.54px;
+    line-height: 18px; 
+    
+}
+ h2 {
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: #C21E56;
+}
+.centered-content.reg-desc{
+    font-size: 30px;
+    letter-spacing: .98px;
+    line-height: 18px;
+    font-family: 'Roboto', sans-serif;
+
+    text-transform: uppercase;
+}
+h4{
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight:normal;
+}
+.container.btn{
+    font-size: .75rem;
+    letter-spacing: .84px;
+    line-height: 18px;
+    margin-top: 35px;
+    margin-bottom: 65px;
+    padding: 20px 45px;
+}
+[type=button]{
+    background-color:  #C21E56;;
+    color: white;
+}
+
+
+footer {
+    background-color: #333; 
+    color: #fff; 
+    padding: 40px 0; 
+    text-align: center; 
+}
+
+/* Footer styles */
+footer {
     text-align: center;
     background-color: #333;
     color: #fff;
@@ -167,6 +198,9 @@
     background-color: rgb(221, 207, 207);
   
   }
-  
-  /* Adjust width and styling as needed */
-  
+
+
+
+
+
+
