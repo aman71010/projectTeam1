@@ -227,6 +227,10 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Menu/get/image/{menuitemid}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            },
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
@@ -242,6 +246,10 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Menu/get/menulist",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            },
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
@@ -257,6 +265,10 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Menu/get/menubyid/{id}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            },
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
@@ -272,6 +284,10 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Menu/get/MenuByCate/{category}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            },
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
@@ -345,6 +361,10 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Subscription/List",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            },
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
@@ -360,6 +380,10 @@
                 }
             ],
             "DownstreamPathTemplate": "/api/Subscription/get/{id}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "token",
+                "AllowedScopes": []
+            },
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
@@ -536,22 +560,8 @@
             "RouteClaimsRequirement": {
                 "Role": "Customer"
             }
-      {
-        "UpstreamPathTemplate": "/Payment",
-        "UpstreamHttpMethod": [ "Post" ],
-        "DownstreamScheme": "https",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 7203
-          }
-        ],
-        "DownstreamPathTemplate": "/api/Payment/payment",
-        "AuthenticationOptions": {
-          "AuthenticationProviderKey": "token",
-          "AllowedScopes": []
-        }
-      },
+        },
+
       {
         "UpstreamPathTemplate": "/Email",
         "UpstreamHttpMethod": [ "Post" ],

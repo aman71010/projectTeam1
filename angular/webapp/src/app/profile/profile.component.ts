@@ -158,6 +158,7 @@ export class ProfileComponent {
           next:(res:any)=>{
             this.openSnackBar("Address Updated");
             this.prevUserAddress=this.address;
+            this.user.address=form.value;
           },
           error:(err)=>{
             this.openSnackBar("Address Update Failed");
@@ -207,15 +208,20 @@ export class ProfileComponent {
       {
         next:(res:any)=>{
           this.openSnackBar("Image Updated");
+          this.prevUserData.userImage=this.profileImg;
         },
         error:(err)=>{
           this.openSnackBar("Image Update Failed");
-          this.isImageSelected=false;
+          this.profileImg=this.prevUserData.userImage;
         }
       }
       );
     
     this.isImageEditVisible=!this.isImageEditVisible;  
+  }
+
+  onLogout(){
+    this.Authsvc.logout();
   }
 
 }
