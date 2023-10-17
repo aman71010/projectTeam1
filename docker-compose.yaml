@@ -1,0 +1,67 @@
+version: "3.5"
+services:
+  UserService:
+    image: userapi
+    ports:
+      - 8080:80
+    environment:
+      Sql_db: "Server=sql_db;Initial Catalog=UserDB;User Id=sa;password=Pass@1234"
+    depends_on:
+      - sql_db
+
+  sql_db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1433:1433
+    environment:
+      - SA_PASSWORD=Pass@1234
+      - ACCEPT_EULA=Y
+
+  MenuService:
+    image: menuapi
+    ports:
+      - 8081:80
+    environment:
+      Mongoclient: mongodb://mongoserver:27017
+      Dbname: MenuDB
+    depends_on:
+      - mongoserver
+
+  OrderService:
+    image: orderapi
+    ports:
+      - 8082:80
+    environment:
+      Mongoclient: mongodb://mongoserver:27017
+      Dbname2: OrderDB
+    depends_on:
+      - mongoserver
+
+  SubscriptionService:
+    image: subscriptionapi
+    ports:
+      - 8083:80
+    environment:
+      Mongoclient: mongodb://mongoserver:27017
+      Dbname3: SubscriptionDB
+    depends_on:
+      - mongoserver
+
+  mongoserver:
+    image: mongo
+    ports:
+      - 27017:27017
+
+  PaymentService:
+    image: paymentapi
+    ports:
+      - 8084:80
+    environment:
+      Sql_db: "Server=sql_db;Initial Catalog=PaymentDB;User Id=sa;password=Pass@1234"
+    depends_on:
+      - sql_db
+
+  NotifyService:
+    image: notifyapi
+    ports:
+      - 8085:80

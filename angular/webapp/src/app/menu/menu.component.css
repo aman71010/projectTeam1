@@ -83,14 +83,14 @@
   font-size: 20px;
 }
 
-.paginator /deep/ .ngx-pagination .current {
+.paginator ::ng-deep .ngx-pagination .current {
   background: #e63946;
   border-radius: 4px;
   padding-left: 11px;
   padding-right: 11px;
 }
 
-.paginator /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+.paginator ::ng-deep .ngx-pagination a:hover, .ngx-pagination button:hover {
   text-decoration: none;
   background: #d4d4d4;
   border-radius: 3px;
@@ -98,7 +98,7 @@
   padding-right: 11px;
 }
 
-.paginator /deep/ .ngx-pagination a:focus, .ngx-pagination button:focus {
+.paginator ::ng-deep .ngx-pagination a:focus, .ngx-pagination button:focus {
   outline: none;
   background: #d4d4d4;
   text-decoration: none;

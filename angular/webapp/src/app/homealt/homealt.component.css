@@ -14,10 +14,6 @@ img{
 }
 
 .centered-content {
-   /* background-image: url("https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-wooden-board-food-lunch-background-poster-image_220338.jpg");
-    background-repeat: no-repeat;
- background-size: cover;
- background-position: center center;*/
  background-color: white;
     display: flex;
     flex-direction: column;
@@ -123,29 +119,6 @@ footer {
     max-width: 50px;
     height: auto;
   }
-  
-  /* Style form elements */
-  /* .form-group {
-    margin: 10px 0;
-  }
-  
-  label {
-    display: block;
-  } */
-  
-  /* input[type="text"],
-  input[type="email"],
-  input[type="phone"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  } */
-  
-  /* textarea {
-    resize: vertical;
-  } */
   
   /* Style the submit button */
   button {

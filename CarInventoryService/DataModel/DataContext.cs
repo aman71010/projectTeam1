@@ -9,7 +9,9 @@ namespace MenuService.DataModel
         public DataContext(IConfiguration config)
         {
             client = new MongoClient(config.GetConnectionString("MyMonGoDbCon"));
+            //client = new MongoClient(Environment.GetEnvironmentVariable("Mongoclient"));
             database=client.GetDatabase(config.GetSection("DatabaseName").Value);
+            //database = client.GetDatabase(Environment.GetEnvironmentVariable("Dbname"));
         }
        public IMongoCollection<MenuItem> menuItems => database.GetCollection<MenuItem>("menuItems");
     }
