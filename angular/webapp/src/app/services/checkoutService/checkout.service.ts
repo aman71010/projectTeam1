@@ -12,7 +12,8 @@ export class CheckoutService {
 
     getMenuItembyId(id:string)
     {
-      return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`)
+      //return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`)
+      return this.httpClient.get(`https://lunchsymenuapi.azurewebsites.net/api/Menu/get/menubyid/${id}`)
     }
 
 }

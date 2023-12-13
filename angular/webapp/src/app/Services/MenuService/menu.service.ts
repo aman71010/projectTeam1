@@ -18,22 +18,27 @@ export class MenuService {
   }
 
   getAllMenuItems(){
-    return this.httpClient.get("https://localhost:7107/api/Menu/get/menulist");
+    //return this.httpClient.get("https://localhost:7107/api/Menu/get/menulist");
+    return this.httpClient.get("https://lunchsymenuapi.azurewebsites.net/api/Menu/get/menulist");
   }
 
   getMenuItemsByCategory(category: string){
-    return this.httpClient.get(`https://localhost:7107/api/Menu/get/MenuByCate/${category}`);
+    //return this.httpClient.get(`https://localhost:7107/api/Menu/get/MenuByCate/${category}`);
+    return this.httpClient.get(`https://lunchsymenuapi.azurewebsites.net/api/Menu/get/MenuByCate/${category}`);
   }
 
   getMenuItemById(id: string){
-    return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`);
+    //return this.httpClient.get(`https://localhost:7107/api/Menu/get/menubyid/${id}`);
+    return this.httpClient.get(`https://lunchsymenuapi.azurewebsites.net/api/Menu/get/menubyid/${id}`);
   }
 
   createMenuItem(formData: any){
-    return this.httpClient.post("https://localhost:7107/api/Menu/createMenu", formData);
+    //return this.httpClient.post("https://localhost:7107/api/Menu/createMenu", formData);
+    return this.httpClient.post("https://lunchsymenuapi.azurewebsites.net/api/Menu/createMenu", formData);
   }
 
   deleteMenuItem(id: string){
-    return this.httpClient.delete(`https://localhost:7107/api/Menu/DeleteMenu/${id}`);
+    //return this.httpClient.delete(`https://localhost:7107/api/Menu/DeleteMenu/${id}`);
+    return this.httpClient.delete(`https://lunchsymenuapi.azurewebsites.net/api/Menu/DeleteMenu/${id}`);
   }
 }

@@ -9,10 +9,12 @@ export class OrderService {
   constructor(private httpClient: HttpClient) { }
 
   getOrdersByEmail(email: string) {
-    return this.httpClient.get(`https://localhost:7264/api/Order/getOrdersByEmail/${email}`);
+    //return this.httpClient.get(`https://localhost:7264/api/Order/getOrdersByEmail/${email}`);
+    return this.httpClient.get(`https://lunchsyorderapi.azurewebsites.net/api/Order/getOrdersByEmail/${email}`);
   }
 
   createOrder(orderobj: any){
-    return this.httpClient.post("https://localhost:7264/api/Order/CreateOrder",orderobj)
+    //return this.httpClient.post("https://localhost:7264/api/Order/CreateOrder",orderobj)
+    return this.httpClient.post("https://lunchsyorderapi.azurewebsites.net/api/Order/CreateOrder",orderobj)
   }
 }

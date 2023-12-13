@@ -8,7 +8,7 @@ namespace SubscriptionService.Model
         IMongoDatabase database;
         public SubscriptionContext(IConfiguration config)
         {
-            client = new MongoClient(config.GetConnectionString("MyMongodbCon"));
+            client = new MongoClient(config.GetConnectionString("prodConString"));
             //client = new MongoClient(Environment.GetEnvironmentVariable("Mongoclient"));
             database = client.GetDatabase(config.GetSection("DatabaseName").Value);
             //database = client.GetDatabase(Environment.GetEnvironmentVariable("Dbname3"));

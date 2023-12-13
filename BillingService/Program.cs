@@ -4,7 +4,7 @@ using PaymentService.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 //// Add services to the container.
-builder.Services.AddDbContext<PayDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Myconnection")));
+builder.Services.AddDbContext<PayDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("prodConString")));
 //builder.Services.AddDbContext<PayDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("Sql_db")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

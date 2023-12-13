@@ -12,9 +12,19 @@ export class AuthService {
   loginUser = new BehaviorSubject<LoggedUser|null>(null);
   private tokenExpirationTimer: any;
 
-  private RegisterURL="https://localhost:7030/api/User/register"
-  private LoginURL="https://localhost:7030/api/Auth/login"
-  private forgotPasswordUrl="https://localhost:7030/api/User/update/password"
+  // private RegisterURL="https://localhost:7030/api/User/register"
+  // private LoginURL="https://localhost:7030/api/Auth/login"
+  // private forgotPasswordUrl="https://localhost:7030/api/User/update/password"
+
+  // docker userapi
+  // private RegisterURL="http://localhost:8080/api/User/register"
+  // private LoginURL="http://localhost:8080/api/Auth/login"
+  // private forgotPasswordUrl="http://localhost:8080/api/User/update/password"
+
+  // azure userapi
+  private RegisterURL="https://lunchsyus.azurewebsites.net/api/User/register"
+  private LoginURL="https://lunchsyus.azurewebsites.net/api/Auth/login"
+  private forgotPasswordUrl="https://lunchsyus.azurewebsites.net/api/User/update/password"
 
   constructor(private http:HttpClient, private router: Router) { }
 

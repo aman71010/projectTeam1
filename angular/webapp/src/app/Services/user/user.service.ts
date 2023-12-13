@@ -13,35 +13,42 @@ export class UserService {
   constructor(private httpsvc:HttpClient) { }
 
   FetchUser(email: string){
-    return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
+    //return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
+    return this.httpsvc.get(`https://lunchsyus.azurewebsites.net/api/user/get/${email}`);
   }
 
   FetchAddress(email:string){
-    return this.httpsvc.get(`https://localhost:7030/api/User/get/address/${email}`);
+    //return this.httpsvc.get(`https://localhost:7030/api/User/get/address/${email}`);
+    return this.httpsvc.get(`https://lunchsyus.azurewebsites.net/api/User/get/address/${email}`);
   }
 
   updateName(updateNameobj:NameUpdate)
   {
-    return this.httpsvc.put("https://localhost:7030/api/User/update/name",updateNameobj);
+    //return this.httpsvc.put("https://localhost:7030/api/User/update/name",updateNameobj);
+    return this.httpsvc.put("https://lunchsyus.azurewebsites.net/api/User/update/name",updateNameobj);
   }
 
   updateMobileNo(updateMobileNoobj:MobileNoUpdate)
   {
-    return this.httpsvc.put("https://localhost:7030/api/User/update/number",updateMobileNoobj);
+    //return this.httpsvc.put("https://localhost:7030/api/User/update/number",updateMobileNoobj);
+    return this.httpsvc.put("https://lunchsyus.azurewebsites.net/api/User/update/number",updateMobileNoobj);
   }
 
   updateAddrress(updateAddressobj:AddressUpdate)
   {
-    return this.httpsvc.put("https://localhost:7030/api/User/update/Address",updateAddressobj);
+    //return this.httpsvc.put("https://localhost:7030/api/User/update/Address",updateAddressobj);
+    return this.httpsvc.put("https://lunchsyus.azurewebsites.net/api/User/update/Address",updateAddressobj);
   }
 
   updateImage(formData: any)
   {
-    return this.httpsvc.put("https://localhost:7030/api/User/update/image",formData);
+    //return this.httpsvc.put("https://localhost:7030/api/User/update/image",formData);
+    return this.httpsvc.put("https://lunchsyus.azurewebsites.net/api/User/update/image",formData);
   }
 
   GetUserByEmail(email: any){
-    return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
+    //return this.httpsvc.get(`https://localhost:7030/api/User/get/${email}`);
+    return this.httpsvc.get(`https://lunchsyus.azurewebsites.net/api/User/get/${email}`);
   }
   
 }

@@ -8,7 +8,7 @@ namespace MenuService.DataModel
         IMongoDatabase database;
         public DataContext(IConfiguration config)
         {
-            client = new MongoClient(config.GetConnectionString("MyMonGoDbCon"));
+            client = new MongoClient(config.GetConnectionString("prodConString"));
             //client = new MongoClient(Environment.GetEnvironmentVariable("Mongoclient"));
             database=client.GetDatabase(config.GetSection("DatabaseName").Value);
             //database = client.GetDatabase(Environment.GetEnvironmentVariable("Dbname"));

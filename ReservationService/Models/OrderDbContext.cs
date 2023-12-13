@@ -7,7 +7,7 @@ namespace OrderService.Models
         IMongoDatabase database;
       public OrderDbContext(IConfiguration config)
         {
-            client = new MongoClient(config.GetConnectionString("MyMongoCon"));
+            client = new MongoClient(config.GetConnectionString("prodConString"));
             //client = new MongoClient(Environment.GetEnvironmentVariable("Mongoclient"));
             database = client.GetDatabase(config.GetValue<string>("DatabaseName"));
             //database = client.GetDatabase(Environment.GetEnvironmentVariable("Dbname2"));
